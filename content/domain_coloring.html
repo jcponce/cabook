@@ -270,7 +270,7 @@ color(z) := ( //what color should be given to a complex number z?
     grey2 = if(grey2<0.5, 1, -1);
   );
   
-  hsvToRGB(im(z), if(bw, 0, sat), .5+.5*if(bw, grey1*grey2, re(sqrt(grey1*grey2))))
+  hsvToRGB(if(!linear, im(z), (pi-arctan2(-im(z), -re(z)))/(2*pi)), if(bw, 0, sat), .5+.5*if(bw, grey1*grey2, re(sqrt(grey1*grey2))))
 );
 ));
 
@@ -317,7 +317,16 @@ draw((1,-1),(1,1), color->(0,0,0), size->2);
          </figcaption>
   </figure>
 
-<p>In his book <a href="http://www.springer.com/de/book/9783034801799"> <em>Visual Complex Functions</em></a>, Elias Wegert employs phase portraits with contour lines of modulus and phase (<em>enhanced phase portraits</em>) for the study of the theory of complex functions. With the use of enhanced phase portraits, roots and poles of a complex function $f(z)$ can be easily spotted at the points where all colors meet. Consider for example the function $$f(z)=\frac{z-1}{z^2+z+1}$$
+<p>In his book <a href="http://www.springer.com/de/book/9783034801799"> <em>Visual Complex Functions</em></a>, Elias Wegert employs phase portraits with contour lines of modulus and phase (<em>enhanced phase portraits</em>) for the study of the theory of complex functions.</p>
+
+<figure class="w3-center">
+    <img class="w3-image w3-mobile" src="../domcoloring/enhancedz.png" alt="phase portrait for z" title="enhanced phase portrait for the function $f(z)=z$" style="width:60%;">
+        <figcaption>
+            <b>Figure 2:</b> Enhanced phase portrait of $f(z)=z$.
+        </figcaption>
+</figure>
+
+<p>With the use of enhanced phase portraits, roots and poles of a complex function $f(z)$ can be easily spotted at the points where all colors meet. Consider for example the function $$f(z)=\frac{z-1}{z^2+z+1}$$
 which has a root at $z_0=1$ and two poles at $z_{1,2}=\left(-1 \pm \sqrt{3}i\right)/2$.
 </p>
 
@@ -327,7 +336,7 @@ which has a root at $z_0=1$ and two poles at $z_{1,2}=\left(-1 \pm \sqrt{3}i\rig
 <figure class="w3-center">
     <img class="w3-image w3-mobile" src="../domcoloring/plotfz.png" alt="(z-1)(z^2+z+1)" title="phase portrait for the function $(z)=\frac{z-1}{z^2+z+1}$" style="width:99%;">
         <figcaption>
-            <b>Figure 2:</b> Phase portrait of $f(z)=\frac{z-1}{z^2+z+1}$.
+            <b>Figure 3:</b> Enhanced phase portrait of $f(z)=\frac{z-1}{z^2+z+1}$.
         </figcaption>
 </figure>
     
