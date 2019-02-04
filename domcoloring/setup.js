@@ -12,9 +12,9 @@ var cdy = CindyJS({
     {name:"C", type:"Free", pos:[1.6,0.5],color:[0,0,1],pinned:false,size:4},
     {name:"D", type:"Free", pos:[1.8,0.5],color:[1,1,0],pinned:false,size:4},
     {name:"E", type:"Free", pos:[1.7,0],color:[1,1,1],pinned:false,size:6},
-    {name:"S1", type:"Free", pos:[1.2,-.8],color:[0,0,0],pinned:true,size:2},
-    {name:"S2", type:"Free", pos:[2.0,-.8],color:[0,0,0],pinned:true,size:2},
-    {name:"S", type:"Free", pos:[1.201,-.8],color:[1,1,1],pinned:false,size:4},
+    //{name:"S1", type:"Free", pos:[1.2,-.8],color:[0,0,0],pinned:true,size:2},
+    //{name:"S2", type:"Free", pos:[2.0,-.8],color:[0,0,0],pinned:true,size:2},
+    //{name:"S", type:"Free", pos:[1.201,-.8],color:[1,1,1],pinned:false,size:4},
     {name:"l", type:"Segment", args:["S1","S2"],color:[0,0,0],pinned:false,size:2},
     {name:"R1", type:"Free", pos:[1.2,-.6],color:[0,0,0],pinned:true,size:2},
     {name:"R2", type:"Free", pos:[2.0,-.6],color:[0,0,0],pinned:true,size:2},
@@ -27,7 +27,10 @@ var cdy = CindyJS({
   ],
   animation: {autoplay: true},
   //transform:[{translate:[0,0]},{scale:10}],
-  images:{Rot:"../domcoloring/uiImages/Rot.png",Sat:"../domcoloring/uiImages/SSat.png",Grid:"../domcoloring/uiImages/Grid.png"},
+  images:{
+          //Rot:"../domcoloring/uiImages/Rot.png",
+          Sat:"../domcoloring/uiImages/SSat.png",
+          Grid:"../domcoloring/uiImages/Grid.png"},
   use: ["CindyGL"]
 });
 
