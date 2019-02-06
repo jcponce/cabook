@@ -30,15 +30,15 @@ let particles = [];
 let a = 1;//radius
 
 //vector field variables
-let xmax = 6;
-let xmin = -6;
+let xmax = 7;
+let xmin = -7;
 let ymax = 4;
 let ymin = -4;
 let sc = 0.15;
 let xstep = 0.5;
 let ystep = 0.5;
 
-let WIDTH = 700;
+let WIDTH = 800;
 let HEIGHT = 500;
 let frameHeight = HEIGHT/100-2;
 
@@ -151,14 +151,14 @@ function draw() {
     
     //This is the black rectangle for the controls
     noStroke();
-    rect(-400, 200, 750, 50);
+    rect(-400, 200, 820, 50);
     
     
     textSize(20);
     fill(255);
-    text('U='+sliderU.value(), -340, 230);
-    text('C='+sliderC.value(), -125, 230);
-    text('T='+sliderT.value(), 90, 230);
+    text('U='+sliderU.value(), -390, 230);
+    text('C='+sliderC.value(), -185, 230);
+    text('T='+sliderT.value(), 34, 230);
     
     
 }
@@ -210,7 +210,7 @@ class Particle{
     display() {
         fill(this.r, this.b, this.g, this.op);
         noStroke();
-        this.updatex = map(this.x*(1-sliderT.value()) + JkTransX(this.x,this.y)*sliderT.value(), -7, 7, -width, width);
+        this.updatex = map(this.x*(1-sliderT.value()) + JkTransX(this.x,this.y)*sliderT.value(), -8, 8, -width, width);
         this.updatey = map(-this.y*(1-sliderT.value())- JkTransY(this.x,this.y)*sliderT.value(), -5, 5, -height, height);
         ellipse(this.updatex, this.updatey, 2*this.radius, 2*this.radius);
 
@@ -222,7 +222,7 @@ class Particle{
 function controls() {
     
     buttonTrace = createButton('Trace');
-    buttonTrace.position(640, 465);
+    buttonTrace.position(690, 465);
     buttonTrace.mousePressed(traceShow);
     
     sliderU = createSlider(0.1, 1, 0.3, 0.1);

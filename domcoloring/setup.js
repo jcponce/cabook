@@ -1,7 +1,7 @@
 var cdy = CindyJS({
   ports: [{
     id: "CSCanvas",
-      width: 700,
+      width: 800,
       height: 445,
       transform: [ { visibleRect: [-1, -1, 2.2, 1] } ]
   }],

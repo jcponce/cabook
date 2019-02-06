@@ -30,15 +30,15 @@ let particles = [];
 let a = 1;//radius
 
 //vector field variables
-let xmax = 6;
-let xmin = -6;
+let xmax = 7;
+let xmin = -7;
 let ymax = 4;
 let ymin = -4;
 let sc = 0.15;
 let xstep = 0.5;
 let ystep = 0.5;
 
-let WIDTH = 700;
+let WIDTH = 800;
 let HEIGHT = 400;
 let frameHeight = HEIGHT/100-2;
 
@@ -189,7 +189,7 @@ class Particle{
     display() {
         fill(this.r, this.b, this.g, this.op);
         noStroke();
-        this.updatex = map(this.x*(1-transf) + JkTransX(this.x,this.y)*transf, -7, 7, -width, width);
+        this.updatex = map(this.x*(1-transf) + JkTransX(this.x,this.y)*transf, -8, 8, -width, width);
         this.updatey = map(-this.y*(1-transf)- JkTransY(this.x,this.y)*transf, -4, 4, -height, height);
         ellipse(this.updatex, this.updatey, 2*this.radius, 2*this.radius);
 
