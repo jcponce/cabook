@@ -185,7 +185,7 @@
 
 
 
-<div style="float: left;">
+
   
       <script id="csmousedown" type="text/x-cindyscript">
       sx = mouse().x;
@@ -486,10 +486,12 @@
       draw((.65, .4), (.65, -.4), color -> (0, 0, 10));
       //drawtext((.46, .45),"zoom = " + round(zoom * 100) / 100 + "");
       </script>
-
+      
+<div id="applet">
       <div class="w3-hide-small">
+          
       <div  id="CSCanvas" style="border:0px"></div>
-      </div>
+      
       
       <script type="text/javascript">
           var cdy = CindyJS({canvasname:"CSCanvas",
@@ -501,17 +503,17 @@
                                   { name:"PC", kind:"P", type:"Free", pos: [.5,.1,1], narrow: true, color: [0,1,1], size:8 } ],
                       ports: [{
                         id: "CSCanvas",
-                        width: 790,
+                        width: 700,
                         height: 500,
                         transform: [ { visibleRect: [ -0.7, -0.5, 0.7, 0.5 ] } ]
                       }]
           });
       </script>
       <br>
-      <div class="w3-hide-small">
+      
       <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="(z-1)/(z^2+z+a)"  onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('fun(z) := (' + this.value + '); init();'); }" size="55" style="font-size:18px">
       </div>
-  </div>
+  
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
@@ -520,7 +522,7 @@
 
 
 <div class="w3-hide-small">
-<p>You can enter your own function $f$ or select one function of the following list:</p>
+<p>You can enter your own function $f$ or select one function of the following list:
 <select id="sel" size="6" style="width:10em;"><option data-a="1">z</option>
   <option data-zoom=".15">z^2</option>
   <option data-a="1" data-zoom="0.1">1/z</option>
@@ -542,8 +544,10 @@
   <option data-a="1" data-zoom="0.1">1/sin((z+1)/(z-1))</option>
   <option data-a="1" data-zoom="-.2">z^z</option>
   <option data-a="1" data-zoom="-.2">log(z^z)/z</option>
-</select>
+</select></p>
 </div>
+
+</div> <!--Applet ends-->
 
 <div class="w3-hide-large w3-hide-medium">
     <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
