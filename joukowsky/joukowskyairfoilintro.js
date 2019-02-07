@@ -30,11 +30,11 @@ let particles = [];
 let a = 1;//radius
 
 //vector field variables
-let xmax = 7;
-let xmin = -7;
+let xmax = 8;
+let xmin = -8;
 let ymax = 4;
 let ymin = -4;
-let sc = 0.15;
+
 let xstep = 0.5;
 let ystep = 0.5;
 
@@ -47,8 +47,6 @@ let currentParticle = 0;
 let fshow = false;
 let tshow = true;
 let starting = true;
-
-let buttonTrace;
 
 //let sliderU;// Speed
 let U = 0.25;
@@ -92,10 +90,9 @@ function draw() {
     
     stroke(255);
     strokeWeight(0.5);
-    rect(0,0,width,height);
+    rect(0,0,width,height);//This is for tracing the particles
     
     translate(width/2, height/2);//we need the origin at the center
-    
     
     t += h;
     
@@ -130,26 +127,32 @@ function draw() {
         transf =1.0;
     }
     
-}
-
-function mousePressed() {
-    if (mouseIsPressed) {
-    if (mouseButton === LEFT) {
-        if(tshow==false) {
-            tshow = true;
-        }else{
-            tshow = false;
-        }
-    }
-    if (mouseButton === RIGHT) {
-      transf =0.0;
-    }
-    }
+    /*
+    fill(180);
+    noStroke();
+    let tempx = -100 * (1-transf)  + JkTransX(-100, 0)*transf;
+    let tempy = -0 * (1-transf)  - JkTransY(-100, 0)*transf;
+    ellipse(tempx, tempy, 2*10.5, 2*10.5);
+     */
     
 }
 
-let P = (t, x, y) => 4.9*(   (2 * a*a * U * y*y)/((x*x+ y*y)*(x*x+ y*y)) + U*(1 - (a*a)/(x*x + y*y)) - (C*y)/(2*PI*(x*x + y*y)) );//Change this function
-let Q = (t, x, y) =>  4.9*( -(2*a*a * U * x * y)/((x*x+ y*y)*(x*x+ y*y)) + (C * x)/(2*PI*(x*x + y*y)) );//Change this function
+function mousePressed() {
+    if(tshow==false) {
+        tshow = true;
+    }else{
+        tshow = false;
+    }
+}
+
+//function doubleClicked() {
+//    transf =0.0;
+//}
+
+let speed = 4.9;
+
+let P = (t, x, y) => speed * (   (2 * a*a * U * y*y)/((x*x+ y*y)*(x*x+ y*y)) + U*(1 - (a*a)/(x*x + y*y)) - (C*y)/(2*PI*(x*x + y*y)) );//Change this function
+let Q = (t, x, y) =>  speed * ( -(2*a*a * U * x * y)/((x*x+ y*y)*(x*x+ y*y)) + (C * x)/(2*PI*(x*x + y*y)) );//Change this function
 
 //This part defines the components of the Joukowsky transformation
 let JkTransX = (x,y) => rd*x-0.15 + (rd*x-0.15)/((rd*x-0.15)*(rd*x-0.15)+(rd*y+0.23)*(rd*y+0.23));
@@ -157,7 +160,7 @@ let JkTransX = (x,y) => rd*x-0.15 + (rd*x-0.15)/((rd*x-0.15)*(rd*x-0.15)+(rd*y+0
 
 let JkTransY = (x,y) => rd*y+0.23 - (rd*y+0.23)/((rd*x-0.15)*(rd*x-0.15)+(rd*y+0.23)*(rd*y+0.23));
 
-//Define particles and how they are moved with Runge–Kutta method of 4th degree.
+//Define a particle class and how they are moved with Runge–Kutta method of 4th degree.
 class Particle{
     
     constructor(_x, _y, _t, _h){
@@ -196,6 +199,3 @@ class Particle{
     }
     
 }
-
-
-
