@@ -229,10 +229,10 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 <p>The complex function, the base point $z_0$, the order of the polynomial and the zoom can be modified.</p>
 
 <div class="w3-hide-small">
-<div style="float: left;">
+<div id="applet">
 
 		<script id="csinit" type="text/x-cindyscript">
-            f(z):=1/(z^2+1);
+            f(z):=(z-1)/(z^2+z+1);
 			hsvToRGB(h, s, v) := (
 				regional(j, p, q, t, f);
 
@@ -317,7 +317,7 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 		N.y = n/5-1.8;
         
 		draw((-5,-1.8),(1,-1.8), color->[0,0,0]);
-        drawtext((1,N.y),"$n = " + n + "$", color->(0.98,0.98,0.98));
+        drawtext((1.09,N.y),"$n = " + n + "$", color->(0.98,0.98,0.98));
 		Zoom.y = -1.8;
 		
 		Zoom.x = max(Zoom.x, -5);
@@ -333,7 +333,7 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 		</script>
 
 		<div id="CSCanvas"></div>
-        <br>
+        
 		
 		<script type="text/javascript">
 				var cdy = CindyJS({canvasname:"CSCanvas",
@@ -367,14 +367,12 @@ var sel=function(e, b){
   cdy.evokeCS('f(z) := (' + b.value + '); forcerecompile();');
 }
 		</script>
-	</div><!--end left-->
-
+	
    
-   
-    <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="1/(z^2+1)"  onkeypress="typ(event, this)" size="43" style="font-size:18px">
-    <br> <br>
+    <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="(z-1)/(z^2+z+1)"  onkeypress="typ(event, this)" size="43" style="font-size:18px">
+    
      <div>
-        <p>You can also select one function of the following list:</p>
+        <p>You can also select one function of the following list:<br>
         <select id="sel" onchange="sel(event, this)" style="width:10em;">
             <option value="1/z">1/z</option>
             <option value="z^(1/2)">Square root</option>
@@ -383,9 +381,11 @@ var sel=function(e, b){
             <option value="sin(z)/cos(z)">Tangent</option>
             <option value="i/2*log((i+z)/(i-z))">Arctangent</option>
             <option value="exp(z)">Exponential function</option>
-        </select>
+        </select></p>
     </div>
      
+     </div><!--end applet-->
+
      </div><!--end hidesmall-->
      
      <div class="w3-hide-large w3-hide-medium">
