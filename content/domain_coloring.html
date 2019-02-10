@@ -141,9 +141,9 @@
     <!-- Cindy.js -->
     <!--<link rel="stylesheet" href="../domcoloring/app.css" />
     <link rel="stylesheet" href="../domcoloring/CindyJS.css" />-->
-    <script type="text/javascript" src="../domcoloring/Cindy.js"></script>
-    <script type="text/javascript" src="../domcoloring/CindyGL.js"></script>
-    <script type="text/javascript" src="../domcoloring/symbolic.js"></script>
+    <script type="text/javascript" src="../applets/cindyjs/domcoloring/Cindy.js"></script>
+    <script type="text/javascript" src="../applets/cindyjs/domcoloring/CindyGL.js"></script>
+    <script type="text/javascript" src="../applets/cindyjs/domcoloring/symbolic.js"></script>
     
 <script id="csinit" type="text/x-cindyscript">
 f(z, a, b, c, d, e, A, B, C, D) := z;
@@ -293,7 +293,7 @@ colorplot(
 draw((1,-1),(1,1), color->(0,0,0), size->2);
 </script>
 
-<script type="text/javascript" src="../domcoloring/setup.js"></script>
+<script type="text/javascript" src="../applets/cindyjs/domcoloring/setup.js"></script>
 
 <!-- End Cindy.js -->
 </head>
@@ -312,7 +312,7 @@ draw((1,-1),(1,1), color->(0,0,0), size->2);
 <p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using phase-portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in the following picture (which shows a phase portrait for the function $f(z)=z$):</p>
 
 <figure class="w3-center">
-     <img class="w3-image w3-mobile" src="../domcoloring/phaseportrait.png" alt="phase portrait for z" title="phase portrait for the function $f(z)=z$" style="width:60%;">
+     <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/phaseportrait.png" alt="phase portrait for z" title="phase portrait for the function $f(z)=z$" style="width:60%;">
          <figcaption>
              <b>Figure 1:</b> Phase portrait of $f(z)=z$.
          </figcaption>
@@ -325,7 +325,7 @@ draw((1,-1),(1,1), color->(0,0,0), size->2);
 <div class="w3-row-padding">
     <div id="thomas" class="w3-half w3-container w3-margin-bottom">
         <figure class="w3-center">
-            <img class="w3-image w3-mobile" src="../domcoloring/enhancedz.png" alt="phase portrait for z" title="enhanced phase portrait for the function $f(z)=z$" style="width:100%;">
+            <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/enhancedz.png" alt="phase portrait for z" title="enhanced phase portrait for the function $f(z)=z$" style="width:100%;">
                 <figcaption>
                     <b>Figure 2:</b> $f(z)=z$, root at $z=0$.
                 </figcaption>
@@ -333,7 +333,7 @@ draw((1,-1),(1,1), color->(0,0,0), size->2);
     </div>
     <div id="aizawa" class="w3-half w3-container w3-margin-bottom">
         <figure class="w3-center">
-            <img class="w3-image w3-mobile" src="../domcoloring/enhanced1z.png" alt="phase portrait for z" title="enhanced phase portrait for the function f(z)=1/z" style="width:100%;">
+            <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/enhanced1z.png" alt="phase portrait for z" title="enhanced phase portrait for the function f(z)=1/z" style="width:100%;">
                 <figcaption>
                     <b>Figure 3:</b> $f(z)=\frac{1}{z}$, pole at $z=0$.
                 </figcaption>
@@ -350,7 +350,7 @@ which has a root at $z_0=1$ and two poles at $z_{1,2}=\left(-1 \pm \sqrt{3}i\rig
 </p>
 
 <figure class="w3-center">
-    <img class="w3-image w3-mobile" src="../domcoloring/plotfz.png" alt="(z-1)(z^2+z+1)"  style="width:99%;">
+    <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/plotfz.png" alt="(z-1)(z^2+z+1)"  style="width:99%;">
         <figcaption>
             <b>Figure 4:</b> Enhanced phase portrait of $f(z)=\frac{z-1}{z^2+z+1}$.
         </figcaption>
@@ -437,6 +437,6 @@ between $-1$ and $+1$.</p>
 
 <!-- nice smart quotes, via: http://smartquotesjs.com -->
 <script src="../js/smartquotes.min.js"></script>
-<script src="../domcoloring/app.js"></script>
+<script src="../applets/cindyjs/domcoloring/app.js"></script>
 </body>
 </html>
