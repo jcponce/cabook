@@ -140,6 +140,22 @@
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
     
+    <!--GeoGebra embeding-->
+<script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+
+<script>
+    var applet1 = new GGBApplet({material_id: "weaav49b",
+                                borderColor:"888888",
+                                playButton: "true",
+                                showFullscreenButton: "true",
+                                enableShiftDragZoom: "true",
+                                showResetIcon: "true"}, true);
+    window.addEventListener("load", function() {
+          applet1.inject('applet_container1');
+      });
+</script>
+<!--GeoGebra embeding ends-->
+    
     <!-- Cindy.js
     <link rel="stylesheet" href="../taylorseries/app.css" />
     <link rel="stylesheet" href="../taylorseries/dist/v08/CindyJS.css" /> -->
@@ -192,16 +208,18 @@
  </div>
 
  
- <p>Figure 1 shows the partial sums (up to 10 terms) of the Taylor series for the function $f(x)=1/(1+x^2)$ around $a=0.67$.
+ <p>The following applet shows the partial sums of the Taylor series for a given function. Drag the slider to show more terms of the series. Drag the point <strong>a</strong> or change the function.
  </p>
  
- <figure class="w3-center">
-     <img class="w3-image w3-mobile" src="../applets/cindyjs/taylorseries/taylor.gif" alt="Taylor series" style="width:100%;">
-         <figcaption>
-             <b>Figure 1:</b> Taylor series of $f(x)=1/(1+x^2)$.
-         </figcaption>
-  </figure>
-<p>The Taylor series can be extended to calculate approximations of complex functions.</p>
+ <!-- ctl=play button; sfsb=fullscreen button-->
+ <div class="w3-hide-small">
+     <div style="width:790px;height:487px;display:block" id="applet_container1"></div>
+ </div>
+ <div class="w3-hide-large w3-hide-medium">
+     <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
+ </div>
+ 
+
 
 <hr>
 
