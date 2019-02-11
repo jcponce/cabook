@@ -157,8 +157,8 @@
 <!--GeoGebra embeding ends-->
     
     <!-- Cindy.js
-    <link rel="stylesheet" href="../taylorseries/app.css" />
-    <link rel="stylesheet" href="../taylorseries/dist/v08/CindyJS.css" /> -->
+    <link rel="stylesheet" href="../applets/cindyjs/taylorseries/app.css" />
+    <link rel="stylesheet" href="../applets/cindyjs/taylorseries/dist/v08/CindyJS.css" />-->
     <script type="text/javascript" src="../applets/cindyjs/taylorseries/dist/v07/Cindy.js"></script>
     <script type="text/javascript" src="../applets/cindyjs/taylorseries/dist/v07/CindyGL.js"></script>
     <script type="text/javascript" src="../applets/cindyjs/domcoloring/symbolic.js"></script>
@@ -324,8 +324,8 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 		);
 		
 		//drawtext((-5.9,1.7), "$f(z) =$");
-		//\textcolor{<color>}{<text>}
-		drawtext((-1.89,1.7), "$\sum_{k=0}^{"+n+"} \frac{f^{(k)}(z_0)}{k!} (z-z_0)^k$", color->(0.98,0.98,0.98));
+		
+        drawtext((-1.7, 1.7), "$\Sigma_{k=0}^{"+n+"} \frac{f^{(k)}(z_0)}{k!} (z-z_0)^k$", color->(0.98,0.98,0.98));
 		
         linesize(1.5);
 		draw((1.8,-1.8),(1.8,1.8), color->[0,0,0]);
@@ -368,7 +368,7 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 				ports: [{
                           id: "CSCanvas",
                           width: 800,
-                          height: 450,
+                          height: 400,
                           transform: [ { visibleRect: [-6,-2, 2, 2] } ]
 						}],
 				use: ["CindyGL", "katex"]
