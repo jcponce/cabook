@@ -98,7 +98,7 @@ function draw() {
         fill(255);
         stroke(255);
         textSize(23);
-        text("Click on screen to start", 6*width/18, height/4);
+        text("Click on screen to start", 6*width/17, height/4);
     }
     
     //This is for drawing the trace of particles
