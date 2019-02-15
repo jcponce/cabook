@@ -123,10 +123,6 @@
 			}
 		}
 	</script>
-
-	<!-- ANALYTICS -->
-    
-    <!-- ANALYTICS -->
     
     <!--MathJax starts-->
     <script type="text/x-mathjax-config">
@@ -324,8 +320,13 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 		);
 		
 		//drawtext((-5.9,1.7), "$f(z) =$");
+        
+        shape1 = polygon([(-2,1.65), (-0.23,1.65), (-0.23,2), (-2,2)]);
+        fill(shape1,color->(0.8,0.8,0.8));
+        draw(shape1, color->(0.8,0.8,0.8));
+        
 		
-        drawtext((-1.7, 1.7), "$\Sigma_{k=0}^{"+n+"} \frac{f^{(k)}(z_0)}{k!} (z-z_0)^k$", color->(0.98,0.98,0.98));
+        drawtext((-1.98,1.75), "$\Sigma_{k=0}^{"+n+"} \frac{f^{(k)}(z_0)}{k!} (z-z_0)^k$", color->(0,0,0));
 		
         linesize(1.5);
 		draw((1.8,-1.8),(1.8,1.8), color->[0,0,0]);
@@ -352,7 +353,7 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 		
 		</script>
 
-		<div id="CSCanvas"></div>
+		<div id="CSCanvas" style="border:2px solid black"></div>
         
 		
 		<script type="text/javascript">
