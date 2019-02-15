@@ -323,14 +323,14 @@ canvas {
 	}
 
 	header {
-		font-size: 		1em;
+		font-size: 		1.1em;
 		position: 		fixed;
 		width: 			800px;
-		height: 		3.5em;
+		height: 		3.3em;
 		top: 			0;
 		margin: 		0 auto 0 auto;
 		padding: 		1em 0.5em 0 0.5em;
-		background: 	rgba(255,255,255, 200);
+		background: 	rgba(255,255,255, 0.7);
 	}
 }
 
