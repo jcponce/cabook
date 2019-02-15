@@ -171,27 +171,57 @@ GeoGebra embeding ends-->
 
 <div class="w3-responsive">
 <p>The <em>generalized complex power function</em> is defined as:
-$$w = z^c = \exp(c\log(z)), \quad \text{with}\quad z\neq  0.$$</p>
+\begin{eqnarray}\label{gcp}
+f(z) = z^c = \exp(c\log(z)), \quad \text{with}\quad z\neq  0.
+\end{eqnarray}
+</p>
 
 
-<p>Due to the multi-valued nature of $\log(z)$, it follows that $w=z^c$ es also multi-valued for any non-integer value of $c$, with a branch point at $z=0$:
-$$w=z^c=\exp(c \log(z))=\exp(c \,\text{Log}(z))\exp(2 \pi n c i),$$
+<p>Due to the multi-valued nature of $\log(z)$, it follows that (\ref{gcp}) is also multi-valued for any non-integer value of $c$, with a branch point at $z=0$. That is,
+$$f(z)=z^c=\exp(c \log(z))=\exp(c \,\text{Log}(z))\exp(2 \pi n c i),$$
 with $n=\ldots,-2,-1,0,1,2,\ldots$</p>
-
 
 <p>On the other hand, we have that the <em>generalized exponential function</em>, for $c \neq 0 $, is defined as:
 \begin{eqnarray}\label{eq1}
-w=c^z=\exp(z\log(c))=\exp(z (\text{Log}(c)+2 \pi n i)),
+f(z)=c^z=\exp(z\log(c))=\exp(z (\text{Log}(c)+2 \pi n i)),
 \end{eqnarray}
 with $n=\ldots,-2,-1,0,1,2,\ldots$</p>
 </div>
 
-<p>However, the multi-valued nature of this function differs somewhat from the multi-valued <em>generalized complex power function</em>. In contrast to the latter, the <em>generalized exponential function</em> possesses no branch point (or any other type of singularity) in the infinite complex $z$-plane. Thus, we can regard the equation (\ref{eq1}) as defining a set of independent single-value functions for each value of $n$.
+<p>Use the following applets to explore the functions (\ref{gcp}) and (\ref{eq1}) on the region $[-3,3]\times[-3,3]$.</p>
+
+<div class="w3-hide-small w3-center">
+    <div class="w3-row-padding">
+        <div id="thomas" class="w3-half w3-container w3-margin-bottom">
+            <figure class="w3-center">
+                <iframe name="z^c" src="../applets/p5js/powerfunction/zpowc/index.html" width="350px" height="350px" style="border:none;" ></iframe>
+                <figcaption>
+                    $f(z)=z^c$.
+                </figcaption>
+            </figure>
+        </div>
+        <div id="aizawa" class="w3-half w3-container w3-margin-bottom">
+            <figure class="w3-center">
+                <iframe name="c^z" src="../applets/p5js/powerfunction/cpowz/index.html" width="350px" height="350px" style="border:none;" ></iframe>
+                <figcaption>
+                    $f(z)=c^z$.
+                </figcaption>
+            </figure>
+        </div>
+        
+    </div>
+</div><!--responsive ends-->
+
+<div class="w3-hide-large w3-hide-medium">
+    <p class="callout"><strong>Oops!</strong> Sorry, the applet is not supported for small screens.</p>
+</div>
+
+<p>After exploring the functions with the previous applets, maybe you have noticed that the function $c^z$ possesses no branch point (or any other type of singularity) in the infinite complex $z$-plane. Thus, we can regard the equation (\ref{eq1}) as defining a set of independent single-value functions for each value of $n$. Therefore, the multi-valued nature of the function $f(z)=c^z$ differs from the multi-valued function $f(z)=z^c$.</p>
 
 <div class="w3-responsive">
-Typically, the $n=0$ case is the most useful, in which case, we would simply define:
-$$w=c^z=\exp(z\log(c))=\exp(z(\text{Log}(c)),$$
-with $c$ not equal to zero.</p>
+    <p>Typically, the $n=0$ case is the most useful, in which case, we would simply define:
+    $$w=c^z=\exp(z\log(c))=\exp(z(\text{Log}(c)),$$
+    with $c$ not equal to zero.</p>
 </div>
 
 <p>This conforms with the definition of exponential function
