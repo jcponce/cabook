@@ -127,7 +127,7 @@ function draw() {
 			//let b = sqrt(sqrt(abs( sin(2 * PI * y) * sin(2 * PI * x) )));
 			//let b2 = 0.5 * ((1 - s) + b + sqrt((1 - s - b) * (1 - s - b) + 0.01));
 			//let b3 = map(b2, 0, 1, 0, 100);
-			let s = funColor(x, y);
+			let s = sat(x, y);
       set(i, j, color(h, 1, s));
 
       x1 += dx;
