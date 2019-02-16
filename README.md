@@ -1,2 +1,2 @@
 # cabook
-An interactive introduction to Complex Analysis
+An interactive and visual introduction to Complex Analysis
