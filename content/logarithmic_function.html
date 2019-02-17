@@ -141,11 +141,11 @@
         gtag('config', 'UA-121691678-1');
         </script>
     
-    <!--GeoGebra embeding
+    <!--GeoGebra embeding-->
 <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
 
 <script>
-    var applet1 = new GGBApplet({material_id: "y9pnh3hu",
+    var applet1 = new GGBApplet({material_id: "dgjvew2g",
                                 borderColor:"888888",
                                 playButton: "true",
                                 //showFullscreenButton: "true",
@@ -155,7 +155,7 @@
           applet1.inject('applet_container1');
       });
 </script>
-GeoGebra embeding ends-->
+<!--GeoGebra embeding ends-->
     
     <!-- Cindy.js
     <link rel="stylesheet" href="../applets/cindyjs/taylorseries/app.css" />
@@ -173,75 +173,123 @@ GeoGebra embeding ends-->
 <header><p><span id="prev"><a href="analytic_landscapes.html">&larr;</a></span><span id="title"><a href="table_of_contents.html">Complex Analysis</a></span><span id="next"><a href="taylor_series.html">&rarr;</a></span><div class="clear"></div></p></header>
         
 
-<h1>The Complex Power Function</h1>
+<h1>The Logarithmic Function</h1>
 
 <hr>
 
-<div class="w3-responsive">
-<p>The <em>generalized complex power function</em> is defined as:
-\begin{eqnarray}\label{gcp}
-f(z) = z^c = \exp(c\log z), \quad \text{with}\quad z\neq  0.
+<p>Consider $z$  any nonzero complex number. We would like to solve for $w$, the equation
+\begin{eqnarray}\label{log1}
+e^w=z.
+\end{eqnarray}
+If  $\Theta=\textbf{Arg} (z)$ with $-\pi &lt; \Theta \leq \pi$, then $z$ and $w$ can be written as follows
+\begin{eqnarray*}
+z=re^{i\Theta} \quad \text{and}\quad w=u+iv.
+\end{eqnarray*}
+Then equation (\ref{log1}) becomes
+$$e^ue^{iv}=re^{i\Theta}.$$
+Thus, we have
+\begin{eqnarray*}
+e^u=r\quad\text{and}\quad v=\Theta +2n\pi
+\end{eqnarray*}
+where $n\in \mathbb Z $. Since $e^u=r$ is the same as $u=\ln r$, it follows that equation (\ref{log1}) is satisfied if and only if $w$ has one of the values
+\begin{eqnarray*}
+w=\ln r +i(\Theta + 2n\pi )\quad (n\in \mathbb Z ).
+\end{eqnarray*}
+
+Therefore, the (multiple-valued) logarithmic function of a nonzero complex variable $z=re^{i\Theta}$ is defined by the formula
+\begin{eqnarray}\label{log2}
+\log z=\ln r +i\left(\Theta + 2n\pi \right)\quad \quad(n\in \mathbb Z ).
 \end{eqnarray}
 </p>
 
-<div class="w3-responsive">
-<p>Due to the multi-valued nature of $\log z$, it follows that (\ref{gcp}) is also multi-valued for any non-integer value of $c$, with a branch point at $z=0$. In other words
-\begin{eqnarray*}
-f(z)=z^c=\exp(c \log z)=\exp(c \,\text{Log}\,z)\exp(2 n \pi  c\, i), \text{ with } n\in \mathbb Z.
-\end{eqnarray*}
-</p>
-<p>On the other hand, we have that the <em>generalized exponential function</em>, for $c \neq 0 $, is defined as:
-\begin{eqnarray}\label{gef}
-f(z)=c^z=\exp(z\log c)=\exp\left(z \left(\text{Log}\,c +2 n \pi \, i\right)\right),
-\end{eqnarray}
-with $n\in \mathbb Z$.</p>
 
 <p>
-Notice that  (\ref{gef}) possesses no branch point (or any other type of singularity) in the infinite complex $z$-plane. Thus, we can regard the equation (\ref{gef}) as defining a set of independent single-value functions for each value of $n$.</p>
-</div>
+<strong>Example 1:</strong> Calculate $\log z$ for $z=-1-\sqrt{3}i$.<br><br>
 
-<p>This is reason why the multi-valued <em>nature</em> of the function $f(z)=z^c$ differs from the multi-valued function $f(z)=c^z$.</p>
+<em>Solution:</em> If $z=-1-\sqrt{3}i$, then $r=2$ and $\Theta=-\frac{2\pi}{3}$. Hence
+$$\log(-1-\sqrt{3}i)=\ln 2 +i\left(-\frac{2\pi}{3}+2n\pi\right)=\ln 2 +2\left(n-\frac{1}{3}\right)\pi i$$
+with $n\in \mathbb Z .$
+</p>
+
+<p>
+The <em>principal value</em> of $\log z$ is the value obtained from equation (\ref{log2}) when $n = 0$
+and is denoted by $\text{Log} \,z$. Thus
+$$\text{Log}\, z=\ln r +i\Theta .$$
+The function $\text{Log}\, z$ is well defined and single-valued when $z\neq 0$ and that
+$$\log z=\text{Log}\, z+2n\pi i\quad (n\in \mathbb Z )
+$$
+This is reduced to the usual logarithm in calculus when $z$ is a positive real number.
+</p>
+
+<p>
+<strong>Example 3:</strong> Calculate $\log \left(1\right)$ and $\log \left(-1\right)$.
+
+<br><br>
+<div class="w3-responsive">
+<em>Solution:</em> From expression (\ref{log2})
+$$\log \left(1\right)=\ln 1+i\left(0+2n\pi\right)=2n\pi i\quad \quad(n\in \mathbb Z )
+$$
+and
+$$\log \left(-1\right)=\ln 1+i\left(\pi+2n\pi\right)=\left(2n+1\right)\pi i\quad \quad(n\in \mathbb Z )
+$$
+Notice that $\text{Log}\, (1)=0$ and $\text{Log}\, (-1)=\pi i$.
+</p>
+</div>
 
 <div class="w3-responsive">
-    <p>Typically, the $n=0$ case is the most useful, in which case, we would simply define:
-    $$w=c^z=\exp(z\log c)=\exp(z\,\text{Log}\,c),$$
-    with $c\neq 0$.</p>
+    <p>
+    Expression (\ref{log2}) is also equivalent to the following:
+    \begin{eqnarray*}
+    \log z&amp;=&amp;\ln |z| +i\,\textbf{arg} (z)\\
+    &amp;=&amp;\ln |z| +i\,\textbf{Arg} (z)+2ni\,\pi \quad \quad(n\in \mathbb Z )
+    \end{eqnarray*}
+    </p>
 </div>
 
-<p>This conforms with the definition of exponential function
-$$e^z=e^x(\cos(y)+i\sin(y))$$
-where $c = e$ (the Euler constant).</p>
+<p>We can visualize the multi-valued nature of $\log z$ by using <a href="http://mathworld.wolfram.com/RiemannSurface.html">Riemann surfaces</a>. Use the following applet to explore this function. On the right-side window the real and imaginary part are plotted. Each branch of the imaginary part is identified with a different color.</p>
 
-<p>Use the following applet to explore functions (\ref{gcp}) and (\ref{gef}) defined on the region $[-3,3]\times[-3,3]$. The enhanced phase portrait is used with contour lines of modulus and phase. Drag the points to change the value of $c$ in each case. You can also deactivate the contour lines, if you want.</p>
-<!--
 <div class="w3-hide-small w3-center">
-    <div class="w3-row-padding">
-        <div id="thomas" class="w3-half w3-container w3-margin-bottom">
-            <figure class="w3-center">
-                <iframe name="z^c" src="../applets/p5js/powerfunction/zpowc/index.html" width="350px" height="350px" style="border:none;" ></iframe>
-                <figcaption>
-                    $f(z)=z^c$.
-                </figcaption>
-            </figure>
-        </div>
-        <div id="aizawa" class="w3-half w3-container w3-margin-bottom">
-            <figure class="w3-center">
-                <iframe name="c^z" src="../applets/p5js/powerfunction/cpowz/index.html" width="350px" height="350px" style="border:none;" ></iframe>
-                <figcaption>
-                    $f(z)=c^z$.
-                </figcaption>
-            </figure>
-        </div>
-        
-    </div>
+    <div style="width:781px;height:445px;display:block" id="applet_container1"></div>
 </div><!--responsive ends-->
 
-<!--
+
 <div class="w3-hide-large w3-hide-medium">
     <p class="callout"><strong>Oops!</strong> Sorry, the applet is not supported for small screens.</p>
 </div>
--->
+<br>
 
+
+<p>
+<strong>Remark:</strong> Notice that for $z\neq 0$, we have
+\begin{eqnarray}\label{exp001}
+e^{\log z}=z\quad \text{and}\quad \log(e^z) =z+2n\pi i
+\end{eqnarray}
+with $n\in \mathbb Z .$
+</p>
+
+<p>
+<strong>Example 2:</strong> Calculate $e^{\log z}=z$, and $\log \left(e^z\right)$ for $z=4i$.<br><br>
+
+<em>Solution:</em> If $z=4i$, then $e^z=e^{4i}$. Hence
+$$\log\left(e^{4i}\right)=4i +2n\pi i$$
+with $n\in \mathbb Z .$
+On the other hand, we have
+$$e^{\log\left(4i\right)}=4i.$$
+
+
+
+<p>
+Finally, some basic properties of the function $\log z$:
+<ol>
+<li> $\log \left(z_1 \,z_2\right)=\log z_1\log  z_2$ </li>
+<li> $\log\left( \frac{z_1}{z_2}\right)=\log z_1 -\log z_2$</li>
+<li> There may hold $\text{Log}\,\left(z_1 \,z_2\right)\neq \text{Log}\, z_1\text{Log}\,  z_2$</li>
+</ol></p>
+
+
+
+
+<!--
 <div class="w3-hide-small">
 <div id="applet">
 
@@ -292,23 +340,23 @@ where $c = e$ (the Euler constant).</p>
 		
 		<script id="csdraw" type="text/x-cindyscript">
 		
-		t(z) := (A.x + i*A.y)^z;
-        u(z) := z^(B.x + 6 + i * B.y);
+		t(z) := log(z);
+        //u(z) := z^(B.x + 6 + i * B.y);
 
 		colorplot(
 			//z = zoom*complex(#);
-            z = complex(#);
+            z = complex(#)+6;
 			color(t(z));
 			,
-			(-3,-3),(3,3)
+			(-9,-3),(-2,3)
 		);
 		
-		colorplot(
-			z = (complex(#)+6);
-			color(u(z));
-			,
-			(-9,-3),(-3,3)
-		);
+		//colorplot(
+		//	z = (complex(#)+6);
+		//	color(u(z));
+		//	,
+		//	(-9,-3),(-3,3)
+		//);
 		
         
         shape1 = polygon([(-9,2.5), (-6,2.5), (-6,3), (-9,3)]);
@@ -387,19 +435,20 @@ var check2=function(){
 
 </script>
 	   
-     </div><!--ends applet-->
+     </div>ends applet
 
-     </div><!--end hidesmall-->
+     </div>end hidesmall
 
      <div class="w3-hide-large w3-hide-medium">
          <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
-     </div>
+     </div>-->
+
+
      
      <br>
      <hr>
 
-<p><strong>Final remark: </strong>In practice, many textbooks treat the <em>generalized exponential function</em> as a single-valued function, $c^z=\exp(z\,\text{Log}(c))$, only when $c$ is a positive real number. For any other value of $c$, the multi-valued function $c^z=\exp(z \log(c))$ is preferred.</p>
-</p>
+
     
     <br><hr>
     
