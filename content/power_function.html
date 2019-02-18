@@ -250,7 +250,23 @@ where $c = e$ (the Euler constant).</p>
             grid1=true;
             grid2=true;
             
-			hsvToRGB(h, s, v) := (
+			
+
+			
+
+			
+
+		</script>
+		
+		<script id="csdraw" type="text/x-cindyscript">
+            
+            N.y = -2.5;
+            n = round(5*(N.x+4));
+            //n = min(-17)
+            n = max(-22, n);
+            N.x = n/5-4;
+            
+            hsvToRGB(h, s, v) := (
 				regional(j, p, q, t, f);
 
 				h = (h-floor(h))*6;
@@ -269,13 +285,13 @@ where $c = e$ (the Euler constant).</p>
 				if(j == 4, [t, p, 1],
 				if(j == 5, [1, p, q]))))))*v
 			);
+            
+            color(z) := ( //what color should be given to a complex number z?
+				regional(n0, grey1, grey2);
+				n0 = 12;
+                         z = log(z)/2/pi;// + i * N.x * pi;
 
-			color(z) := ( //what color should be given to a complex number z?
-				regional(n, grey1, grey2);
-				n = 12;
-				z = log(z)/2/pi;
-
-				zfract = n*z - floor(n*z); //value of n*z in C mod Z[i]
+				zfract = n0*z - floor(n0*z); //value of n*z in C mod Z[i]
 
 				//grey1 = im(zfract);
 				//grey2 = re(zfract);
@@ -285,12 +301,6 @@ where $c = e$ (the Euler constant).</p>
 
 				hsvToRGB(im(z), 1.0, .6+.5*re(sqrt(grey1 * grey2)))
 			);
-
-			
-
-		</script>
-		
-		<script id="csdraw" type="text/x-cindyscript">
 		
 		t(z) := (A.x + i*A.y)^z;
         u(z) := z^(B.x + 6 + i * B.y);
@@ -340,8 +350,9 @@ where $c = e$ (the Euler constant).</p>
         if(B.x > -3, B.x=-3);
         if(B.y > 3, B.y=3);
         
-       
-		
+        //draw((-8.5,-2.5),(2.5,-2.5), color->[0,0,0]);
+        
+        //drawtext((N.x-0.2,N.y+0.3),"$n = " + n + "$", color->(0.98,0.98,0.98));
 		
 		</script>
 
@@ -354,8 +365,9 @@ where $c = e$ (the Euler constant).</p>
 				var cdy = CindyJS({canvasname:"CSCanvas",
 				scripts: "cs*",
 				geometry: [
-							{name:"A", type:"Free", pos:[1.2, 0.7],color:[0,0.9,1]},
-                            {name:"B", type:"Free", pos:[-4.5, 0.5],color:[0,0.9,1]},
+							{name:"A", type:"Free", pos:[1.2, 0.8], color:[0,0.9,1]},
+                            {name:"B", type:"Free", pos:[-4.5, 0.6], color:[0,0.9,1]},
+                            //{name:"N", type:"Free", pos:[-4, -2], color:[0.9,0.9,1], size:8}
                            ],
 				animation: {autoplay: true},
 				ports: [{

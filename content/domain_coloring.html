@@ -412,7 +412,7 @@ var check3=function(){
 <hr>
 
 <h2>Complex phase portraits</h2>
-<p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using phase-portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in the following picture (which shows a phase portrait for the function $f(z)=z$):</p>
+<p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using phase-portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in Figure 1, which shows a phase portrait for the function $f(z)=z$.</p>
 
 <figure class="w3-center">
      <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/phaseportrait.png" alt="phase portrait for z" title="phase portrait for the function $f(z)=z$" style="width:60%;">
@@ -423,7 +423,7 @@ var check3=function(){
 
 <p>In his book <a href="http://www.springer.com/de/book/9783034801799"> <em>Visual Complex Functions</em></a>, Elias Wegert employs phase portraits with contour lines of modulus and phase (<em>enhanced phase portraits</em>) for the study of the theory of complex functions.</p>
 
-<p>With the use of enhanced phase portraits, roots and poles of a complex function $f(z)$ can be easily spotted at the points where all colors meet. Figures 2 and 3 show the enhanced phase portrait of the functions $f(z)=z$ and $f(z)=1/z$, respectively. Observe the contrast between the level curves of modulus in each case.</p>
+<p>With the use of enhanced phase portraits, roots and poles of a complex function $f(z)$ can be easily spotted at the points where all colors meet. Figures 2 and 3 show the enhanced phase portrait of the functions $$f(z)=z \quad \text{and}\quad g(z)=1/z,$$ respectively. Observe the contrast between the level curves of modulus in each case.</p>
 
 <div class="w3-row-padding">
     <div id="thomas" class="w3-half w3-container w3-margin-bottom">
@@ -445,11 +445,11 @@ var check3=function(){
     
 </div>
 
-<p>Consider now the function $$f(z)=\frac{z-1}{z^2+z+1}$$
-which has a root at $z_0=1$ and two poles at $z_{1,2}=\left(-1 \pm \sqrt{3}i\right)/2$.
-</p>
-
-<p>In the following picture you can observe the root and the two poles. Can you spot them in the graph?
+<p>Consider now the function
+\begin{eqnarray}\label{eq1}
+f(z)=\frac{z-1}{z^2+z+1}
+\end{eqnarray}
+which has a root at $z_0=1$ and two poles at $z_{1,2}=\left(-1 \pm \sqrt{3}i\right)/2$. Figure 4 shows the enhaced portrait of function (\ref{eq1}). Can you spot all these points on the graph?
 </p>
 
 <figure class="w3-center">
@@ -523,8 +523,54 @@ between $-1$ and $+1$.</p>
     </div>
     
     <br><hr>
+
+<h2>Warning!</h2>
+
+<p>If we do not impose additional restrictions,
+like continuity or differentiability, the isochromatic sets of complex functions can
+be arbitrary - but this is not so for <em>analytic</em> functions, which are the objects
+of prime interest in this text.</p>
+
+<div class="w3-responsive">
+<p>In fact, analytic functions are (almost) uniquely
+determined by their (pure) phase portraits, but this is
+not so for general functions. For example, the functions $f$ (analytic) and $g$ (not
+analytic) defined by
+\begin{eqnarray}\label{example}
+f(z)=\frac{z-1}{z^2+z+1}, \qquad g(z)=(z-1)\left(\overline{z}^2+\overline{z}+1\right)
+\end{eqnarray}
+have the same phase (except at their zeros and poles) though they are completely
+different.
+</p>
+</div>
+
+<p>Since pure phase portraits do not always display enough information for exploring
+general complex functions, I recommend the use of their enhanced versions with
+contour lines of modulus and phase in such cases. Figure 5 shows two such
+portraits of the functions $f$ (left) and $g$ (right) defined in (\ref{example}).</p>
     
-    <p><strong>Note:</strong> The applet was originally written by <a href="https://geo.ma.tum.de/en/people/aaron-montag.html">Aaron Montag</a> using <a href="https://cindyjs.org/">Cindy.js</a>. The source code can be found at <a href="https://github.com/CindyJS/website/blob/master/src/gallery/cindygl/ComplexExplorer/index.json">GitHub.</a></p>
+<div class="w3-hide-small">
+    <iframe name="JoukAirfoil" src="../applets/p5js/samephase/index.html" width="800px" height="400px" style="border:none;" style="overflow:hidden;"></iframe>
+    <br>
+    <figcaption>
+        <b>Figure 5:</b> Enhanced phase portraits of $f$ (left) and $g$ (right). Drag slider.
+    </figcaption>
+   
+</div>
+
+    <div class="w3-hide-large w3-hide-medium">
+        <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
+    </div>
+    
+    <p>A notable distinction between the two portraits is the shape of the tiles. In
+    the left picture most of them are almost squares and have right-angled corners.
+    In contrast, many tiles in the portrait of $g$ are prolate and their angles differ
+    significantly from $\pi/2$ - at some points the contour lines of modulus and phase
+    are even mutually tangent.</p>
+    
+     <br><hr>
+    
+    <p><strong>Note:</strong> The applet to explore complex functions was originally written by <a href="https://geo.ma.tum.de/en/people/aaron-montag.html">Aaron Montag</a> using <a href="https://cindyjs.org/">Cindy.js</a>. The source code can be found at <a href="https://github.com/CindyJS/website/blob/master/src/gallery/cindygl/ComplexExplorer/index.json">GitHub.</a></p>
 
 	<!-- link to the next page -->
 	<a href="analytic_landscapes.html"><p class="nextPage">NEXT: Complex Analytic Landscapes</p></a>
