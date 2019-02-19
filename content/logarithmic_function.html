@@ -159,11 +159,11 @@
     
     <!-- Cindy.js
     <link rel="stylesheet" href="../applets/cindyjs/taylorseries/app.css" />
-    <link rel="stylesheet" href="../applets/cindyjs/taylorseries/dist/v08/CindyJS.css" />-->
+    <link rel="stylesheet" href="../applets/cindyjs/taylorseries/dist/v08/CindyJS.css" />
     <script type="text/javascript" src="../applets/cindyjs/taylorseries/dist/v07/Cindy.js"></script>
     <script type="text/javascript" src="../applets/cindyjs/taylorseries/dist/v07/CindyGL.js"></script>
     <script type="text/javascript" src="../applets/cindyjs/domcoloring/symbolic.js"></script>
-    <!-- Cindy.js -->
+  Cindy.js -->
     
 </head>
 
@@ -203,6 +203,7 @@ Therefore, the (multiple-valued) logarithmic function of a nonzero complex varia
 </p>
 
 
+<div class="w3-padding">
 <p>
 <strong>Example 1:</strong> Calculate $\log z$ for $z=-1-\sqrt{3}i$.<br><br>
 
@@ -210,6 +211,7 @@ Therefore, the (multiple-valued) logarithmic function of a nonzero complex varia
 $$\log(-1-\sqrt{3}i)=\ln 2 +i\left(-\frac{2\pi}{3}+2n\pi\right)=\ln 2 +2\left(n-\frac{1}{3}\right)\pi i$$
 with $n\in \mathbb Z .$
 </p>
+</div>
 
 <p>
 The <em>principal value</em> of $\log z$ is the value obtained from equation (\ref{log2}) when $n = 0$
@@ -221,11 +223,10 @@ $$
 This is reduced to the usual logarithm in calculus when $z$ is a positive real number.
 </p>
 
-<p>
-<strong>Example 3:</strong> Calculate $\log \left(1\right)$ and $\log \left(-1\right)$.
-
-<br><br>
+<div class="w3-padding">
 <div class="w3-responsive">
+<p>
+<strong>Example 2:</strong> Calculate $\log \left(1\right)$ and $\log \left(-1\right)$.<br><br>
 <em>Solution:</em> From expression (\ref{log2})
 $$\log \left(1\right)=\ln 1+i\left(0+2n\pi\right)=2n\pi i\quad \quad(n\in \mathbb Z )
 $$
@@ -234,6 +235,7 @@ $$\log \left(-1\right)=\ln 1+i\left(\pi+2n\pi\right)=\left(2n+1\right)\pi i\quad
 $$
 Notice that $\text{Log}\, (1)=0$ and $\text{Log}\, (-1)=\pi i$.
 </p>
+</div>
 </div>
 
 <div class="w3-responsive">
@@ -246,7 +248,47 @@ Notice that $\text{Log}\, (1)=0$ and $\text{Log}\, (-1)=\pi i$.
     </p>
 </div>
 
-<p>We can visualize the multi-valued nature of $\log z$ by using <a href="http://mathworld.wolfram.com/RiemannSurface.html">Riemann surfaces</a>. Use the following applet to explore this function. On the right-side window the real and imaginary part are plotted. Each branch of the imaginary part is identified with a different color.</p>
+<p>
+Some basic properties of the function $\log z$ are the following:
+<ol>
+    <li> $\log \left(z_1 \,z_2\right)=\log z_1\log  z_2$ </li>
+    <li> $\log\left( \frac{z_1}{z_2}\right)=\log z_1 -\log z_2$</li>
+    <li> There may hold $\text{Log}\,\left(z_1 \,z_2\right)\neq \text{Log}\, z_1\text{Log}\,  z_2$</li>
+</ol></p>
+
+
+<hr>
+
+<h2>Branches of Logarithms</h2>
+
+
+    <p>From definition (\ref{log2}) let $\theta = \Theta + 2n\pi$ ($n\in \mathbb Z$), so we can write
+    \begin{eqnarray}\label{log30}
+    \log z = \ln r +i\theta.
+    \end{eqnarray}
+</p>
+<div class="w3-responsive">
+<p>Now, let $\alpha$ be any real number. If we restrict the value of $\theta$ so that $\alpha &lt; \theta &lt; \alpha + 2n\pi$ , then the function
+\begin{eqnarray}\label{log3}
+\log z=\ln r +i\theta \quad (r&gt; 0, \alpha &lt; \theta &lt; \alpha + 2\pi ),
+\end{eqnarray}
+with components
+\begin{eqnarray*}
+u(r, \theta)=\ln r, \quad v(r,\theta)=\theta,
+\end{eqnarray*}
+is a <em>single-value</em> and continuous function in the stated domain.
+</p>
+</div>
+
+<p>A <em>branch</em> of a multiple-valued function $f$ is any single-valued function $F$ that is analytic in some domain at each point z of which the value $F(z)$ is one of the values of $f$. The requirement of analyticity, of course, prevents $F$ from taking on a random selection of the values of $f$. Observe that for each fixed α, the single-valued function (\ref{log3}) is a branch of the multiple-valued function (\ref{log3}). The function
+\begin{eqnarray}\label{log4}
+\text{Log } z=\ln r +i\Theta \quad (r&gt; 0, -\pi &lt; \theta &lt; \pi ),
+\end{eqnarray}
+is called the principal branch.</p>
+
+<p> A <em>branch cut</em> is a portion of a line or curve that is introduced in order to define a branch $F$ of a multiple-valued function $f$. Points on the branch cut for $F$ are <em>singular points</em> of $F$, and any point that is common to all branch cuts of $f$ is called a <em>branch point</em>. The origin and the ray $\theta = \alpha$ make up the branch cut for the branch (\ref{log3}) of the logarithmic function. The branch cut for the principal branch (\ref{log4}) consists of the origin and the ray$= \pi$. The origin is evidently a branch point for branches of the multiple-valued logarithmic function.</p>
+
+<p>We can visualize the multiple-valued nature of $\log z$ by using <a href="http://mathworld.wolfram.com/RiemannSurface.html">Riemann surfaces</a>. Use the following applet to explore this function. On the right-side window the real and imaginary part are plotted. Each branch of the imaginary part is identified with a different color.</p>
 
 <div class="w3-hide-small w3-center">
     <div style="width:781px;height:445px;display:block" id="applet_container1"></div>
@@ -258,36 +300,31 @@ Notice that $\text{Log}\, (1)=0$ and $\text{Log}\, (-1)=\pi i$.
 </div>
 <br>
 
+<p>Special care must be taken in using branches of the logarithmic function, especially since expected identities involving logarithms do not always carry over from calculus.</p>
+
+<hr>
+
+<h2>Final Remark</h2>
 
 <p>
-<strong>Remark:</strong> Notice that for $z\neq 0$, we have
+Notice that for $z\neq 0$, we have
 \begin{eqnarray}\label{exp001}
 e^{\log z}=z\quad \text{and}\quad \log(e^z) =z+2n\pi i
 \end{eqnarray}
 with $n\in \mathbb Z .$
 </p>
 
+<div class="w3-padding">
 <p>
-<strong>Example 2:</strong> Calculate $e^{\log z}=z$, and $\log \left(e^z\right)$ for $z=4i$.<br><br>
+<strong>Example 3:</strong> Calculate $e^{\log z}=z$, and $\log \left(e^z\right)$ for $z=4i$.<br><br>
 
 <em>Solution:</em> If $z=4i$, then $e^z=e^{4i}$. Hence
 $$\log\left(e^{4i}\right)=4i +2n\pi i$$
 with $n\in \mathbb Z .$
 On the other hand, we have
 $$e^{\log\left(4i\right)}=4i.$$
-
-
-
-<p>
-Finally, some basic properties of the function $\log z$:
-<ol>
-<li> $\log \left(z_1 \,z_2\right)=\log z_1\log  z_2$ </li>
-<li> $\log\left( \frac{z_1}{z_2}\right)=\log z_1 -\log z_2$</li>
-<li> There may hold $\text{Log}\,\left(z_1 \,z_2\right)\neq \text{Log}\, z_1\text{Log}\,  z_2$</li>
-</ol></p>
-
-
-
+</p>
+</div>
 
 <!--
 <div class="w3-hide-small">
