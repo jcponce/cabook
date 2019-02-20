@@ -426,19 +426,19 @@ var check3=function(){
 <p>With the use of enhanced phase portraits, roots and poles of a complex function $f(z)$ can be easily spotted at the points where all colors meet. Figures 2 and 3 show the enhanced phase portrait of the functions $$f(z)=z \quad \text{and}\quad g(z)=1/z,$$ respectively. Observe the contrast between the level curves of modulus in each case.</p>
 
 <div class="w3-row-padding">
-    <div id="thomas" class="w3-half w3-container w3-margin-bottom">
+    <div id="enhanced" class="w3-half w3-container w3-margin-bottom">
         <figure class="w3-center">
-            <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/enhancedz.png" alt="phase portrait for z" title="enhanced phase portrait for the function $f(z)=z$" style="width:100%;">
+            <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/enhancedz.png" alt="phase portrait for z" title="Enhanced phase portrait for the function f(z)=z" style="width:100%;">
                 <figcaption>
                     <b>Figure 2:</b> $f(z)=z$, root at $z=0$.
                 </figcaption>
         </figure>
     </div>
-    <div id="aizawa" class="w3-half w3-container w3-margin-bottom">
+    <div id="enhanced2" class="w3-half w3-container w3-margin-bottom">
         <figure class="w3-center">
-            <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/enhanced1z.png" alt="phase portrait for z" title="enhanced phase portrait for the function f(z)=1/z" style="width:100%;">
+            <img class="w3-image w3-mobile" src="../applets/cindyjs/domcoloring/enhanced1z.png" alt="phase portrait for z" title="Enhanced phase portrait for the function g(z)=1/z" style="width:100%;">
                 <figcaption>
-                    <b>Figure 3:</b> $f(z)=\frac{1}{z}$, pole at $z=0$.
+                    <b>Figure 3:</b> $g(z)=\frac{1}{z}$, pole at $z=0$.
                 </figcaption>
         </figure>
     </div>
@@ -493,7 +493,7 @@ between $-1$ and $+1$.</p>
 <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="z"  onkeypress="typ(event, this)" size="50" style="font-size:18px">
   </div>
 <br>
-<div>
+<div class="w3-hide-small">
 <p>You can also select one function of the following list:</p>
 <select id="sel" onchange="sel(event, this)" style="width:16em;">
   <option>z</option>
@@ -550,7 +550,7 @@ contour lines of modulus and phase in such cases. Figure 5 shows two such
 portraits of the functions $f$ (left) and $g$ (right) defined in (\ref{example}).</p>
     
 <div class="w3-hide-small">
-    <iframe name="JoukAirfoil" src="../applets/p5js/samephase/index.html" width="800px" height="400px" style="border:none;" style="overflow:hidden;"></iframe>
+    <iframe name="Same phase" src="../applets/p5js/samephase/index.html" width="800px" height="400px" style="border:none;" style="overflow:hidden;"></iframe>
     <br>
     <figcaption>
         <b>Figure 5:</b> Enhanced phase portraits of $f$ (left) and $g$ (right). Drag slider.

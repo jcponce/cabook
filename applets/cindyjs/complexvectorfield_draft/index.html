@@ -1,0 +1,120 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<title>Complex Vector Field</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+<link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity16.png" sizes="16x16">
+    
+<link rel="stylesheet" href="https://jcponce.github.io/cabook/css/w3.css">
+<link rel="stylesheet" href="app.css" />
+<link rel="stylesheet" href="CindyJS.css" />
+<script type="text/javascript" src="Cindy.js"></script>
+<script type="text/javascript" src="CindyGL.js"></script>
+<script type="text/javascript" src="symbolic.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121691678-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-121691678-1');
+</script>
+
+
+  </head>
+  <body class="with-footer">
+
+    <!-- Header -->
+    
+
+    <div id="between-bars">
+
+      <!-- Main part -->
+      <main>
+      <!-- navigation within gallery -->
+      
+
+<div style="float: left;">
+  
+  <div class="w3-hide-small">
+ 
+      <script id="csinit" type="text/x-cindyscript">
+      f(v):=[v.y,sin(v.x)];
+      
+      </script>
+      
+      <script id="csdraw" type="text/x-cindyscript">
+        
+          
+          
+          //drawfield(f(#),stream->true,color->(0,0,0));
+    
+      //lines for the sliders
+      //draw((.55, .4), (.55, -.4), color -> (0, 0, 0));
+      //drawtext((.49, -.46),"a = " + round(a * 100) / 100 + "");
+      
+      //draw((.65, .4), (.65, -.4), color -> (0, 0, 10));
+      </script>
+
+      <div  id="CSCanvas" style="border:0px"></div>
+      
+      
+      <script type="text/javascript">
+          var cdy = CindyJS({canvasname:"CSCanvas",
+                      scripts: "cs*",
+                      animation: {autoplay: true},
+                      csconsole: false,
+                      use : ["CindyGL", "symbolic"],
+                      geometry: [ { name:"A", kind:"P", type:"Free", pos: [.5,.355], narrow: true, color: [1,1,1], size:8 },
+                                  { name:"B", kind:"P", type:"Free", pos: [.5,.1], narrow: true, color: [1,1,1], size:8 },
+                                 { name:"C", kind:"P", type:"Free", pos: [.2,.2], narrow: true, color: [1,1,1], size:8 },
+                                 { name:"D", kind:"P", type:"Free", pos: [.7,.3], narrow: true, color: [1,1,1], size:8 }],
+                      ports: [{
+                        id: "CSCanvas",
+                        width: 750,
+                        height: 550,
+                        transform: [ { visibleRect: [ -0.7, -0.5, 0.7, 0.5 ] } ]
+                      }]
+          });
+      </script>
+      <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="(z-1)/(z^2+z+a)"  onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('fun(z) := (' + this.value + '); init();'); }" size="55" style="font-size:18px">
+  
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+
+</div><!--End Hide small -->
+
+</div>
+
+    
+<div class="w3-hide-large w3-hide-medium">
+   <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
+</div>
+
+
+<div style="float: left;">
+    <br><br><br><hr>
+    
+</div><!--End second left -->
+
+
+
+
+
+    </main>
+</div><!--End between bars-->
+
+    
+
+    <script src="app.js"></script>
+  </body>
+</html>

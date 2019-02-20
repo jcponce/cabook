@@ -36,8 +36,20 @@
 	<!-- CODE PRETTIFY -->
 	<!-- via: https://github.com/google/code-prettify -->
 	<script src="js/run_prettify.js"></script>
-
-	
+    
+    <style>
+    img {
+        filter: gray; /* IE6-9 */
+        -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+        filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+        }
+    
+    /* Disable grayscale on hover */
+    img:hover {
+        -webkit-filter: grayscale(0);
+        filter: none;
+    }
+    </style>
 
 	<!-- JQUERY FANCY ADDITIONS -->
 	<!-- add code class, hover text, etc -->
@@ -156,10 +168,33 @@ other way.</p>
 
 <p>This book is an interactive introduction to the theory and applications of complex functions from a visual point of view. However, it <strong>does not</strong> cover all the topics of a standard course. In fact, it is a collection of selected topics and resources that can be used as a supplementary learning resource by anyone who attends this course for the first time.</p>
 
-<p>Some of the topics covered in this book are basic arithmetic of complex numbers, domain coloring, analytic landscapes and some applications of conformal mappings.</p>
+<p>Some of the topics covered here are basic arithmetic of complex numbers, complex functions, domain coloring, analytic landscapes and some applications of conformal mappings.</p>
 
 <p>What distinguishes this book from other texts in the first instance is the
-use of interactive applets that allow you to explore properties of complex numbers geometrically and analyze complex functions by using different techniques to visualize them. For the design of applets I used the software <strong>GeoGebra</strong>, and the JavaScrit libraries <strong>p5.js</strong> and <strong>Cindy.js</strong>.</p>
+use of interactive applets that allow you to explore properties of complex numbers geometrically and analyze complex functions by using different techniques to visualize them. For the design of applets I used the the following open-source software:</p>
+
+<div class="w3-row-padding w3-center">
+    
+    <div id="ggb" class="w3-third w3-container w3-margin-bottom">
+        <div class="container">
+            <a href="http://geogebra.org/"><img class="w3-image w3-mobile" src="images/ggb.png" alt="GeoGebra" title="GeoGebra" style="width:25%;">
+                </a>
+         </div>
+    </div>
+    
+    <div id="p5js" class="w3-third w3-container w3-margin-bottom">
+        <div class="container">
+            <a href="https://p5js.org/"><img class="w3-image w3-mobile" src="images/p5js.png" alt="p5.js" title="p5.js" style="width:25%;"></a>
+         </div>
+    </div>
+    
+    <div id="cindyjs" class="w3-third w3-container w3-margin-bottom">
+        <div class="container">
+            <a href="https://cindyjs.org/"><img class="w3-image w3-mobile " src="images/cindyjs.png" alt="Cindy.js" title="Cindy.js" style="width:25%;"></a>
+        </div>
+    </div>
+    
+</div>
 
 <p></p>
 
@@ -184,7 +219,7 @@ use of interactive applets that allow you to explore properties of complex numbe
 <p>OK, let's begin! Click the link at the bottom the page, or the arrows at the top, to move to the next chapter. The <strong>Complex Analysis</strong> link at the top will take you back to the <a href="content/table_of_contents.html">Table of Contents</a>.</p>
 
 <h2>DESIGN CREDITS</h2>
-<p>The design of this book is based upon the fantastic book <a href="http://www.jeffreythompson.org/collision-detection/index.php">Collision Detection</a> written by <a href="http://www.jeffreythompson.org/">Jeffrey Thopmson</a>. If you want to learn about the algorithms behind collisions using basic geometrical shapes, you should check it!</p>
+<p>The design of this book is based upon the fantastic book <a href="http://www.jeffreythompson.org/collision-detection/index.php">Collision Detection</a> written by <a href="http://www.jeffreythompson.org/">Jeffrey Thompson</a>. If you want to learn about the algorithms behind collisions using basic geometrical shapes, you should check it!</p>
 
 	<!-- link to the next page -->
 	<a href="content/table_of_contents.html"><p class="nextPage">NEXT: Table Of Contents</p></a>
