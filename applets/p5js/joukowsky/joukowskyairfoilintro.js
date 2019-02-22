@@ -22,7 +22,7 @@ Send me a note at  j.ponce@uq.edu.au
  Last updated 28 Jan 2019
  */
 
-let numMax = 600;
+let numMax = 500;
 let t = 0;
 let h = 0.01;
 let particles = [];
