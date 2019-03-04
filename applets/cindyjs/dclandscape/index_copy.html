@@ -54,6 +54,9 @@
       </script>
       
       <script id="csinit" type="text/x-cindyscript">
+          
+          realComp = true;//real
+          imgComp = false;//imaginary
       dx = .05; dy =.0;
       speciala = .5;
       smootha(x) := if(x<speciala,
@@ -99,14 +102,15 @@
       color(z) := ( //what color should be given to a complex number z?
 			  regional(n, grey1, grey2);
 			  n = 12;
-			  z = log(z)/2/pi;
+			  z = 2*z/2/pi;
 
 			  zfract = n*z - floor(n*z); //value of n*z in C mod Z[i]
 
-			  grey1 = im(zfract);
-			  grey2 = re(zfract);
-				
-			  hue(im(z))*(.7+.3*re(sqrt(grey1*grey2)));
+                   grey1 = if(imgComp, im(zfract), 1);
+                   grey2 = if(realComp, re(zfract), 1);
+                   //pi-arctan2(-im(z), -re(z))/(2*pi)
+                   surfaceColor = if(realComp, re(z), if(imgComp, im(z)));
+                   hue(surfaceColor)*(.7+.3*re(sqrt(grey1*grey2)));
 		  );
       
       //casteljau algorithm to evaluate and subdivide polynomials in Bernstein form.
@@ -234,8 +238,8 @@
       height(t) := (
         regional(cp, cf, acf);
         cp = ray(t);
-        cf = F(cp.x+i*cp.y);
-        acf = |cf|-.68;
+        cf = if( realComp, re(F(cp.x+i*cp.y)), if(imgComp, im(F(cp.x+i*cp.y))));
+        acf = cf+0.1;
         cp.z-acf
       );
       
@@ -345,7 +349,9 @@
 
       <div  id="CSCanvas" style="border:0px"></div>
       
-      
+      Components:&nbsp;&nbsp;&nbsp;<input id="ch1" onclick="check1()" checked type="checkbox" >Real&nbsp;&nbsp;&nbsp;
+          <input  id="ch2" onclick="check2()" type="checkbox" >Imaginary&nbsp;&nbsp;&nbsp;
+      <br>
       <script type="text/javascript">
           var cdy = CindyJS({canvasname:"CSCanvas",
                       scripts: "cs*",
@@ -361,6 +367,34 @@
                         transform: [ { visibleRect: [ -0.7, -0.5, 0.7, 0.5 ] } ]
                       }]
           });
+          
+          var check1=function(){
+              
+              if(document.getElementById("ch1").checked){
+                  cdy.evokeCS('realComp=true;');
+                  cdy.evokeCS('imgComp=false;');
+              } else {
+                  cdy.evokeCS('realComp=false;');
+                  cdy.evokeCS('imgComp=true;');
+                  //document.getElementById("ch2").checked = true;
+                  
+              }
+              document.getElementById("ch2").checked = false;
+          }
+      
+      var check2=function(){
+          
+          if(document.getElementById("ch2").checked){
+              cdy.evokeCS('imgComp=true;');
+              cdy.evokeCS('realComp=false;');
+          } else {
+              cdy.evokeCS('imgComp=false;');
+              cdy.evokeCS('realComp=true;');
+              //document.getElementById("ch1").checked = true;
+              
+          }
+          document.getElementById("ch1").checked = false;
+      }
       </script>
       <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="(z-1)/(z^2+z+a)"  onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('fun(z) := (' + this.value + '); init();'); }" size="55" style="font-size:18px">
   
