@@ -57,8 +57,7 @@ forall(right, #.x = slidersRightX);
 textAbovePoint = (0, rowHeight/2);
 textAfterPoint = (0.1, 0);
 
-realComp = true;//real
-imgComp = false;//imaginary
+
 /*
 grid1=true;
 grid2=true;
@@ -89,6 +88,9 @@ cutInf = false;
 rePlot = false;
 bCol = (156/255, 174/255, 175/255);
 optimizeZerosPoles = true;
+
+realComp = true;//real
+imgComp = false;//imaginary
 
 /*
  * Recursion not possible in colorplot.
@@ -177,7 +179,8 @@ color (z) := ( //what color should be given to a complex number z?
 getHeight (x, z) := (
   regional(h);
   // Reverse the z-direction. Ugly workaround. Possible bug?
-  h = if( realComp, re(f(complex((x, -z)))), if(imgComp,  im(f(complex((x, -z))))  ) );
+  h =  f(complex((x, -z)));//if( realComp, re(f(complex((x, -z)))), if(imgComp,  im(f(complex((x, -z))))  ) );
+  if( realComp, h=re(h); if(imgComp, h=im(h)));
   if (logScale, h = log(h)/log(10); if (cutInf & h <= -plotInf, h = -plotInf));
   if (cutInf & h >= plotInf, h = plotInf);
   h;
@@ -574,15 +577,15 @@ var check2=function(){
       </tr>
 </table>
 
-  Components:&nbsp;&nbsp;&nbsp;<input id="ch1" onclick="check1()"  type="checkbox" >Real&nbsp;&nbsp;&nbsp;
-      <input  id="ch2" onclick="check2()" checked type="checkbox" >Imaginary&nbsp;&nbsp;&nbsp;
+  Components:&nbsp;&nbsp;&nbsp;<input id="ch1" onclick="check1()" checked  type="checkbox" >Real&nbsp;&nbsp;&nbsp;
+      <input  id="ch2" onclick="check2()" type="checkbox" >Imaginary&nbsp;&nbsp;&nbsp;
           <br>
   
 <div style="float: left;">
-   Settings:
+  <!-- Settings:
 <input type="checkbox" onclick="cdy.evokeCS('logScale = ' + this.checked + '; computePlot();');">Use logarithmic scale
 <input type="checkbox" onclick="cdy.evokeCS('cutInf = ' + this.checked + '; computePlot();');">Cut landscape off at z = <input type="text" value="4" onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('setPlotInf(' + this.value + ');' ); }">
-<div>
+<div>-->
 f(z) = <input type="text" id="inp_f" value="(z-1)/(z^2+z+1)" onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('f(z) := (' + this.value + '); computePlot();' ); }">
 </div>
 
