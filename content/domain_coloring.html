@@ -141,9 +141,9 @@
     <!-- Cindy.js -->
     <!--<link rel="stylesheet" href="../domcoloring/app.css" />
     <link rel="stylesheet" href="../domcoloring/CindyJS.css" />-->
-    <script type="text/javascript" src="../applets/cindyjs/domcoloring/Cindy.js"></script>
-    <script type="text/javascript" src="../applets/cindyjs/domcoloring/CindyGL.js"></script>
-    <script type="text/javascript" src="../applets/cindyjs/domcoloring/symbolic.js"></script>
+    <script type="text/javascript" src="../applets/cindyjs/assets/Cindy.js"></script>
+    <script type="text/javascript" src="../applets/cindyjs/assets/CindyGL.js"></script>
+    <script type="text/javascript" src="../applets/cindyjs/assets/symbolic.js"></script>
     
 <script id="csinit" type="text/x-cindyscript">
 f(z, a, b, c, d, e, A, B, C, D) := z;
@@ -365,12 +365,15 @@ var check2=function(){
 }
 
 var check3=function(){
-       if(document.getElementById("ch3").checked){
-          cdy.evokeCS('linear=true;');
-       } else {
-           cdy.evokeCS('linear=false;');
-
-       }
+    if(document.getElementById("ch3").checked){
+        cdy.evokeCS('linear=true;');
+        document.getElementById("t1").innerHTML = "Real";
+        document.getElementById("t2").innerHTML = "Imaginary";
+    } else {
+        cdy.evokeCS('linear=false;');
+        document.getElementById("t1").innerHTML = "Phase";
+        document.getElementById("t2").innerHTML = "Modulus";
+    }
 }
 
     var check4=function(){
@@ -504,9 +507,9 @@ between $-1$ and $+1$.</p>
   <div id="CSCanvas" style="border:2px solid black"></div>
   <br>
 <div>
-  <input id="ch1" onclick="check1()" checked type="checkbox" >Phase/Re&nbsp;&nbsp;&nbsp;
-  <input id="ch2" onclick="check2()" checked type="checkbox" >Mod/Im&nbsp;&nbsp;&nbsp;
-  <input id="ch3" onclick="check3()" type="checkbox" >Re &amp; Im components&nbsp;&nbsp;&nbsp;
+  <input id="ch1" onclick="check1()" checked type="checkbox" ><span id="t1">Phase</span>&nbsp;&nbsp;&nbsp;
+  <input id="ch2" onclick="check2()" checked type="checkbox" ><span id="t2">Modulus</span>&nbsp;&nbsp;&nbsp;
+  <input id="ch3" onclick="check3()" type="checkbox" >Re/Im components&nbsp;&nbsp;&nbsp;
   <input id="ch4" onclick="check4()" type="checkbox" >Chessbaord&nbsp;&nbsp;&nbsp;
   <input id="ch5" onclick="check5()" type="checkbox" >Webcam<br>
       <br>
@@ -608,6 +611,6 @@ portraits of the functions $f$ (left) and $g$ (right) defined in (\ref{example})
 
 <!-- nice smart quotes, via: http://smartquotesjs.com -->
 <script src="../js/smartquotes.min.js"></script>
-<script src="../applets/cindyjs/domcoloring/app.js"></script>
+<script src="../applets/cindyjs/assets/app.js"></script>
 </body>
 </html>
