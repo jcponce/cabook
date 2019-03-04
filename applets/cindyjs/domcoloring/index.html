@@ -247,10 +247,13 @@ var check2=function(){
 
 var check3=function(){
        if(document.getElementById("ch3").checked){
-          cdy.evokeCS('linear=true;');
+           cdy.evokeCS('linear=true;');
+           document.getElementById("t1").innerHTML = "Real";
+           document.getElementById("t2").innerHTML = "Imaginary";
        } else {
            cdy.evokeCS('linear=false;');
-
+           document.getElementById("t1").innerHTML = "Phase";
+           document.getElementById("t2").innerHTML = "Modulus";
        }
 }
 
@@ -296,11 +299,13 @@ var check3=function(){
   
   <div id="CSCanvas" style="border:2px solid black"></div>
 
-  <input id="ch1" onclick="check1()" checked type="checkbox" >Phase/Re&nbsp;&nbsp;&nbsp;
-  <input id="ch2" onclick="check2()" checked type="checkbox" >Mod/Im&nbsp;&nbsp;&nbsp;
-      <input id="ch3" onclick="check3()" type="checkbox" >Re &amp; Im components&nbsp;&nbsp;&nbsp;
-  <input id="ch4" onclick="check4()" type="checkbox" >Chessbaord&nbsp;&nbsp;&nbsp;
-  <input id="ch5" onclick="check5()" type="checkbox" >Webcam<br>
+  <div style="display: flex; justify-content: space-between; width: 820px;">
+      <div><input id="ch1" onclick="check1()" checked type="checkbox"><span id="t1">Pahse</span></div>
+      <div><input id="ch2" onclick="check2()" checked type="checkbox"><span id="t2">Modulus</span></div>
+      <div><input id="ch3" onclick="check3()" type="checkbox" >Re/Im components</div>
+      <div><input id="ch4" onclick="check4()" type="checkbox" >Chessboard</div>
+      <div><input id="ch5" onclick="check5()" type="checkbox" >Webcam</div>
+  </div>
   
 <span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="z"  onkeypress="typ(event, this)" size="45" style="font-size:18px">
 
@@ -322,6 +327,7 @@ var check3=function(){
         <option value="z = a/3;(1-z^(20*e))/(1-z)">Convergence of Geometric series</option>
         <option value="repeat(5, z = z - (z^3-A)/(3*z^2));">Newton</option>
         <option value="z=a; repeat(11, z = z - (z^3-b*c*d)/(3*z^2));">Newton-like</option>
+        <option value="U=|A|;C=10*im(A);T=(e+1)/2;a=1;r=0.23*sqrt(13*2);center=-0.15+0.23*i;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=(z-center)/r;if(|z|<|a|,-1,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)))/10;">Joukowsky Airfoil</option>
     </select>
 </div>
 
