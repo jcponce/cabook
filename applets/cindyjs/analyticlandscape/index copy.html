@@ -146,7 +146,7 @@ gamma (z) := (
   );
 );
 
-f (z) :=  (z-1)/(z^2+z+1);
+f (z) :=  z+1/z;
 
 /*
  * Start: Helper functions.
@@ -177,7 +177,7 @@ color (z) := ( //what color should be given to a complex number z?
 getHeight (x, z) := (
   regional(h);
   // Reverse the z-direction. Ugly workaround. Possible bug?
-  h = |f(complex((x, -z))|;
+  h = if( realComp, re(f(complex((x, -z)))), if(imgComp,  im(f(complex((x, -z))))  ) );
   if (logScale, h = log(h)/log(10); if (cutInf & h <= -plotInf, h = -plotInf));
   if (cutInf & h >= plotInf, h = plotInf);
   h;
@@ -574,8 +574,8 @@ var check2=function(){
       </tr>
 </table>
 
-  Components:&nbsp;&nbsp;&nbsp;<input id="ch1" onclick="check1()" checked type="checkbox" >Real&nbsp;&nbsp;&nbsp;
-      <input  id="ch2" onclick="check2()" type="checkbox" >Imaginary&nbsp;&nbsp;&nbsp;
+  Components:&nbsp;&nbsp;&nbsp;<input id="ch1" onclick="check1()"  type="checkbox" >Real&nbsp;&nbsp;&nbsp;
+      <input  id="ch2" onclick="check2()" checked type="checkbox" >Imaginary&nbsp;&nbsp;&nbsp;
           <br>
   
 <div style="float: left;">
