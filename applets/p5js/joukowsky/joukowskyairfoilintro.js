@@ -83,14 +83,14 @@ function draw() {
     
     //This is for drawing the trace of particles
     if(tshow==true){
-        fill(255,8);
+        background(255,8);
     } else{
-        fill(255,100);
+        background(255,100);
     }
     
-    stroke(255);
-    strokeWeight(0.5);
-    rect(0,0,width,height);//This is for tracing the particles
+    //stroke(255);
+    //strokeWeight(0.5);
+    //rect(0,0,width,height);//This is for tracing the particles
     
     translate(width/2, height/2);//we need the origin at the center
     
