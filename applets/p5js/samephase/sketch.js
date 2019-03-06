@@ -25,8 +25,8 @@ function setup() {
   createCanvas(800, 350);
   
   slider = createSlider(0, 3, 0, 1);
-  slider.position(width/2-120, 360);
-  slider.style('width', '260px');
+  slider.position(width/2-80, 360);
+  slider.style('width', '150px');
   
   otherCanvas = createGraphics(350, 350);
   
