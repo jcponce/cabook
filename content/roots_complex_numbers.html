@@ -170,7 +170,7 @@
 
 <hr>
 
-<p>Consider $z=x+iy$ a <em>nonzero</em> complex number. The number $z$ can be written in polar form as
+<p>Recall that if $z=x+iy$ is a <em>nonzero</em> complex number, then it can be written in polar form as
 \[z=r(\cos \theta +i \sin \theta)\]
 where $r=\sqrt{x^2+y^2}$ and $\theta$ is the angle, in radians, from the positive $x$-axis to the ray connecting the origin to the point $z$.</p>
 
@@ -203,24 +203,30 @@ $$z=re^{i\theta}$$</p>
 
 
 <p>Thus, the $n$th roots of a nonzero complex number $z\neq 0$ can also be expressed as
-\[z=\sqrt[n]{r}\;\mbox{exp}\left[i\left(\frac{\theta}{n}+\frac{2k\pi}{n}\right)\right]\]
+\begin{eqnarray}\label{expform}
+z=\sqrt[n]{r}\;\mbox{exp}\left[i\left(\frac{\theta}{n}+\frac{2k\pi}{n}\right)\right]
+\end{eqnarray}
 where $k=0, 1, 2, \ldots , n-1$.</p>
-
-
-
-<p>The applet below shows a geometrical representation of the $n$th roots of a complex number, up to $n=10$. Drag the red point around to change the value of $z$ or drag the sliders.
-</p>
 
 <!-- ctl=play button; sfsb=fullscreen button-->
 <div class="w3-hide-small">
+
+<p>The applet below shows a geometrical representation of the $n$th roots of a complex number, up to $n=10$. Drag the red point around to change the value of $z$ or drag the sliders.
+</p>
+    
     <div style="width:791px;height:439px;display:block" id="applet_container1"></div>
 </div>
 <div class="w3-hide-large w3-hide-medium">
     <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
 </div>
 <br>
-    
-    <br>
+<br>
+<hr>
+
+<div class="w3-padding">
+<p><strong>Exercise:</strong> From the exponential form (\ref{expform})
+of the roots, show that all the $n$th roots lie on the circle $|z|=\sqrt[n]{r}$ about the origin and are equally spaced every $2\pi/n$ radians, starting with argument $\theta/n$.</p>
+</div>
     
     <!--<p><strong>Note:</strong> The applet was made with <a href="https://www.geogebra.org/material/show/id/jjgznste#">GeoGebra.</a></p>-->
 
