@@ -7,7 +7,7 @@
  Under Creative Commons License
  https://creativecommons.org/licenses/by-sa/4.0/
  
- Writen by Juan Carlos Ponce Campuzano, 12-Feb-2019
+ Written by Juan Carlos Ponce Campuzano, 12-Feb-2019
  I still need to refactor :)
  https://jcponce.github.io
  */
@@ -28,7 +28,7 @@ let whichImage;
 let Strength = 40;
 let v = 40;
 let a = 90;
-let numMax = 700;
+let numMax = 450;
 let t = 0;
 let h = 0.001;
 let particles = [];
@@ -40,6 +40,7 @@ let buttonTrace;
 
 let sliderRadius;
 let sliderSpeed;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -86,7 +87,7 @@ function draw() {
     let p = particles[i];
     p.update();
     p.display();
-    if (p.x > width / 2 || p.y > height / 2 || p.x < -width / 2 || p.y < -height / 2 || (pow(p.x + positions[0], 2) + pow(p.y - positions[1], 2)) < sliderRadius.value()) {
+    if (p.x > width / 2 || p.y > height / 2 || p.x < -width / 2 || p.y < -height / 2 || (pow(p.x - positions[0], 2) + pow(p.y - positions[1], 2)) < sliderRadius.value()) {
       particles.splice(i, 1);
       currentParticle--;
       particles.push(new Particle(-width / 2, random(-height / 2, height / 2), t, h));
@@ -107,7 +108,7 @@ function draw() {
 
   translate(-width / 2, -height / 2);
   fill(250);
-  rect(3, 3, 140, 190, 10);
+  rect(3, 3, 130, 180, 10);
   fill(0);
   stroke(0);
   strokeWeight(0.3);
@@ -133,7 +134,7 @@ function controls(){
     buttonTrace.mousePressed(traceShow);
     buttonTrace.style('font-size', '20px');
     
-    sliderRadius = createSlider(0.01, 250, 120, 0.01);
+    sliderRadius = createSlider(0.01, 180, 100, 0.01);
     sliderRadius.position(buttonTrace.x-10, buttonTrace.y + 65);
     sliderRadius.style('width', '100px');
     
@@ -142,7 +143,7 @@ function controls(){
     sliderSpeed.style('width', '100px');
 }
 
-
+let alpha = 0.9;
 
 //Define particles and how they are moved with Runge–Kutta method of 4th degree.
 class Particle {
@@ -153,10 +154,10 @@ class Particle {
     this.time = _t;
     this.radius = random(3, 4);
     this.h = _h;
-    this.op = random(199, 200);
+    this.op = 200;
     this.r = random(10);
-    this.g = random(164, 255);
-    this.b = random(255);
+    this.g = random(220, 220);
+    this.b = random(120, 255);
   }
 
   update() {
@@ -166,9 +167,18 @@ class Particle {
     let px = positions[0];
     let py = positions[1];
       
-    let P = (t, x, y) => Strength * ( sp - (sp * (rd * rd) * (pow(x + px, 2) - pow(y - py, 2))) / pow( pow(x + px, 2) + pow(y - py, 2) , 2) );
+    //-U cos(a) + U a² cos(a) / ((x cos(a) + y sin(a))² + (x sin(a) + y cos(a))²) + U a² (-2 cos(a) (x sin(a) + y cos(a)) - 2sin(a) (x cos(a) + y sin(a))) (x sin(a) + y cos(a)) / ((x cos(a) + y sin(a))² + (x sin(a) + y cos(a))²)²
       
-    let Q = (t, x, y) => Strength * ((-2 * sp * (rd * rd) * (x + px) * (y - py)) / pow( pow(x + px, 2) + pow(y - py, 2) , 2) );
+    // -sp * cos(alpha) + sp * pow(rd, 2) * cos(alpha) / ( pow( x * cos(alpha) + y * sin(alpha), 2) + pow(x * sin(alpha) + y * cos(alpha),2)) + sp * pow(rd, 2)* (-2 *cos(alpha) * (x * sin(alpha) + y * cos(alpha)) - 2*sin(alpha) * (x * cos(alpha) + y * sin(alpha))) *(x * sin(alpha) + y * cos(alpha) ) / pow( pow(x * cos(alpha) + y * sin(alpha), 2) + pow(x * sin(alpha) + y * cos(alpha),2), 2 )
+      
+    //U sin(a) - U a² sin(a) / ((x cos(a) + y sin(a))² + (x sin(a) + y cos(a))²) - U a² (-2 cos(a) (x cos(a) + y sin(a)) - 2sin(a) (x sin(a) + y cos(a))) (x sin(a) + y cos(a)) / ((x cos(a) + y sin(a))² + (x sin(a) + y cos(a))²)²
+      
+   // sp * sin(alpha) - sp * pow(rd, 2) * sin(alpha) / ( pow(x* cos(alpha) + y *sin(alpha), 2) + pow(x * sin(alpha) + y * cos(alpha), 2)) - sp *pow(rd, 2) * (-2 * cos(alpha) * (x * cos(alpha) + y * sin(alpha)) - 2*sin(alpha) * (x * sin(alpha) + y * cos(alpha))) * (x * sin(alpha) + y * cos(alpha)) / pow( pow(x * cos(alpha) + y * sin(alpha), 2) + pow(x *sin(alpha) + y *cos(alpha),2), 2 )
+      
+      
+      let P = (t, x, y) => Strength * ( sp - (sp * (rd * rd) * (pow(x - px, 2) - pow(y - py, 2))) / pow( pow(x - px, 2) + pow(y - py, 2) , 2) );
+      
+      let Q = (t, x, y) => Strength * ((-2 * sp * (rd * rd) * (x - px) * (y - py)) / pow( pow(x - px, 2) + pow(y - py, 2) , 2) );
       
     this.k1 = P(this.time, this.x, this.y);
     this.j1 = Q(this.time, this.x, this.y);
@@ -186,7 +196,7 @@ class Particle {
   display() {
     fill(this.r, this.b, this.g, this.op);
     noStroke();
-    ellipse(-this.x, this.y, 2 * this.radius, 2 * this.radius);
+    ellipse(this.x, this.y, 2 * this.radius, 2 * this.radius);
   }
 
 }
