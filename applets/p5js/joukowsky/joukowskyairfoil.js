@@ -1,25 +1,30 @@
 /*
-A cool dynamic version of velocity fields. Flow around a circle with velocity U and circulation C.
-First a translation and scalling is applied to the circle C_0 with center z=0+0*i and radius |z|=1.
-This is done using the map T(z)=-0.15_0.23*i + r_0*z, with r_0=0.23*sqrt(13*2) and i^2=-1.
-Thus C_0 is mapped to the circle C_1 with center z1=-0.15+i*0.23 and radius r_0.
-Finally the Joukowsky mapping J(z)=z+1/z is applied. Thus the circle C_1 is mapped to the Arfoil
-This is known as The Joukowski Airfoil.
-*/
+ A cool dynamic version of velocity fields.
+ Flow around a circle with velocity U and circulation C.
+ First a translation and scalling is applied to the
+ circle C_0 with center z=0+0*i and radius |z|=1.
+ This is done using the map T(z)=-0.15_0.23*i + r_0*z,
+ with r_0=0.23*sqrt(13*2) and i^2=-1.
+ 
+ Thus C_0 is mapped to the circle C_1 with center z1=-0.15+i*0.23
+ and radius r_0. Finally the Joukowsky mapping J(z)=z+1/z is applied.
+ Thus the circle C_1 is mapped to the Arfoil.
+ This is known as The Joukowski Airfoil.
+ */
 
 //Warning: The code is pretty messy but I will be back later to improve it. :)
 
 /*
-Feel free to do whatever with this code.
-If you do use it, I'd love to see what you did.
-Send me a note at  j.ponce@uq.edu.au
+ Feel free to do whatever with this code.
+ If you do use it, I'd love to see what you did.
+ Send me a note at  j.ponce@uq.edu.au
  */
 
 //http://creativecommons.org/licenses/by-nc/4.0/
 
 
 /*
- Last updated 23 jun 2018
+ Last updated 08 March 2019
  */
 
 let numMax = 600;
@@ -56,8 +61,13 @@ let sliderT;//Tranformation using homotopy
 
 let rd=0.23*2*2.54950975679639241501;//radius
 
+let pg;
+
 function setup() {
     createCanvas(WIDTH, HEIGHT);
+    
+    pg = createGraphics(800, 500);
+    
     controls();
     resetSketch();
 }
@@ -88,38 +98,30 @@ function traceShow() {
 }
 
 function draw() {
-    
+
     //Initial message
     if (starting==false) {
-        stroke(0);
-        fill(0);
-        strokeWeight(0.5);
-        rect(0,0,width,height);
-        fill(255);
-        stroke(255);
-        textSize(23);
-        text("Click on screen to start", 6*width/17, height/4);
+        pg.stroke(0);
+        pg.fill(0);
+        pg.noStroke();
+        pg.rect(0,0,800,500);
+        pg.fill(255);
+        pg.stroke(0);
+        pg.textSize(24);
+        pg.text("Click on screen to start", 6*width/17, height/4);
     }
+    background(255);
     
     //This is for drawing the trace of particles
     if(tshow==true){
-        fill(255,8);
+        pg.fill(255, 8);
     } else{
-        fill(255,100);
+        pg.fill(255, 150);
     }
     
-    stroke(255);
-    strokeWeight(0.5);
-    rect(0,0,width,height);
-    
-    translate(width/2, height/2);//we need the origin at the center
-    
-    //Reference xy
-    stroke(255, 0, 0);
-    strokeWeight(2);
-    line(0,0,100,0);
-    stroke(51, 204, 51,100);
-    line(0,0,0,-100);
+    pg.stroke(255);
+    pg.strokeWeight(0.5);
+    pg.rect(0,0,800, 500);
     
     t += h;
     
@@ -128,13 +130,23 @@ function draw() {
             let p = particles[i];
             p.update();
             p.display();
-            if ( p.x > 4 ||  p.y > 4 || p.x < -5 ||  p.y < -4 || pow(pow(p.x, 2)+pow(p.y, 2), 1/2)<a ) {
+            if ( p.x > 4 ||  p.y > 3 || p.x < -5 ||  p.y < -3 || pow(pow(p.x, 2)+pow(p.y, 2), 1/2)<a ) {
                 particles.splice(i,1);
                 currentParticle--;
                 particles.push(new Particle(random(-4.5, -4),random(-frameHeight, frameHeight),t,h) );
             }
         }
     }
+    
+    translate(width/2, height/2);//we need the origin at the center
+    //Reference xy
+    stroke(255, 0, 0);
+    strokeWeight(2);
+    line(0,0,100,0);
+    stroke(51, 204, 51,100);
+    line(0,0,0,-100);
+    
+    image(pg, -400, -250);
     
     //This draws the circle to be transformed
     fill(0);
@@ -208,11 +220,11 @@ class Particle{
     }
     
     display() {
-        fill(this.r, this.b, this.g, this.op);
-        noStroke();
-        this.updatex = map(this.x*(1-sliderT.value()) + JkTransX(this.x,this.y)*sliderT.value(), -8, 8, -width, width);
-        this.updatey = map(-this.y*(1-sliderT.value())- JkTransY(this.x,this.y)*sliderT.value(), -5, 5, -height, height);
-        ellipse(this.updatex, this.updatey, 2*this.radius, 2*this.radius);
+        pg.fill(this.r, this.b, this.g, this.op);
+        pg.noStroke();
+        this.updatex = map(this.x*(1-sliderT.value()) + JkTransX(this.x,this.y)*sliderT.value(), -8, 8, -pg.width, pg.width);
+        this.updatey = map(-this.y*(1-sliderT.value())- JkTransY(this.x,this.y)*sliderT.value(), -5, 5, -pg.height, pg.height);
+        pg.ellipse(this.updatex+400, this.updatey+250, 2*this.radius, 2*this.radius);
 
     }
     
