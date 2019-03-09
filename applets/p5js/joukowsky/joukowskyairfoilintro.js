@@ -22,7 +22,7 @@ Send me a note at  j.ponce@uq.edu.au
  Last updated 28 Jan 2019
  */
 
-let numMax = 500;
+let numMax = 450;
 let t = 0;
 let h = 0.01;
 let particles = [];
@@ -57,8 +57,12 @@ let transf;
 
 let rd=0.23*2*2.54950975679639241501;//radius
 
+let pg;
+
 function setup() {
     createCanvas(WIDTH, HEIGHT);
+    
+    pg = createGraphics(800, 400);
     //controls();
     resetSketch();
     transf = 0;
@@ -81,18 +85,19 @@ function resetSketch() {
 function draw() {
     cursor(HAND);
     
+    background(255);
+    
     //This is for drawing the trace of particles
     if(tshow==true){
-        background(255, 8);
+        pg.background(255, 8);
     } else{
-        background(255,150);
+        pg.background(255, 200);
     }
     
     //stroke(255);
     //strokeWeight(0.5);
     //rect(0,0,width,height);//This is for tracing the particles
     
-    translate(width/2, height/2);//we need the origin at the center
     
     t += h;
     
@@ -101,13 +106,15 @@ function draw() {
             let p = particles[i];
             p.update();
             p.display();
-            if ( p.x > 4.5 ||  p.y > 4 || p.x < -4.5 ||  p.y < -4 || pow(pow(p.x, 2)+pow(p.y, 2), 1/2)<a ) {
+            if ( p.x > 4 ||  p.y > 2.5 || p.x < -5 ||  p.y < -2.5 || pow(pow(p.x, 2)+pow(p.y, 2), 1/2)<a ) {
                 particles.splice(i,1);
                 currentParticle--;
-                particles.push(new Particle(random(-5, -3),random(-frameHeight, frameHeight),t,h) );
+                particles.push(new Particle(random(-5, -3),random(-3, 3),t,h) );
             }
         }
     }
+    translate(width/2, height/2);//we need the origin at the center
+    image(pg, -400, -200);
     
     //This draws the circle to be transformed
     fill(0);
@@ -170,9 +177,9 @@ class Particle{
         this.radius = random(3,4);
         this.h = _h;
         this.op = random(199,200);
-        this.r = random(110,120);
-        this.g = random(110,120);
-        this.b = random(110,120);
+        this.r = random(125,130);
+        this.g = random(125,130);
+        this.b = random(125,130);
     }
     
     update() {
@@ -190,11 +197,12 @@ class Particle{
     }
     
     display() {
-        fill(this.r, this.b, this.g, this.op);
-        noStroke();
-        this.updatex = map(this.x*(1-transf) + JkTransX(this.x,this.y)*transf, -8, 8, -width, width);
-        this.updatey = map(-this.y*(1-transf)- JkTransY(this.x,this.y)*transf, -4, 4, -height, height);
-        ellipse(this.updatex, this.updatey, 2*this.radius, 2*this.radius);
+        pg.fill(this.r, this.b, this.g, this.op);
+        pg.noStroke();
+        this.updatex = map(this.x*(1-transf) + JkTransX(this.x,this.y)*transf, -8, 8, -pg.width, pg.width);
+        this.updatey = map(-this.y*(1-transf)- JkTransY(this.x,this.y)*transf, -4, 4, -pg.height, pg.height);
+        //pg.translate(20, 20);
+        pg.ellipse(this.updatex+400, this.updatey+200, 2*this.radius, 2*this.radius);
 
     }
     
