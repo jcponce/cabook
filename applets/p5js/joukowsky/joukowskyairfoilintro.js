@@ -1,10 +1,15 @@
 /*
-A cool dynamic version of velocity fields. Flow around a circle with velocity U and circulation C.
-First a translation and scalling is applied to the circle C_0 with center z=0+0*i and radius |z|=1.
-This is done using the map T(z)=-0.15_0.23*i + r_0*z, with r_0=0.23*sqrt(13*2) and i^2=-1.
-Thus C_0 is mapped to the circle C_1 with center z1=-0.15+i*0.23 and radius r_0.
-Finally the Joukowsky mapping J(z)=z+1/z is applied. Thus the circle C_1 is mapped to the Arfoil
-This is known as The Joukowski Airfoil.
+  A cool dynamic version of velocity fields.
+  Flow around a circle with velocity U and circulation C.
+  First a translation and scalling is applied to the
+  circle C_0 with center z=0+0*i and radius |z|=1.
+  This is done using the map T(z)=-0.15_0.23*i + r_0*z,
+  with r_0=0.23*sqrt(13*2) and i^2=-1.
+ 
+  Thus C_0 is mapped to the circle C_1 with center z1=-0.15+i*0.23
+  and radius r_0. Finally the Joukowsky mapping J(z)=z+1/z is applied.
+  Thus the circle C_1 is mapped to the Arfoil.
+  This is known as The Joukowski Airfoil.
 */
 
 //Warning: The code is pretty messy but I will be back later to improve it. :)
@@ -19,7 +24,7 @@ Send me a note at  j.ponce@uq.edu.au
 
 
 /*
- Last updated 28 Jan 2019
+ Last updated 08 March 2019
  */
 
 let numMax = 450;
