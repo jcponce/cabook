@@ -62,13 +62,9 @@ let transf;
 
 let rd=0.23*2*2.54950975679639241501;//radius
 
-let pg;
 
 function setup() {
     createCanvas(WIDTH, HEIGHT);
-    
-    pg = createGraphics(800, 400);
-    //controls();
     resetSketch();
     transf = 0;
 }
@@ -90,19 +86,18 @@ function resetSketch() {
 function draw() {
     cursor(HAND);
     
-    background(255);
-    
     //This is for drawing the trace of particles
     if(tshow==true){
-        pg.background(255, 8);
+        background(255, 8);
     } else{
-        pg.background(255, 200);
+        background(255, 200);
     }
     
     //stroke(255);
     //strokeWeight(0.5);
     //rect(0,0,width,height);//This is for tracing the particles
     
+    translate(width/2, height/2);//we need the origin at the center
     
     t += h;
     
@@ -118,8 +113,6 @@ function draw() {
             }
         }
     }
-    translate(width/2, height/2);//we need the origin at the center
-    image(pg, -400, -200);
     
     //This draws the circle to be transformed
     fill(0);
@@ -202,12 +195,12 @@ class Particle{
     }
     
     display() {
-        pg.fill(this.r, this.b, this.g, this.op);
-        pg.noStroke();
-        this.updatex = map(this.x*(1-transf) + JkTransX(this.x,this.y)*transf, -8, 8, -pg.width, pg.width);
-        this.updatey = map(-this.y*(1-transf)- JkTransY(this.x,this.y)*transf, -4, 4, -pg.height, pg.height);
+        fill(this.r, this.b, this.g, this.op);
+        noStroke();
+        this.updatex = map(this.x*(1-transf) + JkTransX(this.x,this.y)*transf, -8, 8, -width, width);
+        this.updatey = map(-this.y*(1-transf)- JkTransY(this.x,this.y)*transf, -4, 4, -height, height);
         //pg.translate(20, 20);
-        pg.ellipse(this.updatex+400, this.updatey+200, 2*this.radius, 2*this.radius);
+        ellipse(this.updatex, this.updatey, 2*this.radius, 2*this.radius);
 
     }
     

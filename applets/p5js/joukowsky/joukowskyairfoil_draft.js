@@ -61,8 +61,13 @@ let sliderT;//Tranformation using homotopy
 
 let rd=0.23*2*2.54950975679639241501;//radius
 
+let pg;
+
 function setup() {
     createCanvas(WIDTH, HEIGHT);
+    
+    pg = createGraphics(800, 500);
+    
     controls();
     resetSketch();
 }
@@ -96,28 +101,27 @@ function draw() {
 
     //Initial message
     if (starting==false) {
-        stroke(0);
-        fill(0);
-        noStroke();
-        rect(0,0,800,500);
-        fill(255);
-        stroke(0);
-        textSize(24);
-        text("Click on screen to start", 6*width/17, height/4);
+        pg.stroke(0);
+        pg.fill(0);
+        pg.noStroke();
+        pg.rect(0,0,800,500);
+        pg.fill(255);
+        pg.stroke(0);
+        pg.textSize(24);
+        pg.text("Click on screen to start", 6*width/17, height/4);
     }
+    background(255);
     
     //This is for drawing the trace of particles
     if(tshow==true){
-        fill(255, 8);
+        pg.fill(255, 8);
     } else{
-        fill(255, 150);
+        pg.fill(255, 150);
     }
     
-    stroke(255);
-    strokeWeight(0.5);
-    rect(0,0,800, 500);
-    
-    translate(width/2, height/2);//we need the origin at the center
+    pg.stroke(255);
+    pg.strokeWeight(0.5);
+    pg.rect(0,0,800, 500);
     
     t += h;
     
@@ -134,13 +138,15 @@ function draw() {
         }
     }
     
-    
+    translate(width/2, height/2);//we need the origin at the center
     //Reference xy
     stroke(255, 0, 0);
     strokeWeight(2);
     line(0,0,100,0);
     stroke(51, 204, 51,100);
     line(0,0,0,-100);
+    
+    image(pg, -400, -250);
     
     //This draws the circle to be transformed
     fill(0);
@@ -214,11 +220,11 @@ class Particle{
     }
     
     display() {
-        fill(this.r, this.b, this.g, this.op);
-        noStroke();
-        this.updatex = map(this.x*(1-sliderT.value()) + JkTransX(this.x,this.y)*sliderT.value(), -8, 8, -width, width);
-        this.updatey = map(-this.y*(1-sliderT.value())- JkTransY(this.x,this.y)*sliderT.value(), -5, 5, -height, height);
-        ellipse(this.updatex, this.updatey, 2*this.radius, 2*this.radius);
+        pg.fill(this.r, this.b, this.g, this.op);
+        pg.noStroke();
+        this.updatex = map(this.x*(1-sliderT.value()) + JkTransX(this.x,this.y)*sliderT.value(), -8, 8, -pg.width, pg.width);
+        this.updatey = map(-this.y*(1-sliderT.value())- JkTransY(this.x,this.y)*sliderT.value(), -5, 5, -pg.height, pg.height);
+        pg.ellipse(this.updatex+400, this.updatey+250, 2*this.radius, 2*this.radius);
 
     }
     
