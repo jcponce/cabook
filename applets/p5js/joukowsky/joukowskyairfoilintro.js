@@ -83,9 +83,9 @@ function draw() {
     
     //This is for drawing the trace of particles
     if(tshow==true){
-        background(255,8);
+        background(255, 8);
     } else{
-        background(255,100);
+        background(255,150);
     }
     
     //stroke(255);
