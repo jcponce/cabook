@@ -3,7 +3,7 @@ An interactive and visual introduction to Complex Analysis
 
 Hi! Here you can find the source code for the online book [Complex Analysis](https://www.dynamicmath.xyz/cabook/). 
 
-![](https://github.com/jcponce/cabook/tree/gh-pages/images/preview.png)
+![alt tag](https://github.com/jcponce/cabook/tree/gh-pages/images/preview.png)
 
 ## License
 
