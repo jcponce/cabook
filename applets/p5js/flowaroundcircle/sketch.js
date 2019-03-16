@@ -23,7 +23,7 @@ let bover = false;
 let locked = false;
 let newx;
 let newy;
-let whichImage;
+//let whichImage;
 
 let Strength = 40;
 let v = 40;
@@ -40,6 +40,7 @@ let buttonTrace;
 
 let sliderRadius;
 let sliderSpeed;
+let checkbox;
 
 
 function setup() {
@@ -74,12 +75,12 @@ function draw() {
   translate(width / 2, height / 2);
 
   if (trace == true) {
-    fill(0, 6);
-  } else fill(0, 100);
-  stroke(0);
-  strokeWeight(2);
+    background(0, 6);
+  } else background(0, 100);
+  //stroke(0);
+  //strokeWeight(2);
   
-  rect(-width / 2, -height / 2, width, height);
+  //rect(-width / 2, -height / 2, width, height);
 
   t += h;
 
@@ -103,19 +104,19 @@ function draw() {
       noStroke();
       fill(80);
     }
-    ellipse(positions[j * 2], positions[j * 2 + 1], (sliderRadius.value()) * 2, (sliderRadius.value()) * 2);
+    ellipse(positions[j * 2], positions[j * 2 + 1], (sliderRadius.value()+2) * 2, (sliderRadius.value()+2) * 2);
   }
 
   translate(-width / 2, -height / 2);
   fill(250);
-  rect(3, 3, 130, 180, 10);
+  rect(3, 3, 120, 170, 10);
   fill(0);
   stroke(0);
   strokeWeight(0.3);
   textSize(16);
   textAlign(LEFT);
-  text("Radius", buttonTrace.x-10, buttonTrace.y + 60);
-  text("Speed", buttonTrace.x-10, buttonTrace.y + 120);
+  text("Radius", buttonTrace.x-1, buttonTrace.y + 55);
+  text("Speed", buttonTrace.x-1, buttonTrace.y + 115);
  
  textSize(32);
  fill(255);
@@ -130,18 +131,32 @@ function draw() {
 
 function controls(){
     buttonTrace = createButton('Trace');
-    buttonTrace.position(30, 15);
+    buttonTrace.position(10, 15);
     buttonTrace.mousePressed(traceShow);
     buttonTrace.style('font-size', '20px');
     
-    sliderRadius = createSlider(0.01, 180, 100, 0.01);
-    sliderRadius.position(buttonTrace.x-10, buttonTrace.y + 65);
+    //checkbox = createCheckbox('More', false);
+    //checkbox.style('font-size', '20px');
+    //checkbox.position(buttonTrace.x+60, buttonTrace.y );
+    //checkbox.changed(myCheckedEvent);
+    
+    sliderRadius = createSlider(0.01, 200, 100, 0.01);
+    sliderRadius.position(buttonTrace.x-1, buttonTrace.y + 60);
     sliderRadius.style('width', '100px');
     
     sliderSpeed = createSlider(0.01, 100, 40, 0.01);
-    sliderSpeed.position(buttonTrace.x-10, buttonTrace.y + 125);
+    sliderSpeed.position(buttonTrace.x-1, buttonTrace.y + 120);
     sliderSpeed.style('width', '100px');
+    
 }
+
+/*function myCheckedEvent() {
+    if (this.checked()) {
+        console.log('Checking!');
+    } else {
+        console.log('Unchecking!');
+    }
+}*/
 
 let alpha = 0.9;
 
@@ -209,6 +224,8 @@ function traceShow() {
   }
 }
 
+//The following functions allow me to drag the circle
+
 function mousePressed() {
   checkOver();
   if (bover) {
@@ -217,8 +234,6 @@ function mousePressed() {
     locked = false;
   }
 }
-
-//The following functions allow me to drag the circle
 
 function mouseReleased() {
   locked = false;
