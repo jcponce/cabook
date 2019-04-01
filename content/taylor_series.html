@@ -322,14 +322,14 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 		//drawtext((-5.9,1.7), "$f(z) =$");
         
         shape1 = polygon([(-2,1.65), (-0.23,1.65), (-0.23,2), (-2,2)]);
-        fill(shape1,color->(0.8,0.8,0.8));
-        draw(shape1, color->(0.8,0.8,0.8));
+        fill(shape1,color->(0.9,0.9,0.9));
+        draw(shape1, color->(0.9,0.9,0.9));
         
 		
         drawtext((-1.98,1.75), "$\Sigma_{k=0}^{"+n+"} \frac{f^{(k)}(z_0)}{k!} (z-z_0)^k$", color->(0,0,0));
 		
         linesize(1.5);
-		draw((1.8,-1.8),(1.8,1.8), color->[0,0,0]);
+		draw((1.8,-1.6),(1.8,1.8), color->[0,0,0]);
 		N.x = 1.8;
 		n = round(5*(N.y+1.8));
 		n = max(1, n);
@@ -337,6 +337,9 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
         
 		draw((-5,-1.8),(1,-1.8), color->[0,0,0]);
         drawtext((1.09,N.y),"$n = " + n + "$", color->(0.98,0.98,0.98));
+        
+        linesize(3);
+        draw((-2,-2),(-2,2), color->[0,0,0]);//divide screen
         
         drawtext((A.x+0.06,A.y+0.06),"$z_0$", color->(0.98,0.98,0.98));
 		Zoom.y = -1.8;
@@ -361,7 +364,7 @@ Suppose that a function $f$ is analytic throughout a disk $|z -z_0|&lt; R_0$,
 				scripts: "cs*",
 				geometry: [
 							{name:"A", type:"Free", pos:[1.1, 0.1],color:[0,0.9,1]},
-							{name:"N", type:"Free", pos:[1, -2],color:[1,1,1], size:8},
+							{name:"N", type:"Free", pos:[1, -1.8],color:[1,1,1], size:8},
 							{name:"Zoom", type:"Free", pos:[-2, -.3],color:[1,1,1], size:8},
 							//{name: "Input", type: "EditableText", pos: [-5.9,1.7], color: [0.0, 0.0, 0.0], fillcolor: [1.0, 0.784, 0.0], fillalpha: 0.5, minwidth: 100, text: "1/(z^2+1)"}
                            ],
