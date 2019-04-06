@@ -6,22 +6,10 @@
 <!--Adapted from http://science-to-touch.com/CJS/CindyJS/complexFunctions/04_Explorer.html -->
 <!--Mathematical concept from http://www.springer.com/gp/book/9783034801799, p.27f-->
 <!--Adapted from https://github.com/konnerthg/cindyjs-complex-phase-plots/blob/master/analytic_landscape_mesh_texture.html -->
-<meta charset="utf-8" />
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    
-<link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity16.png" sizes="16x16">
-    
-<link rel="stylesheet" href="https://jcponce.github.io/cabook/css/w3.css">
-<link rel="stylesheet" href="app.css" />
-<link rel="stylesheet" href="CindyJS.css" />
-    
+<meta charset="UTF-8">
   <script type="text/javascript" src="./deploy/Cindy.js"></script>
   <script type="text/javascript" src="./deploy/CindyGL.js"></script>
   <script type="text/javascript" src="./deploy/Cindy3D.js"></script>
-  
 
 <script id="csmousedown" type="text/x-cindyscript">
       dragging=true;
@@ -163,13 +151,13 @@ color (z) := ( //what color should be given to a complex number z?
   grey1 = im(zfract);
   grey2 = re(zfract);
 
-  hue(im(z))*(.6+.5*re(sqrt(grey1*grey2)));
+  hue(im(z))*(.7+.3*re(sqrt(grey1*grey2)));
 );
 
 getHeight (x, z) := (
   regional(h);
   // Reverse the z-direction. Ugly workaround. Possible bug?
-  h = |f(complex((x, -z)))|;//im(f(complex((x, -z))));
+  h = |f(complex((x, -z)))|;
   if (logScale, h = log(h)/log(10); if (cutInf & h <= -plotInf, h = -plotInf));
   if (cutInf & h >= plotInf, h = plotInf);
   h;
@@ -518,26 +506,18 @@ var cdy = CindyJS({
 
 </head>
 
-<body class="with-footer">
-
-<div id="between-bars">
-        
-<!-- Main part -->
-<main>
-<!-- navigation within gallery -->
-
-<div class="w3-hide-small">
-  <table width="900px" border="0">
+<body >
+    
+  <table>
       <tr>
-      <td><canvas id="Cindy3D" style="border: none; display: inline;" width="850px" height="500px"></canvas>
+      <td><canvas id="Cindy3D" style="border: none; display: inline;" width="665px" height="460px"></canvas>
       </td>
       <td><div id="CSCanvas" style="border:2px solid black; width: 250px; height: 550px;"></div>
       </td>
       </tr>
 </table>
-
   
-<div style="float: left;">
+  
    Settings:
 <input type="checkbox" onclick="cdy.evokeCS('logScale = ' + this.checked + '; computePlot();');">Use logarithmic scale
 <input type="checkbox" onclick="cdy.evokeCS('cutInf = ' + this.checked + '; computePlot();');">Cut landscape off at z = <input type="text" value="4" onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('setPlotInf(' + this.value + ');' ); }">
@@ -545,6 +525,7 @@ var cdy = CindyJS({
 f(z) = <input type="text" id="inp_f" value="(z-1)/(z^2+z+1)" onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('f(z) := (' + this.value + '); computePlot();' ); }">
 </div>
 
+<br>
 
 <div>
 Examples: <select style="margin: auto" id="sel" onchange="cdy.evokeCS('f(z) := (' + this.value + '); computePlot();'); document.getElementById('inp_f').value = this.value;">
@@ -557,23 +538,11 @@ Examples: <select style="margin: auto" id="sel" onchange="cdy.evokeCS('f(z) := (
      </select>
 </div>
 
-</div>
 
-</div><!--ends hide small-->
 
-<div class="w3-hide-large w3-hide-medium">
-    <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
-</div>
+<br>
 
-<div style="float: left;">
-    <br><br><br><hr>
-    <p><strong>Note:</strong> This applet was made with <a href="https://cindyjs.org/">Cindy.js</a>. It is based upon <a href="https://github.com/konnerthg/cindyjs-complex-phase-plots/blob/master/analytic_landscape_mesh_texture.html">Analytic Landscape Mesh Texture</a> written by  <a href="https://github.com/konnerthg">Gerhard Konnerth</a>. The source code can be found at <a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/analyticlandscape">GitHub.</a></p>
-</div><!--End second left -->
 
-</main>
-</div><!--End between bars-->
-
-<script src="app.js"></script>
 </body>
 
 </html>

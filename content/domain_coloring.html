@@ -535,6 +535,7 @@ between $-1$ and $+1$.</p>
   <option value="repeat(5, z = z - (z^3-A)/(3*z^2));">Newton</option>
   <option value="z=a; repeat(11, z = z - (z^3-b*c*d)/(3*z^2));">Newton-like</option>
   <option value="U=|A|;C=10*im(A);T=(e+1)/2;a=1;r=0.23*sqrt(13*2);center=-0.15+0.23*i;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=(z-center)/r;if(|z|<|a|,-1,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)))/10;">Joukowsky Airfoil</option>
+  <!--<option value="U=re(B);C=10*im(C);T=(e+1)/2;center=D;a=|A-D|;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=z-center;if(|z|<|a|,-1,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)+i*pi))/10" data-cdy="D.xy=(-0.0493, 0.0712); A.xy=(0.218, 0.0868); E.x=100; S.x=1.2595; linear=true;">Joukowsky airfoil</option>-->
 </select>
 
 

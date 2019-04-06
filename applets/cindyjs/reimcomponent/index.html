@@ -31,6 +31,9 @@
 </script>
 
 <script id="csinit" type="text/x-cindyscript">
+    
+realComp = false;//real
+imgComp = true;//imaginary
 /*
  * Control panel setup.
  */
@@ -160,16 +163,20 @@ color (z) := ( //what color should be given to a complex number z?
 
   zfract = n*z - floor(n*z); //value of n*z in C mod Z[i]
 
-  grey1 = im(zfract);
-  grey2 = re(zfract);
+  //grey1 = im(zfract);
+  //grey2 = re(zfract);
+  grey1 = if(imgComp, im(zfract), 1);
+  grey2 = if(realComp, re(zfract), 1);
+  //pi-arctan2(-im(z), -re(z))/(2*pi)
+  surfaceColor = if(realComp, re(z), if(imgComp, im(z)));
 
-  hue(im(z))*(.6+.5*re(sqrt(grey1*grey2)));
+  hue(surfaceColor)*(.6+.5*re(sqrt(grey1*grey2)));
 );
 
 getHeight (x, z) := (
   regional(h);
   // Reverse the z-direction. Ugly workaround. Possible bug?
-  h = |f(complex((x, -z)))|;//im(f(complex((x, -z))));
+  h = if( realComp, re(f(complex((x, -z)))), if(imgComp, im(f(complex((x, -z)))) ) );//im(f(complex((x, -z))));
   if (logScale, h = log(h)/log(10); if (cutInf & h <= -plotInf, h = -plotInf));
   if (cutInf & h >= plotInf, h = plotInf);
   h;
@@ -514,6 +521,7 @@ var cdy = CindyJS({
   //images:{Rot:"uiImages/Rot.png",Sat:"uiImages/SSat.png",Grid:"uiImages/Grid.png"},
   use: ["CindyGL"]
 });
+
 </script>
 
 </head>
@@ -541,9 +549,57 @@ var cdy = CindyJS({
    Settings:
 <input type="checkbox" onclick="cdy.evokeCS('logScale = ' + this.checked + '; computePlot();');">Use logarithmic scale
 <input type="checkbox" onclick="cdy.evokeCS('cutInf = ' + this.checked + '; computePlot();');">Cut landscape off at z = <input type="text" value="4" onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('setPlotInf(' + this.value + ');' ); }">
+Components:&nbsp;&nbsp;&nbsp;<input id="ch1" onclick="check1()" checked type="checkbox" >Real&nbsp;&nbsp;&nbsp;
+<input  id="ch2" onclick="check2()" type="checkbox" >Imaginary&nbsp;&nbsp;&nbsp;
+
 <div>
 f(z) = <input type="text" id="inp_f" value="(z-1)/(z^2+z+1)" onkeypress="if((event.which ? event.which : event.keyCode)==13) { cdy.evokeCS('f(z) := (' + this.value + '); computePlot();' ); }">
 </div>
+
+<script type="text/javascript">
+    var check1=function(){
+        
+        if(document.getElementById("ch1").checked){
+            cdy.evokeCS('realComp=true;');
+            cdy.evokeCS('imgComp=false;');
+        } else {
+            cdy.evokeCS('realComp=false;');
+            cdy.evokeCS('imgComp=true;');
+            //document.getElementById("ch2").checked = true;
+            
+        }
+        document.getElementById("ch2").checked = false;
+    }
+
+var check2=function(){
+    
+    if(document.getElementById("ch2").checked){
+        cdy.evokeCS('imgComp=true;');
+        cdy.evokeCS('realComp=false;');
+    } else {
+        cdy.evokeCS('imgComp=false;');
+        cdy.evokeCS('realComp=true;');
+        //document.getElementById("ch1").checked = true;
+        
+    }
+    document.getElementById("ch1").checked = false;
+}
+</script>
+
+<script type="text/javascript">
+var select = document.getElementById("sel");
+select.addEventListener('change', function(event) {
+document.getElementById('inp').value = this.value;
+cdy.evokeCS('fun(z) := (' + this.value + '); init();');
+
+var a = this.options[this.selectedIndex].getAttribute("data-a") || .5;
+cdy.evokeCS('seta(' + a + ')');
+
+var zoom = this.options[this.selectedIndex].getAttribute("data-zoom");
+if(zoom) cdy.evokeCS('setzoom(' + zoom + ')');
+
+}, false);
+</script>
 
 
 <div>
