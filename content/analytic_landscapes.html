@@ -180,7 +180,7 @@
     
     <p>Complex functions $ f:\mathbb{C}\to\mathbb{C} $ can be visualized by plotting the function $g: \mathbb{R^2} \to \mathbb{R}$ with $$g(x,y) = |f\left(x + i y\right)|.$$ The color of each point $\left(x, y, |f(x + i y)|\right)$ indicates <a href="domain_coloring.html">the phase</a> of the complex number $f(x + i y)$.</p>
     
-    <p>In the applet below you can explore colored analytic landscapes. Use the blue slider on the right side for zooming out/in. The black slider defines a real scalar <strong>a</strong> between -0.14 and 1.51.</p>
+    <p>In the applet below you can explore colored analytic landscapes. Use the blue slider on the right side for zooming out/in. The black slider defines a real scalar <strong>a</strong> $ \in [ -0.14, 1.14]$.</p>
 
   
       <script id="csmousedown" type="text/x-cindyscript">
@@ -560,9 +560,11 @@
 
       //lines for the sliders
       draw((.55, .4), (.55, -.4), color -> (0, 0, 0));
-      drawtext((.49, -.439),"a = " + round(a * 100) / 100 + "");
+      drawtext((.48, -.439),"a = " + round(a * 100) / 100 + "");
       //draw((.6, .4), (.6, -.4), color -> (0, 0, 0));
       draw((.65, .4), (.65, -.4), color -> (0, 0, 0));
+      drawtext((.64, -.441),"Z-");
+      drawtext((.64, .420),"Z+");
       </script>
       
 <div id="applet">
@@ -603,6 +605,7 @@
  <div style="display: flex; justify-content: space-between; width: 800px;">
     <p>Select one function f(z) from the following list:
 <select id="sel" style="width:10em;">
+    <option data-a="1" data-p="z-1" data-q="z^2+z+1">(z-1)/(z^2+z+1)</option>
     <option data-a="1" data-p="z">z</option>
     <option data-zoom=".15" data-p="z^2">z^2</option>
     <option data-a="1" data-zoom="0.1" data-q="z">1/z</option>
