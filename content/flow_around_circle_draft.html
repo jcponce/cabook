@@ -160,7 +160,7 @@
     \begin{eqnarray}\label{eq1}
     F(z)=Uz+\frac{Ua^2}{z}-\frac{i C}{2\pi}\log z.
     \end{eqnarray}
-    The stream function is just the imaginary part of this (\ref{eq1}), namely
+    The stream function is just the imaginary part of (\ref{eq1}), namely
     \begin{eqnarray}\label{eq2}
     \psi = Uy\left(1-\frac{a^2}{x^2+y^2}\right)-\frac{C}{4\pi}\log\left(x^2+y^2\right).
     \end{eqnarray}
@@ -187,22 +187,7 @@ Hence the circle $x^2+y^2=a^2$ is still a streamline, with $\psi = -(C/2\pi)\log
 
 <h2>Simulation</h2>
 
-<p>
-Consider now the uniform flow past the circular cylinder $c_0$ for $a=1$. We use the linear  transformation $T(z)=-0.15+0.23i +r z$ to map the flow with circulation $C$ and speed $U$ around $|z|=1$ onto the flow around the circle $c_1$ with center $z_1=-0.15+0.23i$ and radius $r=0.23\sqrt{13\cdot 2}$. Then we use the mapping
-\[
-J(z)=z+\frac{1}{z}
-\]
-to map this flow around the Joukowsky airfoil.
-</p>
-
-<p>The following simulation shows the uniform flow past the circular cylinder $c_1$ and its transformation to the <em>Joukowsky airfoil</em>. Drag the sliders to explore:</p>
-<ul>
-    <li>Slider U = speed.</li>
-    <li>Slider C = circulation.</li>
-    <li>Slider T = apply transformation.</li>
-</ul>
-
-<p>Press the <code>Trace</code> button to show <em>streamlines</em>.</p>
+<p>The following simulation shows the uniform flow past the circular cylinder $c$. Drag the sliders to explore. Press the <code>Trace</code> button to show <em>streamlines</em>.</p>
 
 <div class="w3-hide-small">
     <iframe name="UniformFlow" src="../applets/p5js/flowaroundcircle/index.html" width="800px" height="500px" style="border:none;" style="overflow:hidden;"></iframe>
@@ -222,7 +207,7 @@ to map this flow around the Joukowsky airfoil.
     
     <br><br><br><hr>
     
-    <p><strong>Note:</strong> This applet was made with <a href="https://p5js.org/">p5.js</a>.</p>
+    <p style="font-size: 16px"><strong>Note:</strong> This applet was made with <a href="https://p5js.org/">p5.js</a>.</p>
 
 	<!-- link to the next page -->
 	<a href="thanks.html"><p class="nextPage">NEXT: Acknowledgements</p></a>
