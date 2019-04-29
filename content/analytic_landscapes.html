@@ -91,7 +91,7 @@
 				// set prev/next titles
 				$('#prev a').hover(
 					function() {
-						$('#title a').text('Prev: Domain coloring');
+						$('#title a').text('Prev: Riemann Sphere');
 					},
 					function() {
 						$('#title a').text('Complex Analysis');
@@ -99,7 +99,7 @@
 				);
 				$('#next a').hover(
 					function() {
-						$('#title a').text('Next: The Complex Power Function');
+						$('#title a').text('Next: Domain Coloring');
 					},
 					function() {
 						$('#title a').text('Complex Analysis');
@@ -139,7 +139,7 @@
 <body>
 	<div id="wrapper">
         
-        <header><p><span id="prev"><a href="domain_coloring.html">&larr;</a></span><span id="title"><a href="table_of_contents.html">Complex Analysis</a></span><span id="next"><a href="power_function.html">&rarr;</a></span><div class="clear"></div></p></header>
+        <header><p><span id="prev"><a href="riemann_sphere.html">&larr;</a></span><span id="title"><a href="table_of_contents.html">Complex Analysis</a></span><span id="next"><a href="domain_coloring.html">&rarr;</a></span><div class="clear"></div></p></header>
 
              
 <h1>Analytic Landscapes</h1>
@@ -178,7 +178,7 @@
     
 <h2>Dynamic Exploration</h2>
     
-    <p>Complex functions $ f:\mathbb{C}\to\mathbb{C} $ can be visualized by plotting the function $g: \mathbb{R^2} \to \mathbb{R}$ with $$g(x,y) = |f\left(x + i y\right)|.$$ The color of each point $\left(x, y, |f(x + i y)|\right)$ indicates <a href="domain_coloring.html">the phase</a> of the complex number $f(x + i y)$.</p>
+    <p>Complex functions $ f:\mathbb{C}\to\mathbb{C} $ can be visualized by plotting the function $g: \mathbb{R^2} \to \mathbb{R}$ with $$g(x,y) = |f\left(x + i y\right)|.$$ The color of each point $\left(x, y, g(x,y)\right)$ indicates <a href="domain_coloring.html">the phase (or argument)</a> of the complex number $f(x + i y)$.</p>
     
     <p>In the applet below you can explore colored analytic landscapes. Use the blue slider on the right side for zooming out/in. The black slider defines a real scalar <strong>a</strong> $ \in [ -0.14, 1.14]$.</p>
 
@@ -658,16 +658,18 @@
     <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
 </div>
 
+<br><hr>
 
+<p>In practice, it is often difficult to generate analytic landscapes which allow us to read off properties of the complex function easily and precisely. An alternative approach is not only simpler but even more general: Instead of drawing a graph in $\mathbb R^3$, we can depict a function directly on its domain by color coding its values completely. This method is called <em>domain coloring</em>.</p>
 
 <br><hr>
 
-<p><strong>Note:</strong> The applet was written by <a href="https://geo.ma.tum.de/en/people/aaron-montag.html">Aaron Montag</a> using <a href="https://cindyjs.org/">Cindy.js</a>. The source code can be found at <a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/dclandscape">GitHub.</a></p>
+<p style="font-size: 16px"><strong>Note:</strong> The applet was written by <a href="https://geo.ma.tum.de/en/people/aaron-montag.html">Aaron Montag</a> using <a href="https://cindyjs.org/">Cindy.js</a>. The source code can be found at <a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/dclandscape">GitHub.</a></p>
 
 </div> <!-- end complex analytic landscapes -->
 
 	<!-- link to the next page -->
-	<a href="power_function.html"><p class="nextPage">NEXT: The Complex Power Function</p></a>
+	<a href="domain_coloring.html"><p class="nextPage">NEXT: Domain Coloring</p></a>
 	<footer>
 		<p>[ <a href="../">intro</a>, <a href="https://github.com/jcponce/cabook">source</a>, <a href="https://github.com/jcponce/cabook/issues">issues</a> ]</p>
 
