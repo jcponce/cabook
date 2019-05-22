@@ -180,9 +180,9 @@
 <hr>
 
 <p>An infinite sequence  $\left\{z_1,z_2,z_3 \ldots\right\}$ of complex numbers has a limit $z$ if, for each positive  number $\epsilon$, there exists a positive integer $n_0$ such that
-\begin{eqnarray}
+\begin{eqnarray*}
 \left|z_n-z\right|&lt; \epsilon \quad \text{whenever}\quad n &lt; n_0.
-\end{eqnarray}
+\end{eqnarray*}
 </p>
 
 <p>An infinite series
@@ -190,9 +190,9 @@
 \sum_{n=1}^{\infty}z_n=z_1+z_2+z_3+\cdots
 \end{eqnarray}
 of complex numbers converges to the sum $S$ if the sequence
-\begin{eqnarray}
+\begin{eqnarray*}
 \sum_{n=1}^{N}z_n=z_1+z_2+z_3+\cdots +z_N\quad(N=1,2,3,\ldots)
-\end{eqnarray}
+\end{eqnarray*}
 of partial sums converges to $S$; we then write
 $$\sum_{n=1}^{\infty}z_n=S.$$
 Note that since a sequence can have at most one limit, a series can have at most
@@ -226,20 +226,16 @@ $$|z_n| \leq M \;  \text{ for each positive integer }  n.$$
 </p>
 
 <p>Recall that series (\ref{series01}) is said to be <em>absolutely convergent</em> if the series
-\begin{eqnarray}\label{series02}
+\begin{eqnarray*}\label{series02}
 \sum_{n=1}^{\infty}|z_n|=\sum_{n=1}^{\infty}\sqrt{x^2_n+y^2_n}\quad \quad(z_n=x_n+y_n)
-\end{eqnarray}
+\end{eqnarray*}
 of real numbers $\sqrt{x^2_n+y^2_n}$ converges.
 </p>
 
-
-
-
-
 <p>To establish the fact that the sum of a series is a given number $S$, it is often convenient to define the <em>remainder</em> $\rho_N$ after $N$ terms, using the partial sums:
-\begin{eqnarray}\label{series03}
+\begin{eqnarray*}\label{series03}
 \rho_N=S-S_N
-\end{eqnarray}
+\end{eqnarray*}
 Thus $S=S_N+\rho_N$. Now,  since $|S_N-S|=|\rho_N-0|$, then  <em>a series converges to a number $S$ if and only if the sequence of remainders tends to zero</em>. <!-- We will make  use of this observation later in our treatment of <em>power series</em>, which are of the form
 $$\sum_{n=1}^{\infty}a_n(z-z_0)^n$$
 where $z_0$ and the coefficients $a_n$ are complex constants and $z$ is any point in a stated region containing $z_0$. In such series, involving a variable $z$, we denote <em>sums</em>, <em>partial sums</em>, and <em>remainders</em> by $S(z)$, $S_N(z)$ and $\rho_N(z)$, respectively. -->
@@ -247,9 +243,9 @@ where $z_0$ and the coefficients $a_n$ are complex constants and $z$ is any poin
 
 <div class="w3-padding">
 <p><strong>Example:</strong> With the aid of remainders, it is easy to verify that
-\begin{eqnarray}
+\begin{eqnarray*}
 \sum_{n=0}^{\infty}z^n=\frac{1}{z-1}\quad\text{whenever}\quad |z|&lt; 1
-\end{eqnarray}
+\end{eqnarray*}
 We need only recall the identity
 $$1+z+z^2+\cdots+z^n=\frac{1-z^{n+1}}{1-z}$$
 to write the partial sums
@@ -274,9 +270,9 @@ In this case, it is clear that the remainders $\rho_N$ tend to zero when $|z|&lt
 <h2>Geometric series exploration</h2>
 
 <p>The series introduced in the previous example
-\begin{eqnarray}
+\begin{eqnarray*}
 \sum_{n=0}^{\infty}z^n=\frac{1}{z-1}\quad\text{whenever}\quad |z|&lt; 1
-\end{eqnarray}
+\end{eqnarray*}
 is known as the <em>geometric series</em>.
 </p>
 
