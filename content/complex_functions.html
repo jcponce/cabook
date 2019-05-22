@@ -136,6 +136,22 @@
         </script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
+
+    <!--GeoGebra embeding-->
+<script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+
+<script>
+    var applet1 = new GGBApplet({material_id: "vgbbnfp9",
+                                borderColor:"888888",
+                                playButton: "true",
+                                showFullscreenButton: "true",
+                                enableShiftDragZoom: "true",
+                                showResetIcon: "true"}, true);
+    window.addEventListener("load", function() {
+          applet1.inject('applet_container1');
+      });
+</script>
+<!--GeoGebra embeding ends-->
     
    
     
@@ -153,9 +169,9 @@
 <script src="https://cdn.geogebra.org/apps/deployggb.js"></script>
 
 <script>
-    var applet1 = new GGBApplet({material_id: "gut3ffpm",
+    var applet1 = new GGBApplet({material_id: "q8cagcc5",
                                 borderColor:"888888",
-                                playButton: "true",
+                                //playButton: "true",
                                 showFullscreenButton: "true",
                                 enableShiftDragZoom: "true",
                                 showResetIcon: "true"}, true);
@@ -224,9 +240,33 @@ f(z)=u\left(r, \theta\right)+iv\left(r, \theta\right).
 
 <hr>
 
+<h2>Explore the real and imaginary components</h2>
+
+<p>Use the following applet to explore the real and imaginary components of some complex functions</p>
+
+<div class="w3-center w3-hide-small">
+    <!--<iframe scrolling="no" title="Real and Imaginary components" src="https://www.geogebra.org/material/iframe/id/vgbbnfp9/width/772/height/541/border/888888/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="772px" height="541px" style="border:0px;"> </iframe>-->
+    <div style="width:772px;height:541px;display:block" id="applet_container1"></div>
+    
+    <br>
+
+    <div class="w3-container w3-center">
+        <!--<button onclick="var ifr=document.getElementsByName('JoukAirfoil')[0]; ifr.src=ifr.src;" class="w3-btn w3-ripple w3-grey w3-hover-text-white">Reset</button>
+         
+         <a href="../applets/p5js/joukowsky/index.html" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank">Open other tab</a>-->
+        
+        <a href="https://www.geogebra.org/material/show/id/q8cagcc5" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank"> Download <i class="fa fa-download w3-hover-text-blue" aria-hidden="true"></i> </a>
+    </div>
+    
+</div>
+
+
+<div class="w3-hide-large w3-hide-medium">
+    <p class="callout"><strong>Oops!</strong> Sorry, the applet is not supported for small screens.</p>
+</div>
 
 <!--
-<h2>Exploration</h2>
+
 
 <script id="csmousedown" type="text/x-cindyscript">
       sx = mouse().x;
