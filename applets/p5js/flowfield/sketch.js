@@ -7,8 +7,8 @@ let noiseStrength = 1;
 //let r = 1;
 
 function setup() {
-  createCanvas(800, 400);
-	//createCanvas(windowWidth,windowHeight);
+  //createCanvas(800, 400);
+  createCanvas(windowWidth,windowHeight);
   noStroke();
   for (let i=0; i<num; i++) {
     let loc_a = createVector(random(width*1.2), random(height), 2);
