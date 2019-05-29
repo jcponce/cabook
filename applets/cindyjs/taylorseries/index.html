@@ -199,11 +199,13 @@ var sel=function(e, b){
 <div class="w3-hide-small">
 <p>You can also select one function of the following list:</p>
         <select id="sel" onchange="sel(event, this)" style="width:10em;">
+            <option value="(z-1)/(z^2+z+1)">(z-1)/(z^2+z+1)</option>
             <option value="1/z">1/z</option>
             <option value="z^(1/2)">Square root</option>
             <option value="log(z)">Logarithm</option>
             <option value="sin(z)">Sine</option>
             <option value="sin(z)/cos(z)">Tangent</option>
+            <!--<option value="(exp(z)-exp(-z))/2">Sine Hyperbolic</option>-->
             <option value="i/2*log((i+z)/(i-z))">Arctangent</option>
             <option value="exp(z)">Exponential function</option>
         </select>
