@@ -1,5 +1,7 @@
-# cabook
-An interactive and visual introduction to Complex Analysis
+# Complex Analysis
+A visual and interactive introduction to Complex Analysis
+
+ISBN 978-0-6485736-0-9
 
 Hi! Here you can find the source code for the online book [Complex Analysis](https://www.dynamicmath.xyz/cabook/). 
 
@@ -8,6 +10,8 @@ Hi! Here you can find the source code for the online book [Complex Analysis](htt
 ## License
 
 This book is released under the license: [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+
 
 ## Issues
 
