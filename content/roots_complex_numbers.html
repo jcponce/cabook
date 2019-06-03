@@ -221,28 +221,33 @@ where $k=0, 1, 2, \ldots , n-1$.</p>
 </div>
 <br>
 
+<div class="w3-padding w3-hide-small">
 <details>
     <summary class="w3-hover-text-blue"><strong>Code</strong></summary>
     <br>
-    <p>Enter the following lines in <a href="https://www.geogebra.org/classic">GeoGebra</a> to explore it yourself and make your own version. Lines with the symbol # are comments.</p>
+    <p>Enter the following script in <a href="https://www.geogebra.org/classic">GeoGebra</a> to explore it yourself and make your own version. The symbol # indicates comments.</p>
 
 <pre><code>#Complex number
+    
 Z = 1 + ί
 
 #Modulus of Z
+
 r = abs(Z)
 
 #Angle of Z
+
 theta = atan2(y(Z), x(Z))
 
 #Number of roots
+
 n = Slider(2, 10, 1, 1, 150, false, true, false, false)
 
 #Plot n-roots
 nRoots = Sequence(r^(1 / n) * exp(  ί * ( theta / n + 2 * pi * k / n ) ), k, 0, n-1)
 </code></pre>
 </details>
-
+</div>
 
 <br>
 
