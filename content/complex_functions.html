@@ -256,15 +256,31 @@ f(z)=u\left(r, \theta\right)+iv\left(r, \theta\right).
         <!--<button onclick="var ifr=document.getElementsByName('JoukAirfoil')[0]; ifr.src=ifr.src;" class="w3-btn w3-ripple w3-grey w3-hover-text-white">Reset</button>
          
          <a href="../applets/p5js/joukowsky/index.html" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank">Open other tab</a>-->
-        
-        <a href="https://www.geogebra.org/material/show/id/q8cagcc5" class="w3-btn w3-ripple w3-light-grey" target="_blank"> Download <i class="fa fa-download" aria-hidden="true"></i> </a>
     </div>
     
 </div>
 
-
 <div class="w3-hide-large w3-hide-medium">
     <p class="callout"><strong>Oops!</strong> Sorry, the applet is not supported for small screens.</p>
+</div>
+
+<div class="w3-padding w3-hide-small">
+<details>
+    <summary class="w3-hover-text-blue"><strong>Code</strong></summary>
+    <br>
+    <p>Enter the following scripts in <a href="https://www.geogebra.org/classic">GeoGebra</a> to explore it yourself. Open the 3D view. The symbol # indicates comments.</p>
+
+<pre><code>#Define complex function
+    
+f(z) := z + 1/z
+
+#Define components
+
+Re = Surface(u, v, real( f(u + ί v) ), u, -5, 5, v, -5, 5)
+
+Im = Surface(u, v, imaginary( f(u + ί v) ), u, -5, 5, v, -5, 5)
+</code></pre>
+</details>
 </div>
 
 <!--
