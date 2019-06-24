@@ -186,13 +186,93 @@
 <h1>Series</h1>
 <hr>
 
+<h2>Convergence of Sequences</h2>
+
 <p>An infinite sequence  $\left\{z_1,z_2,z_3 \ldots\right\}$ of complex numbers has a limit $z$ if, for each positive  number $\epsilon$, there exists a positive integer $n_0$ such that
-\begin{eqnarray*}
-\left|z_n-z\right|&lt; \epsilon \quad \text{whenever}\quad n &lt; n_0.
-\end{eqnarray*}
+\begin{eqnarray}\label{seq}
+\left|z_n-z\right|&lt; \epsilon \quad \text{whenever}\quad n &gt; n_0.
+\end{eqnarray}
 </p>
 
-<p></p>
+<p>Geometrically, this means that for sufficiently large values of $n$, the points $z_n$ lie in any given $\epsilon$ neighborhood of $z$ (Figure 1). Since we can choose $\epsilon$ as small as we please, it follows that the points $z_n$ become arbitrarily close to $z$ as their subscripts increase. Note that the value of $n_0$ that is needed will, in general, depend on the value of $\epsilon$.</p>
+
+<figure class="w3-center">
+    <img class="w3-image w3-mobile" src="../images/sequence.gif" alt="Colored analytic landscape" title="Geometric interpretation" style="width:503px;">
+        <figcaption>
+            <b>Figure 1:</b> Geometric interpretation.
+        </figcaption>
+</figure>
+
+<p>The sequence $\left\{z_n\right\}_{n=1}^{\infty}$ can have at most one limit. That is, a limit $z$ is unique if it exists. When that limit  exists, the sequence is said to <em>converge</em> to $z$; and we write
+\begin{eqnarray*}
+\lim_{n\rightarrow \infty} z_n=z
+\end{eqnarray*}
+If the sequence has no limit, it <em>diverges</em>.</p>
+
+<div class="w3-responsive">
+    <p><strong>Theorem:</strong> <em>Suppose that $z_n=x_n+iy_n$ ($n=1,2,3,\ldots $) and $z=x+iy$. Then
+        \begin{eqnarray}\label{teoseq01}
+        \lim_{n\rightarrow \infty} z_n=z
+        \end{eqnarray}
+        if and only if
+        \begin{eqnarray}\label{teoseq02}
+        \lim_{n\rightarrow \infty}  x_n=x\quad \text{and}\quad \lim_{n\rightarrow \infty}  y_n=y.
+        \end{eqnarray}</em></p>
+</div>
+
+<div class="w3-padding w3-responsive">
+<details>
+<summary class:"w3-hover-text-white" style="background-color:#f2f2f2" ><b style="font-size:20px" >Proof</b></summary>
+
+<br>
+
+<p>To prove this theorem, we first assume that conditions (\ref{teoseq02}) hold. That is, there exist, for each $\epsilon>0$, positive integers $n_1$ and $n_2$ such that
+\[
+|x_n-x|&lt;\frac{\epsilon}{2}\quad \text{whenever} \quad n&gt;n_1
+\]
+and
+\[
+|y_n-y|&lt;\frac{\epsilon}{2}\quad \text{whenever} \quad n&gt;n_2.
+\]
+Hence if $n_0$ is the larger of the two integers $n_1$ and $n_2$,
+\[
+|x_n-x|&lt;\frac{\epsilon}{2}\quad \text{and} \quad |y_n-y|&lt;\frac{\epsilon}{2} \quad \text{whenever} \quad n &gt; n_0.
+\]
+Since
+\[
+|(x_n+iy_n)-(x+iy)|=|(x_n-x)+(y_n-y)|\leq |x_n-x|+|y_n-y|,
+\]
+then
+\[
+|z_n-z|&lt; \frac{\epsilon}{2}+\frac{\epsilon}{2} \quad \text{whenever} \quad n &gt; n_0.
+\]
+Therefore condition (\ref{teoseq01}) holds.</p>
+
+<p>Conversely, if we start with condition (\ref{teoseq01}), we know that for each positive
+number $\epsilon$, there exists a positive integer $n_0$ such that
+\[
+|(x_n+iy_n)-(x+iy)|&lt;\epsilon \quad \text{whenever} \quad n&gt;n_0.
+\]
+However
+\[
+|x_n-x|\leq |(x_n-x)+(y_n-y)|=|(x_n+iy_n)-(x+iy)|
+\]
+and
+\[
+|y_n-y|\leq |(x_n-x)+(y_n-y)|=|(x_n+iy_n)-(x+iy)|.
+\]
+Consequently
+\[
+|x_n-x|&lt;\epsilon \quad \text{and} \quad |y_n-y|&lt;\epsilon \quad \text{whenever} \quad n &gt; n_0.
+\]
+Therefore, conditions (\ref{teoseq02}) are satisfied. $\blacksquare$
+</p>
+</details>
+</div>
+
+<hr>
+
+<h2>Convergence of Series</h2>
 
 <p>An infinite series
 \begin{eqnarray}\label{series01}
@@ -282,12 +362,14 @@ $$|z_n| \leq M \;  \text{ for each positive integer }  n.$$
 <p><strong>Property 2:</strong> The absolute convergence of a series of complex numbers implies the convergence of that series.
 </p>
 
+<div class="w3-responsive">
 <p>Recall that series (\ref{series01}) is said to be <em>absolutely convergent</em> if the series
 \begin{eqnarray*}\label{series02}
 \sum_{n=1}^{\infty}|z_n|=\sum_{n=1}^{\infty}\sqrt{x^2_n+y^2_n}\quad \quad(z_n=x_n+y_n)
 \end{eqnarray*}
 of real numbers $\sqrt{x^2_n+y^2_n}$ converges.
 </p>
+</div>
 
 <p>To establish the fact that the sum of a series is a given number $S$, it is often convenient to define the <em>remainder</em> $\rho_N$ after $N$ terms, using the partial sums:
 \begin{eqnarray*}\label{series03}
@@ -298,7 +380,7 @@ $$\sum_{n=1}^{\infty}a_n(z-z_0)^n$$
 where $z_0$ and the coefficients $a_n$ are complex constants and $z$ is any point in a stated region containing $z_0$. In such series, involving a variable $z$, we denote <em>sums</em>, <em>partial sums</em>, and <em>remainders</em> by $S(z)$, $S_N(z)$ and $\rho_N(z)$, respectively. -->
 </p>
 
-<div class="w3-padding">
+<div class="w3-padding w3-responsive">
 <p><strong>Example:</strong> With the aid of remainders, it is easy to verify that
 \begin{eqnarray*}
 \sum_{n=0}^{\infty}z^n=\frac{1}{z-1}\quad\text{whenever}\quad |z|&lt; 1
