@@ -192,6 +192,8 @@
 \end{eqnarray*}
 </p>
 
+<p></p>
+
 <p>An infinite series
 \begin{eqnarray}\label{series01}
 \sum_{n=1}^{\infty}z_n=z_1+z_2+z_3+\cdots
@@ -206,15 +208,63 @@ Note that since a sequence can have at most one limit, a series can have at most
 one sum. When a series does not converge, we say that it diverges.
 </p>
 
+<div class="w3-responsive">
 <p><strong>Theorem:</strong> <em>Suppose that $z_n=x_n+iy_n$ ($n=1,2,3,\ldots $) and $S=X+iY$. Then
-$$\sum_{n=1}^{\infty} z_n=S$$
+\begin{eqnarray}\label{teo01}
+\sum_{n=1}^{\infty} z_n=S
+\end{eqnarray}
 if and only if
-$$\sum_{n=1}^{\infty} x_n=X\quad \text{and}\quad \sum_{n=1}^{\infty} y_n=Y.$$</em>
+\begin{eqnarray}\label{teo02}
+\sum_{n=1}^{\infty} x_n=X\quad \text{and}\quad \sum_{n=1}^{\infty} y_n=Y.
+\end{eqnarray}</em></p>
+</div>
+
+
+<div class="w3-padding w3-responsive">
 <details>
 <summary class:"w3-hover-text-white" style="background-color:#f2f2f2" ><b style="font-size:20px" >Proof</b></summary>
-<p>Coming soon!</p>
-</details>
+
+<br>
+
+<p>Coming soon! (=_=)<!--To prove this theorem, we first write the partial sums  as
+\[
+S_N = X_N+iY_N,
+\]
+where
+\[
+X_N = \sum_{n=1}^{N}x_n \quad \text{and}\quad Y_N = \sum_{n=1}^{N}y_n.
+\]
+Now statement (\ref{teo01}) is true if and only if
+\[
+\lim_{N\rightarrow \infty} S_N = S;
+\]
+and,-->
+
+<!--According to (\ref{teo02}), there exists, for each $\epsilon>0$, positive integers $n_1$ and $n_2$ such that
+\[
+|x_n-x|&lt;\frac{\epsilon}{2}\quad \text{whenever} \quad n&gt;n_1
+\]
+and
+\[
+|y_n-y|&lt;\frac{\epsilon}{2}\quad \text{whenever} \quad n&gt;n_2
+\]
+Hence if $n_0$ is the larger of the two integers $n_1$ and $n_2$,
+\[
+|x_n-x|&lt;\frac{\epsilon}{2}\quad \text{and} \quad |y_n-y|&lt;\frac{\epsilon}{2} \quad \text{whenever} \quad n &gt; n_0.
+\]
+Since
+\[
+|(x_n+iy_n)-(x+iy)|=|(x_n-x)+(y_n-y)|\leq |x_n-x|+|y_n-y|,
+\]
+then
+\[
+|z_n-z|&lt; \frac{\epsilon}{2}+\frac{\epsilon}{2} \quad \text{whenever} \quad n &gt; n_0.
+\]
+Therefore condition (\ref{teo01}) holds.-->
 </p>
+</details>
+</div>
+
 
 <br>
 
@@ -283,7 +333,7 @@ In this case, it is clear that the remainders $\rho_N$ tend to zero when $|z|&lt
 is known as the <em>geometric series</em>.
 </p>
 
-<p>Use the following applet to explore this series. Drag the point $z$ around. Observe what happens when it is inside, outside or on the border of the unit circle.</p>
+<p>Use the following applet to explore this series. Drag the point $z$ around. Observe what happens when it is inside, outside or on the border of the unit circle. Drag the slider to show the partial sum.</p>
 
 </br>
 
