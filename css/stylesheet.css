@@ -287,6 +287,18 @@ canvas {
 }
 
 
+/* THEOREM BOX */
+.theorem {
+    background-color:     rgb(217,239,255);
+    border-radius:        25px;
+    border:               1px solid rgb(200,200,200);
+    padding:              1em;
+    margin-bottom:        0.2em;
+    text-align:           left;
+    visibility:           visible !important; /* ios hack? */
+}
+
+
 /* UTILITY */
 .clear {
 	clear: both;
