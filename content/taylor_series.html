@@ -400,15 +400,18 @@ var sel=function(e, b){
         
      <div>
         <p>You can also select one function of the following list:<br>
-        <select id="sel" onchange="sel(event, this)" style="width:10em;">
+        <select id="sel" onchange="sel(event, this)" style="width:12em;">
             <option value="(z-1)/(z^2+z+1)">(z-1)/(z^2+z+1)</option>
             <option value="1/z">1/z</option>
             <option value="z^(1/2)">Square root</option>
             <option value="log(z)">Logarithm</option>
             <option value="sin(z)">Sine</option>
+            <option value="0-i*log(i*z+(1-z^2)^(1/2))">Arcsine</option>
             <option value="sin(z)/cos(z)">Tangent</option>
             <option value="i/2*log((i+z)/(i-z))">Arctangent</option>
-            <option value="exp(z)">Exponential function</option>
+            <option value="exp(z)">Exponential</option>
+            <option value="(exp(z)-exp(0-z))/2">Hyperbolic sine</option>
+             <option value="((exp(z)-exp(0-z))/2)/((exp(z)+exp(0-z))/2)">Hyperbolic tangent</option>
         </select></p>
     </div>
      
