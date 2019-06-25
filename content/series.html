@@ -210,7 +210,7 @@
 If the sequence has no limit, it <em>diverges</em>.</p>
 
 <div class="w3-responsive">
-    <p><strong>Theorem:</strong> <em>Suppose that $z_n=x_n+iy_n$ ($n=1,2,3,\ldots $) and $z=x+iy$. Then
+    <p><strong>Theorem 1:</strong> <em>Suppose that $z_n=x_n+iy_n$ ($n=1,2,3,\ldots $) and $z=x+iy$. Then
         \begin{eqnarray}\label{teoseq01}
         \lim_{n\rightarrow \infty} z_n=z
         \end{eqnarray}
@@ -279,9 +279,9 @@ Therefore, conditions (\ref{teoseq02}) are satisfied. $\blacksquare$
 \sum_{n=1}^{\infty}z_n=z_1+z_2+z_3+\cdots
 \end{eqnarray}
 of complex numbers converges to the sum $S$ if the sequence
-\begin{eqnarray*}
+\begin{eqnarray}\label{partialsum}
 \sum_{n=1}^{N}z_n=z_1+z_2+z_3+\cdots +z_N\quad(N=1,2,3,\ldots)
-\end{eqnarray*}
+\end{eqnarray}
 of partial sums converges to $S$; we then write
 $$\sum_{n=1}^{\infty}z_n=S.$$
 Note that since a sequence can have at most one limit, a series can have at most
@@ -289,7 +289,7 @@ one sum. When a series does not converge, we say that it diverges.
 </p>
 
 <div class="w3-responsive">
-<p><strong>Theorem:</strong> <em>Suppose that $z_n=x_n+iy_n$ ($n=1,2,3,\ldots $) and $S=X+iY$. Then
+<p><strong>Theorem 2:</strong> <em>Suppose that $z_n=x_n+iy_n$ ($n=1,2,3,\ldots $) and $S=X+iY$. Then
 \begin{eqnarray}\label{teo01}
 \sum_{n=1}^{\infty} z_n=S
 \end{eqnarray}
@@ -306,42 +306,23 @@ if and only if
 
 <br>
 
-<p>Coming soon! (=_=)<!--To prove this theorem, we first write the partial sums  as
-\[
+<p>To prove this theorem, we first write the partial sums (\ref{partialsum}) as
+\begin{eqnarray}\label{teo03}
 S_N = X_N+iY_N,
-\]
+\end{eqnarray}
 where
 \[
 X_N = \sum_{n=1}^{N}x_n \quad \text{and}\quad Y_N = \sum_{n=1}^{N}y_n.
 \]
 Now statement (\ref{teo01}) is true if and only if
-\[
+\begin{eqnarray}\label{teo04}
 \lim_{N\rightarrow \infty} S_N = S;
-\]
-and,-->
-
-<!--According to (\ref{teo02}), there exists, for each $\epsilon>0$, positive integers $n_1$ and $n_2$ such that
-\[
-|x_n-x|&lt;\frac{\epsilon}{2}\quad \text{whenever} \quad n&gt;n_1
-\]
-and
-\[
-|y_n-y|&lt;\frac{\epsilon}{2}\quad \text{whenever} \quad n&gt;n_2
-\]
-Hence if $n_0$ is the larger of the two integers $n_1$ and $n_2$,
-\[
-|x_n-x|&lt;\frac{\epsilon}{2}\quad \text{and} \quad |y_n-y|&lt;\frac{\epsilon}{2} \quad \text{whenever} \quad n &gt; n_0.
-\]
-Since
-\[
-|(x_n+iy_n)-(x+iy)|=|(x_n-x)+(y_n-y)|\leq |x_n-x|+|y_n-y|,
-\]
-then
-\[
-|z_n-z|&lt; \frac{\epsilon}{2}+\frac{\epsilon}{2} \quad \text{whenever} \quad n &gt; n_0.
-\]
-Therefore condition (\ref{teo01}) holds.-->
-</p>
+\end{eqnarray}
+and, in view of relation (\ref{teo03}) and Theorem 1 on sequences, limit (\ref{teo04}) holds if and only if
+\begin{eqnarray}\label{teo05}
+\lim_{N\rightarrow \infty}  X_N=X\quad \text{and}\quad \lim_{N\rightarrow \infty}  Y_N=Y.
+\end{eqnarray}
+Limits (\ref{teo05}) therefore imply statement (\ref{teo01}), and conversely. Since and $X_N=X$ and $Y_N=Y$ are partial sums of the series (\ref{teo02}), the theorem is proved. $\blacksquare$</p>
 </details>
 </div>
 
