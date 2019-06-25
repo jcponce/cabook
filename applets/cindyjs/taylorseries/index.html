@@ -176,7 +176,7 @@
 				use: ["CindyGL", "katex"]
 				});
                 
-        var typ=function(e, b){
+var typ=function(e, b){
   var chCode=e.which ? e.which:e.keyCode;
   if(chCode==13){
     console.log("*************");
@@ -185,9 +185,21 @@
   }
 }
         
+//var sel=function(e, b){
+//document.getElementById("inp").value = b.value;
+//  cdy.evokeCS('f(z) := (' + b.value + '); forcerecompile();');
+//}
+
 var sel=function(e, b){
-  document.getElementById("inp").value = b.value;
-  cdy.evokeCS('f(z) := (' + b.value + '); forcerecompile();');
+    document.getElementById("inp").value = b.value;
+    cdy.evokeCS('f(z) := (' + b.value + ');');
+    var script = b.options[b.selectedIndex].getAttribute("data-cdy");
+    console.log(b);
+    console.log(script);
+    if(script) {
+        cdy.evokeCS(script);
+    }
+    script = false;
 }
 		</script>
 
