@@ -150,6 +150,14 @@ function mousePressed() {
     }
 }
 
+function touchStarted(){
+    if(tshow==false) {
+        tshow = true;
+    }else{
+        tshow = false;
+    }
+}
+
 //function doubleClicked() {
 //    transf =0.0;
 //}
