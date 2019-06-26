@@ -1,10 +1,13 @@
-// Written by Juan Carlos Ponce Campuzano
-// 31-May-2019
-// Inspired from https://www.maths.unsw.edu.au/about/exponential-sums
+/* p5.js (https://p5js.org/)
+ * Under Creative Commons License
+ * https://creativecommons.org/licenses/by-sa/4.0/
+ * Written by Juan Carlos Ponce Campuzano, 31-May-2019
+ * Inspired from https://www.maths.unsw.edu.au/about/exponential-sums
+ */
 
 let n = 1;// = 2000;
 let s;
-let maxNum = 1400;
+let maxNum = 1500;
 let r;
 let g;
 let b;
@@ -27,12 +30,12 @@ function draw() {
   let xc = constrain(mouseX, 0, width);
   n = map(xc, 0, width, 0, maxNum);
   
-  w = 90;
+  w = 80;
   h = (w * height) / width;
   
   // Start at negative half the width and height
   let xmin = -w / 2+15;
-  let ymin = -h / 2-7;
+  let ymin = -h / 2-5;
   
   // x goes from xmin to xmax
   let xmax = xmin + w;
@@ -64,6 +67,12 @@ function draw() {
 }
 
 function mousePressed(){
+    r = random();
+    g = random();
+    b = random();
+}
+
+function touchStarted(){
     r = random();
     g = random();
     b = random();
