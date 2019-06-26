@@ -11,7 +11,7 @@ let nums;
 let particleDensity = 4000;
 let noiseScale = 800;
 let maxLife = 10;
-let    simulationSpeed = 0.2;
+let simulationSpeed = 0.2;
 let fadeFrame = 0;
 let backgroundColor;
 let visualMode = 0;
