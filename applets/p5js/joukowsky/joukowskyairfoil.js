@@ -173,6 +173,10 @@ function mousePressed() {
     starting = true;
 }
 
+function touchStarted(){
+    starting = true;
+}
+
 let P = (t, x, y) => 4.9*(   (2 * a*a * sliderU.value() * y*y)/((x*x+ y*y)*(x*x+ y*y)) + sliderU.value()*(1 - (a*a)/(x*x + y*y)) - (sliderC.value()*y)/(2*PI*(x*x + y*y)) );//Change this function
 let Q = (t, x, y) =>  4.9*( -(2*a*a * sliderU.value() * x * y)/((x*x+ y*y)*(x*x+ y*y)) + (sliderC.value() * x)/(2*PI*(x*x + y*y)) );//Change this function
 
