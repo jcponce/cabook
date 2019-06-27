@@ -239,6 +239,20 @@ colorplot( colorize(f(complex(#))) );
 </ul>
 </p>
 
+<p>You can also plot the level curves of the real and imaginary components of the complex function. For doing that use the following code:</p>
+
+<pre><code class="lang-cindyscript">f(z) := z^2; //a complex function
+colorize(z) := (
+n = 4; //highlight 12 different phases
+zc = log(z)/(2*pi);
+zl = 2*i*z/(2*pi);
+zfract = n*zl - floor(n*zl); //n*z in C mod Z[i]
+factor = (.6+.5*re(sqrt(im(zfract)*re(zfract))));
+hue(im(zc))*factor; //darken hue wrt factor
+);
+colorplot( colorize(f(complex(#))) );
+</code></pre>
+
 <br>
 
 <!--
