@@ -7,19 +7,28 @@
     <title>Complex Functions with CindyJS - Live Coding</title>
     <link rel="icon" type="image/png" href="../../../images/infinity32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../../../images/infinity16.png" sizes="16x16">
-    <!--<link rel="stylesheet" property="stylesheet" type="text/css" href="../../../css/w3.css">-->
+    <link rel="stylesheet" property="stylesheet" type="text/css" href="../../../css/w3.css">
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="CindyJS.css" />
   </head>
   <body class="with-footer">
 
-      <div id="between-bars">
+<div id="between-bars">
 
 <!-- Main part -->
 
+<div class="w3-main w3-large">
+<div class="w3-hide-large w3-padding w3-display-middle w3-red w3-round w3-large">
+    <p> Pssst! Rotate your device to landscape. </p>
+    <p>Or resize your window so it's more wide than tall.</p>
+    <p>Not supported for phones.</p>
+</div>
+
+<div class="w3-hide-small w3-hide-medium">
 <main>
 
-<h1>Domain Coloring for Visualizing Complex Functions with CindyJS - Live Coding</h1>
+<h1 class="w3-left-align">Domain Coloring for Visualizing Complex Functions with CindyJS</h1>
+<h2 class="w3-left-align"> - Live Coding -</h2>
 
 <script src="https://codemirror.net/lib/codemirror.js"></script>
 <script src="https://codemirror.net/mode/clike/clike.js"></script>
@@ -48,7 +57,7 @@ resetclock();
 <script id="csdraw" type="text/x-cindyscript">
 drawcmd();
 </script>
-<div id="appletcontainer">
+<div id="appletcontainer" style="font-size: 14px">
   <div id="applet">
     <div id="code"></div>
     <div id="CSCanvas"></div>
@@ -106,21 +115,22 @@ window.onload = function() {
 }
 </script>
 
+<hr>
 
-<p>This tutorial does not require any prerequisites. However, some background in programming is always helpful.</p>
+<p>Hi! In this tutorial you will learn some basic elements for plotting complex functions using the method of domain coloring with CindyJS and the plugin CindyGL which is used for real-time colorplots. This tutorial does not require any prerequisites. However, some background in programming is always helpful.</p>
 
 <p>Live coding means that you can type some CindyScript in the code-window on the right. If the code is valid, the applet will instantaneously process the input. You can also click on the big yellow code snippets within this tutorial to load the code to the live coding applet.</p>
 
-<p>If you are already familiar with the <a href="https://cindyjs.org/ref/Function_Plotting.html#colorplot$1"><code>colorplot</code></a>-command, you can directly proceed to the section <a href="#complex-phase-portraits">&quot;Simple phase portraits&quot;</a> to start plotting complex functions.</p>
+<p>Now, before we start to plot complex functions we need to learn a little about the <a href="https://cindyjs.org/ref/Function_Plotting.html#colorplot$1"><code>colorplot</code></a>-command. If you are already familiar with this command, you can directly proceed to the section <a href="#complex-phase-portraits">&quot;Simple phase portraits&quot;</a> to start plotting complex functions.</p>
 
 <br>
 
 <hr>
 
+<br>
 
-
-<h2 id="the-colorplot-command">The colorplot-command</h2>
-<p>Before plotting complex functions we need to learn about the <code>colorplot</code>-command which can be used to assign a color to each pixel (in the square on the right) with a given function.</p>
+<h2 class="w3-left-align" id="the-colorplot-command">The colorplot-command</h2>
+<p>In CindyJS the <code>colorplot</code>-command can be used to assign a color to each pixel (in the code-window on the right) with a given function.</p>
 <p>Let us first start with an simple example:</p>
 <pre><code class="lang-cindyscript">colorplot(hue(seconds()/4));
 </code></pre>
@@ -152,15 +162,15 @@ An example that accesses the variables is the following:</p>
 
 <br>
 
-<h2 id="complex-phase-portraits">Simple phase portraits</h2>
+<h2 class="w3-left-align" id="complex-phase-portraits">Simple phase portraits</h2>
 
 <p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using domain coloring to create phase portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in the following picture which shows the phase portrait for the function $f(z)=z$:</p>
 <p><img src="../domcoloring/phaseportrait.png" alt="phase portrait for z" title="phase portrait for the function f(z)=z" width="40%"></p>
-    <p><a href="http://www.springer.com/de/book/9783034801799">In his book <em>Visual Complex Functions</em></a> Elias Wegert employs phase portraits as an access to the theory of complex functions. For instance, roots and poles of a complex function $f$ can be easily spotted at the points where all colors meet. The following image shows the phase portrait of the function $f(z)=(z-1)/(z^2+z+1)$.</p>
+    <p>In his book <a href="http://www.springer.com/de/book/9783034801799"><em>Visual Complex Functions</em></a> Elias Wegert employs phase portraits as an access to the theory of complex functions. For instance, roots and poles of a complex function $f$ can be easily spotted at the points where all colors meet. See for example the phase portrait of $f(z)=(z-1)/(z^2+z+1)$ in the following picture:</p>
     
 <p><img src="../domcoloring/plotfzsimple.png" alt="phase portrait" title="f(z)=(z-1)/(z^2+z+1)" width="40%"></p>
 
-<p>Generating phase portraits, like the previous images, can be easily done on the GPU using the  <code>colorplot</code>-command.</p>
+<p>Generating phase portraits, like the two previous pictures, can be easily done on the GPU using the  <code>colorplot</code>-command.</p>
 
 <p>First let us define a complex function $f:\mathbb{C}\to\mathbb{C}$. A interesting function could be $f(z)=z^5-1$, which should have the five roots $\exp({k \tfrac{2 \pi i}{5}})$ for $k\in\{0,1,2,3,4\}$. We define $f$ in CindySript with <code>f(z):=z^5-1</code>.</p>
 <p>CindyJS supports complex numbers and all its operations without additional implementations. One could evaluate <code>f(i)</code> and get $f(i)=i^5-1=i-1$:</p>
@@ -168,9 +178,9 @@ An example that accesses the variables is the following:</p>
 drawtext((0,0), f(i));
 </code></pre>
 <p>Now we want to build a colorplot that interprets each pixel coordinate <code>#</code> as a complex number <code>z</code>, evaluates <code>f(z)</code> and colorizes the complex number <code>f(z)</code> according to the image above.</p>
-<p>In order to interpret <code>#</code> has complex number <code>z</code> one can either write <code>z=#.x + i*#.y</code> or use the equivalent function <code>z=complex(#)</code>, which converts 2-component vectors of real numbers to a single complex number. Then we evaluate $f(z)$ and save it to the variable <code>fz</code> with <code>fz=f(z)</code>. Now, in oder to colorize it, we will <a href="https://cindyjs.org/ref/Arithmetic_Operators.html#arctan2$1"> use the <code>arctan2</code> function</a>, which can also applied to complex numbers, to obtain the angle/phase of <code>fz</code> and plug the rescaled angle in the <code>hue</code> function.</p>
+<p>In order to interpret <code>#</code> as a complex number <code>z</code> we can either write <code>z=#.x + i*#.y</code> or use the equivalent function <code>z=complex(#)</code>, which converts 2-component vectors of real numbers to a single complex number. Then we evaluate $f(z)$ and save it to the variable <code>fz</code> with <code>fz=f(z)</code>. Now, in oder to colorize it, we will <a href="https://cindyjs.org/ref/Arithmetic_Operators.html#arctan2$1"> use the <code>arctan2</code> function</a>, which can also applied to complex numbers, to obtain the angle/phase of <code>fz</code> and plug the rescaled angle in the <code>hue</code> function.</p>
 
-<p>The following code plots the simple phase portrait of the complex function $f(z)=z^5-1$ on the square $|\text{Re } z|&lt;2$ and $|\text{Im } z|&lt; 2$:</p>
+<p>The following code plots the simple phase portrait of $f(z)=z^5-1$ on the square $|\text{Re } z|&lt;2$ and $|\text{Im } z|&lt; 2$:</p>
 <pre><code class="lang-cindyscript">f(z) := z^5-1; //a complex function
 colorplot(
     z = complex(#);
@@ -193,7 +203,7 @@ colorplot(
 <hr>
 <br>
 
-<h2 id="complex-phase-portraits-">Enhanced phase portraits</h2>
+<h2 class="w3-left-align" id="complex-phase-portraits-">Enhanced phase portraits</h2>
 
 <p>The previous visualization can be enhanced if lines of the same phase and modulus are highlighted. In this way we can appreciate the difference between roots and poles. For example, the function $f(z)=(z-1)/(z^2+z+1)$  has a root at $z_0=1$ and two poles at
 $$z_{1}=\frac{-1 + \sqrt{3}\,i}{2} \quad \text{and} \quad z_{2}=\frac{-1 - \sqrt{3}\,i}{2}.$$ These points can be easily spotted in the following image:<p>
@@ -212,6 +222,11 @@ colorize(z) := (
 colorplot( colorize(f(complex(#))) );
 </code></pre>
 <p>The trick in designing <code>colorize</code> is to notice that the imaginary part of the logarithm of a complex number corresponds to the argument of the complex number, while the real part of the logarithm equals to the logarithm of the modulus of the complex number. By adding a grid over the values obtained by taking the logarithm, a grid that has iso-lines on phases and moduli is obtained.</p>
+
+<p>To plot only iso-lines of phases then</p>
+<p><code>factor = (.6+.5*re(sqrt(im(zfract)*im(zfract))))</code>.</p>
+<p>On the other hand, if you want  only iso-lines of moduli, then</p>
+<p><code>factor =  (.6+.5*re(sqrt(re(zfract)*re(zfract))))</code>.</p>
 
 <p>You might have wondered why there is a <code>re</code> in <code>re(sqrt(...))</code> in the code above? The problem is that CindyGL needs to be able to prove the types of all occurring variables and a colorplot should return a real color vector. If one takes the square-root of a real number, then the result, in general, is complex. To guarantee CindyGL that <code>factor</code> will always be real, we take the real part of the square-root.</p>
 <p>Now it is maybe time to play around with other complex functions. For example, try the following functions:
@@ -271,7 +286,7 @@ colorplot(
 <hr>
 <br>
 
-<h2 id="wrapping-up">What is CindyJS?</h2>
+<h2 id="cindyjs" class="w3-left-align">What is CindyJS?</h2>
 
 <p>CindyJS is a framework to create interactive (mathematical) content for the web. It  provides the high-level mathematically oriented user with access to the shader language of the GPU without learning a shader language.</p>
 
@@ -282,8 +297,11 @@ colorplot(
 <br>
 <br>
 
+</main>
+</div>
+      </div>
 
-      </main>
+
     </div>
 
     <footer id="bottom-bar">
@@ -295,7 +313,7 @@ colorplot(
           </ul>
           <p class="footer-label">This page:</p>
           <ul class="footer-links">
-              <li><a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/cindygllive">View source</a></li>
+              <li><a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/livecoding/">View source</a></li>
               <li><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC-BY-SA 4.0 License
                   <img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC-BY-SA 4.0 License">
                       </a></li>
