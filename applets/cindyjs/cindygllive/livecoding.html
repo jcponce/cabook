@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Complex Functions with CindyJS - Live Coding</title>
     <link rel="icon" type="image/png" href="../../../images/infinity32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="../../../images/infinity16.png" sizes="16x16">
-    <link rel="stylesheet" href="../assets/app.css" />
-    <link rel="stylesheet" href="../assets/CindyJS.css" />
+    <link rel="icon" type="image/png" href="../../../images/infinity16.png" sizes="16x16">
+    <!--<link rel="stylesheet" property="stylesheet" type="text/css" href="../../../css/w3.css">-->
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="CindyJS.css" />
   </head>
   <body class="with-footer">
 
-<div id="between-bars">
+      <div id="between-bars">
 
 <!-- Main part -->
 
@@ -28,6 +29,7 @@
 <link rel="stylesheet" property="stylesheet" type="text/css" href="https://codemirror.net/theme/zenburn.css">
 <link rel="stylesheet" property="stylesheet" type="text/css" href="livecoding.css">
 <link rel="stylesheet" property="stylesheet" type="text/css" href="centerimg.css">
+
 <script type="text/javascript" async  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 <script type="text/x-mathjax-config">
@@ -152,7 +154,7 @@ An example that accesses the variables is the following:</p>
 
 <h2 id="complex-phase-portraits">Simple phase portraits</h2>
 
-<p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using domain coloring to create phase portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in the following picture (which also can be considered as a phase portrait for the function $f(z)=z$):</p>
+<p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using domain coloring to create phase portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in the following picture which shows the phase portrait for the function $f(z)=z$:</p>
 <p><img src="../domcoloring/phaseportrait.png" alt="phase portrait for z" title="phase portrait for the function f(z)=z" width="40%"></p>
     <p><a href="http://www.springer.com/de/book/9783034801799">In his book <em>Visual Complex Functions</em></a> Elias Wegert employs phase portraits as an access to the theory of complex functions. For instance, roots and poles of a complex function $f$ can be easily spotted at the points where all colors meet. The following image shows the phase portrait of the function $f(z)=(z-1)/(z^2+z+1)$.</p>
     
@@ -179,11 +181,11 @@ colorplot(
 
 <p>Change the function f(z). Try for example:
 <ul>
-    <li><code>f(z) := (z-1)/(z^2+z+1)</code>,</li>
-    <li><code>f(z) := z^(1/2)</code>,</li>
-    <li><code>f(z) := log(z)</code>,</li>
-    <li><code>f(z) := z+1/z</code>,</li>
-    <li><code>f(z) := z^(complex(mouse()))</code>.</li>
+    <li><code>f(z) := (z-1)/(z^2+z+1)</code></li>
+    <li><code>f(z) := z^(1/2)</code></li>
+    <li><code>f(z) := log(z)</code></li>
+    <li><code>f(z) := z+1/z</code></li>
+    <li><code>f(z) := z^(complex(mouse()))</code></li>
 </ul>
 </p>
 
@@ -212,7 +214,16 @@ colorplot( colorize(f(complex(#))) );
 <p>The trick in designing <code>colorize</code> is to notice that the imaginary part of the logarithm of a complex number corresponds to the argument of the complex number, while the real part of the logarithm equals to the logarithm of the modulus of the complex number. By adding a grid over the values obtained by taking the logarithm, a grid that has iso-lines on phases and moduli is obtained.</p>
 
 <p>You might have wondered why there is a <code>re</code> in <code>re(sqrt(...))</code> in the code above? The problem is that CindyGL needs to be able to prove the types of all occurring variables and a colorplot should return a real color vector. If one takes the square-root of a real number, then the result, in general, is complex. To guarantee CindyGL that <code>factor</code> will always be real, we take the real part of the square-root.</p>
-<p>Now it is maybe time to play around with other complex functions. For example, what happens for <code>f(z) := 1/z^5-1</code>, <code>f(z) := (z+1)/(z-1)</code>, <code>f(z) := sin(z)</code>, <code>f(z) := cos(1/(0.5*z))</code>, <code>f(z) := log(z^(complex(mouse())))</code>?</p>
+<p>Now it is maybe time to play around with other complex functions. For example, try the following functions:
+<ul>
+    <li><code>f(z) := 1/z^5-1</code></li>
+    <li><code>f(z) := (z+1)/(z-1)</code></li>
+    <li><code>f(z) := sin(z)</code></li>
+    <li><code>f(z) := cos(1/(0.5*z))</code></li>
+    <li><code>f(z) := log(z^(complex(mouse())))</code></li>
+</ul>
+</p>
+
 <br>
 
 <!--
