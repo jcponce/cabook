@@ -43,7 +43,7 @@
 
 <div style="float: left;">
   
-  <div class="w3-hide-small">
+  <div class="w3-hide-small w3-hide-medium">
       <script id="csmousedown" type="text/x-cindyscript">
       sx = mouse().x;
       sy = mouse().y;
@@ -461,7 +461,7 @@
 
 </div>
 
-<div class="w3-hide-small">
+<div class="w3-hide-small  w3-hide-medium">
 <p>You can enter your own function f(z) = p(z)/q(z) or select one function of the following list:</p>
 <p><select id="sel" size="6" style="width:10em;">
     <option data-a="1" data-p="z">z</option>
@@ -488,7 +488,7 @@
     <!--<option data-a="1" data-zoom="-.2">z^z</option>
     <option data-a="1" data-zoom="-.2">log(z^z)/z</option>-->
 </select></p>
-</div>
+</div><!--End Hide small -->
 
 <script type="text/javascript">
     var select = document.getElementById("sel");
@@ -510,12 +510,14 @@
     }, false);
     </script>
     
-<div class="w3-hide-large w3-hide-medium">
-   <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
-</div>
+    <div class="w3-hide-large w3-padding w3-display-middle w3-red w3-round w3-large">
+        <p>Pssst! Rotate your device to landscape.</p>
+        <p>Or resize your window so it's more wide than tall.</p>
+        <p>Not supported for phones.</p>
+    </div>
 
 
-<div style="float: left;">
+<div class="w3-hide-small w3-hide-medium"  style="float: left;">
     <br><br><br><hr>
 <p style="font-size: 16px"><strong>Note:</strong> The applet was originally written by <a href="https://geo.ma.tum.de/en/people/aaron-montag.html">Aaron Montag</a> using <a href="https://cindyjs.org/">Cindy.js</a>. The source can be found at <a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/dclandscape">GitHub.</a></p>
 </div><!--End second left -->

@@ -47,7 +47,7 @@
 
 <div style="float: left;">
 
-    <div class="w3-hide-small">
+    <div class="w3-hide-small w3-hide-medium">
         
 		<script id="csinit" type="text/x-cindyscript">
 			f(z):=(z-1)/(z^2+z+1);
@@ -208,7 +208,7 @@ var sel=function(e, b){
     
 </div><!-- end left-->
 
-<div class="w3-hide-small">
+<div class="w3-hide-small w3-hide-medium">
 <p>You can also select one function of the following list:</p>
         <select id="sel" onchange="sel(event, this)" style="width:10em;">
             <option value="(z-1)/(z^2+z+1)">(z-1)/(z^2+z+1)</option>
@@ -223,17 +223,19 @@ var sel=function(e, b){
         </select>
 </div>
 
-<div style="float: left;">
+<div class="w3-hide-small w3-hide-medium"  style="float: left;">
 <p>On the left, a phase portrait of a complex function is displayed.
     On the right, one can see the approximation of the function through it&#39;s Taylor polynomials at the blue base point $z_0$.</p>
 <p>The complex function, the base point $z_0$, the order of the polynomial and the zoom can be modified.</p>
 </div>
 
-<div class="w3-hide-large w3-hide-medium">
-    <p class="callout"><strong>Oops!</strong> Sorry, the applet is  not supported for small screens.</p>
+<div class="w3-hide-large w3-padding w3-display-middle w3-red w3-round w3-large">
+    <p>Pssst! Rotate your device to landscape.</p>
+    <p>Or resize your window so it's more wide than tall.</p>
+    <p>Not supported for phones.</p>
 </div>
 
-<div style="float: left; font-size: 16px">
+<div class="w3-hide-small w3-hide-medium"  style="float: left; font-size: 16px">
     <br><br><br><hr>
     <p><strong>Note:</strong> The applet was originally written by <a href="https://geo.ma.tum.de/en/people/aaron-montag.html">Aaron Montag</a> using <a href="https://cindyjs.org/">Cindy.js</a>. The source code can be found at <a href="https://github.com/jcponce/complex/tree/gh-pages/taylorseries">GitHub.</a></p>
 </div>
