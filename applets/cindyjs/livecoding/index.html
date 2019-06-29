@@ -75,6 +75,7 @@ window.onload = function() {
     scripts: "cs*",
     autoplay: true,
     use: ["CindyGL"],
+    //animation: {autoplay: true},
     language: "en"
   });
 
@@ -138,7 +139,7 @@ window.onload = function() {
 <p>To make the color dependent on the position the pixel, you can access the pixel-coordinate via the variable <code>#</code>. <code>#</code> is a 2-component vector. Its first entry can be accessed with <code>#_1</code> or <code>#.x</code>, its second with <code>#_2</code> or <code>#.y</code>.
 An example that accesses the variables is the following:</p>
 <pre><code class="lang-cindyscript">colorplot(
-  (1/2+#.x/4, 1/2+#.y/4, (sin(seconds())+1)/2)
+  (1/2 + #.x/4, 1/2 + #.y/4, (sin(seconds()) + 1)/2)
 );
 </code></pre>
 <p>With this, the <em>red</em>/<em>green</em>-component depends on the x/y-value of the pixel coordinate and the <em>blue</em> component varies with the time. All the three values have been rescaled such that they lie between $0$ and $1$.</p>
@@ -148,7 +149,7 @@ An example that accesses the variables is the following:</p>
 <p>To feed the computed angle, which lies between $0$ and $2\cdot \pi$, to the <a href="https://cindyjs.org/ref/Appearance_of_Objects.html#hue$1"><code>hue</code>-function</a>, we have to rescale it to fit the whole color-domain by diving it by <code>2*pi</code>.</p>
 <p>Altogether, we obtain the following code:</p>
 <pre><code class="lang-cindyscript">colorplot(
-  if(1&lt;|#| &amp; |#|&lt;1.1,
+  if(1 &lt; |#| &amp; |#| &lt; 1.1,
     hue(arctan2(#)/(2*pi)),
     grey(0.4) //use grey outside the annulus
   )
@@ -174,14 +175,14 @@ An example that accesses the variables is the following:</p>
 
 <p>First let us define a complex function $f:\mathbb{C}\to\mathbb{C}$. A interesting function could be $f(z)=z^5-1$, which should have the five roots $\exp({k \tfrac{2 \pi i}{5}})$ for $k\in\{0,1,2,3,4\}$. We define $f$ in CindySript with <code>f(z):=z^5-1</code>.</p>
 <p>CindyJS supports complex numbers and all its operations without additional implementations. One could evaluate <code>f(i)</code> and get $f(i)=i^5-1=i-1$:</p>
-<pre><code class="lang-cindyscript">f(z):=z^5-1;
+<pre><code class="lang-cindyscript">f(z) := z^5 - 1;
 drawtext((0,0), f(i));
 </code></pre>
 <p>Now we want to build a colorplot that interprets each pixel coordinate <code>#</code> as a complex number <code>z</code>, evaluates <code>f(z)</code> and colorizes the complex number <code>f(z)</code> according to the image above.</p>
 <p>In order to interpret <code>#</code> as a complex number <code>z</code> we can either write <code>z=#.x + i*#.y</code> or use the equivalent function <code>z=complex(#)</code>, which converts 2-component vectors of real numbers to a single complex number. Then we evaluate $f(z)$ and save it to the variable <code>fz</code> with <code>fz=f(z)</code>. Now, in oder to colorize it, we will <a href="https://cindyjs.org/ref/Arithmetic_Operators.html#arctan2$1"> use the <code>arctan2</code> function</a>, which can also applied to complex numbers, to obtain the angle/phase of <code>fz</code> and plug the rescaled angle in the <code>hue</code> function.</p>
 
 <p>The following code plots the simple phase portrait of $f(z)=z^5-1$ on the square $|\text{Re } z|&lt;2$ and $|\text{Im } z|&lt; 2$:</p>
-<pre><code class="lang-cindyscript">f(z) := z^5-1; //a complex function
+<pre><code class="lang-cindyscript">f(z) := z^5 - 1; //a complex function
 colorplot(
     z = complex(#);
     fz = f(z);
@@ -191,10 +192,10 @@ colorplot(
 
 <p>Change the function f(z). Try for example:
 <ul>
-    <li><code>f(z) := (z-1)/(z^2+z+1)</code></li>
+    <li><code>f(z) := (z - 1)/(z^2 + z + 1)</code></li>
     <li><code>f(z) := z^(1/2)</code></li>
     <li><code>f(z) := log(z)</code></li>
-    <li><code>f(z) := z+1/z</code></li>
+    <li><code>f(z) := z + 1/z</code></li>
     <li><code>f(z) := z^(complex(mouse()))</code></li>
 </ul>
 </p>
@@ -211,46 +212,47 @@ $$z_{1}=\frac{-1 + \sqrt{3}\,i}{2} \quad \text{and} \quad z_{2}=\frac{-1 - \sqrt
 <p><img src="../domcoloring/plotfzenh.png" alt="enhaced phase portrait" title="f(z)=(z-1)/(z^2+z+1)" width="40%"></p>
 
 <p>To generate the above image, an enhanced phase portrait, the following more complicated helper function <code>colorize</code> can be used:</p>
-<pre><code class="lang-cindyscript">f(z) := (z-1)/(z^2+z+1); //a complex function
+<pre><code class="lang-cindyscript">f(z) := (z-1)/(z^2 + z + 1); //a complex function
 colorize(z) := (
-  n = 10; //highlight 12 different phases
+  n = 10; //highlight 10 different phases
   z = log(z)/(2*pi);
-  zfract = n*z - floor(n*z); //n*z in C mod Z[i]
-  factor = (.6+.5*re(sqrt(im(zfract)*re(zfract))));
-  hue(im(z))*factor; //darken hue wrt factor
+  zfract = n * z - floor(n * z); //n * z in C mod Z[i]
+  factor = (0.6 + 0.5 * re(sqrt(im(zfract) * re(zfract))));
+  hue(im(z)) * factor; //darken hue wrt factor
 );
 colorplot( colorize(f(complex(#))) );
 </code></pre>
 <p>The trick in designing <code>colorize</code> is to notice that the imaginary part of the logarithm of a complex number corresponds to the argument of the complex number, while the real part of the logarithm equals to the logarithm of the modulus of the complex number. By adding a grid over the values obtained by taking the logarithm, a grid that has iso-lines on phases and moduli is obtained.</p>
 
 <p>To plot only iso-lines of phases then</p>
-<p><code>factor = (.6+.5*re(sqrt(im(zfract)*im(zfract))))</code>.</p>
+<p><code>factor = (0.6 + 0.5 * re(sqrt(im(zfract) * im(zfract))))</code>.</p>
 <p>On the other hand, if you want  only iso-lines of moduli, then</p>
-<p><code>factor =  (.6+.5*re(sqrt(re(zfract)*re(zfract))))</code>.</p>
+<p><code>factor =  (0.6 + 0.5 * re(sqrt(re(zfract) * re(zfract))))</code>.</p>
 
 <p>You might have wondered why there is a <code>re</code> in <code>re(sqrt(...))</code> in the code above? The problem is that CindyGL needs to be able to prove the types of all occurring variables and a colorplot should return a real color vector. If one takes the square-root of a real number, then the result, in general, is complex. To guarantee CindyGL that <code>factor</code> will always be real, we take the real part of the square-root.</p>
 <p>Now it is maybe time to play around with other complex functions. For example, try the following functions:
 <ul>
-    <li><code>f(z) := 1/z^5-1</code></li>
-    <li><code>f(z) := (z+1)/(z-1)</code></li>
+    <li><code>f(z) := 1/z^5 - 1</code></li>
+    <li><code>f(z) := (z + 1)/(z - 1)</code></li>
     <li><code>f(z) := sin(z)</code></li>
-    <li><code>f(z) := cos(1/(0.5*z))</code></li>
+    <li><code>f(z) := cos(1/(0.5 * z))</code></li>
+    <li><code>f(z) := z^(1 + 4 * cos(0.5 * seconds()) * i)</code></li>
     <li><code>f(z) := log(z^(complex(mouse())))</code></li>
 </ul>
 </p>
 <br>
 <h4 class="w3-left-align" id="real-imaginary">Real and imaginary components</h4>
 
-<p>You can also plot the level curves of the real and imaginary components of the complex function. For doing that use the following code:</p>
+<p>You can also plot the level curves of the real and imaginary components of the complex function. In this case you need the following code:</p>
 
 <pre><code class="lang-cindyscript">f(z) := z^2; //a complex function
 colorize(z) := (
-n = 4; //highlight 12 different phases
-zc = log(z)/(2*pi);
-zl = 2*i*z/(2*pi);
-zfract = n*zl - floor(n*zl); //n*z in C mod Z[i]
-factor = (.6+.5*re(sqrt(im(zfract)*re(zfract))));
-hue(im(zc))*factor; //darken hue wrt factor
+n = 4; //highlight different level curves
+zc = log(z)/(2*pi); //for coloring pixels
+zl = 2 * i * z/(2 * pi); //for plotting level curves of components
+zfract = n * zl - floor(n * zl); //n * z in C mod Z[i]
+factor = (0.6 + 0.5 * re(sqrt(im(zfract) * re(zfract))));
+hue(im(zc)) * factor; //darken hue wrt factor
 );
 colorplot( colorize(f(complex(#))) );
 </code></pre>
