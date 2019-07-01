@@ -10,7 +10,40 @@
     <link rel="stylesheet" property="stylesheet" type="text/css" href="../../../css/w3.css">
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="CindyJS.css" />
+    
+    <!-- dublin core -->
+	<meta name="dc.title" CONTENT="Complex Functions with CindyJS - Live Coding">
+	<meta name="dc.creator" CONTENT="Juan Carlos Ponce Campuzano">
+	<meta name="dc.date" CONTENT="01-06-2019">
+	<meta name="dc.type" CONTENT="Interactive Resource">
+	<meta name="dc.format" CONTENT="HTML">
+	<meta name="dc.language" CONTENT="en-US">
+	<meta name="dc.rights" CONTENT="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+
+	<!-- social media cards -->
+	<meta property="og:title" content="Complex Functions with CindyJS - Live Coding">
+	<meta property="og:description" content="An online interactive introduction to the study of complex analysis.">
+	<meta property="og:type" content="website">
+	<!--<meta property="og:image" content="">
+	<meta property="og:url" content="">-->
+	<meta name="twitter:card" content="An online interactive introduction to the study of complex analysis.">
+	<meta property="og:site_name" content="Complex Analysis">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121691678-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'UA-121691678-1');
+        </script>
+    
+    
   </head>
+  
+  
+  
   <body class="with-footer">
 
 <div id="between-bars">
@@ -248,9 +281,9 @@ colorplot( colorize(f(complex(#))) );
 <pre><code class="lang-cindyscript">f(z) := z^2; //a complex function
 colorize(z) := (
 n = 4; //highlight different level curves
-zc = log(z)/(2*pi); //for coloring pixels
-zl = 2 * i * z/(2 * pi); //for plotting level curves of components
-zfract = n * zl - floor(n * zl); //n * z in C mod Z[i]
+zc = log(z)/(2*pi); //coloring pixels
+zl = 2 * i * z/(2 * pi); //level curves of components
+zfract = n * zl - floor(n * zl); //n*z in C mod Z[i]
 factor = (0.6 + 0.5 * re(sqrt(im(zfract) * re(zfract))));
 hue(im(zc)) * factor; //darken hue wrt factor
 );
@@ -325,25 +358,27 @@ colorplot(
     <footer id="bottom-bar">
       <div class="w3-hide-small w3-hide-medium">
         <div class="footer-item">
+          <p class="footer-label">Date created:</p>
+          <ul class="footer-links">
+              <li>28-Jun-2019</li>
+          </ul>
           <p class="footer-label">Adapted from:</p>
           <ul class="footer-links">
             <li><a href="https://cindyjs.org/docs/cindygltutorial/livecoding.html">CindyGL Tutorial - Live Coding</a></li>
           </ul>
-          <p class="footer-label">This page:</p>
-          <ul class="footer-links">
-              <li><a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/livecoding/">View source</a></li>
-              <li><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC-BY-SA 4.0 License
-                  <img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC-BY-SA 4.0 License">
-                      </a></li>
-          </ul>
+          
         </div>
         <div class="footer-sep"><hr></div>
         <div class="footer-item">
-          
+            <p class="footer-label">This page:</p>
+            <ul class="footer-links">
+                <li><a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/livecoding/">View source</a></li>
+                <li><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC-BY-SA 4.0 License
+                    <img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC-BY-SA 4.0 License">
+                        </a></li>
+            </ul>
         </div>
-        <div class="footer-item">
-            
-        </div>
+        
       </div>
     </footer>
 
