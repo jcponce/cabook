@@ -155,7 +155,7 @@ window.onload = function() {
 
 <p>Live coding means that you can type some CindyScript in the code-window on the right. If the code is valid, the applet will instantaneously process the input. You can also click on the big yellow code snippets within this tutorial to load the code to the live coding applet.</p>
 
-<p>Now, before we start to plot complex functions we need to learn a little about the <a href="https://cindyjs.org/ref/Function_Plotting.html#colorplot$1"><code>colorplot</code></a>-command. If you are already familiar with this command, you can directly proceed to the section <a href="#complex-phase-portraits">&quot;Simple phase portraits&quot;</a> to start plotting complex functions.</p>
+<p>Now, before we start to plot complex functions we need to learn a little about the <a href="https://cindyjs.org/ref/Function_Plotting.html#colorplot$1"><code>colorplot</code></a>-command. If you are already familiar with this command, you can directly proceed to the section <a href="#phase-portraits">&quot;Phase portraits&quot;</a> to start plotting complex functions.</p>
 
 <br>
 
@@ -196,7 +196,7 @@ An example that accesses the variables is the following:</p>
 
 <br>
 
-<h2 class="w3-left-align" id="complex-phase-portraits">Simple phase portraits</h2>
+<h2 class="w3-left-align" id="phase-portraits">Phase portraits</h2>
 
 <p>A way to visualize complex functions $f:\mathbb{C}\to\mathbb{C}$ is using domain coloring to create phase portraits. A complex number can be assigned a color according to its phase/argument. Positive numbers are colored red; negative numbers are colored in cyan and numbers with a non-zero imaginary part are colored as in the following picture which shows the phase portrait for the function $f(z)=z$:</p>
 <p><img src="../domcoloring/phaseportrait.png" alt="phase portrait for z" title="phase portrait for the function f(z)=z" width="40%"></p>
@@ -237,7 +237,7 @@ colorplot(
 <hr>
 <br>
 
-<h2 class="w3-left-align" id="complex-phase-portraits-">Enhanced phase portraits</h2>
+<h2 class="w3-left-align" id="enhanced-phase-portraits">Enhanced phase portraits</h2>
 <h4 class="w3-left-align" id="phase-modulus">Level curves of phase and modulus</h4>
 <p>The previous visualization can be enhanced if lines of the same phase and modulus are highlighted. In this way we can appreciate the difference between roots and poles. For example, the function $f(z)=(z-1)/(z^2+z+1)$  has a root at $z_0=1$ and two poles at
 $$z_{1}=\frac{-1 + \sqrt{3}\,i}{2} \quad \text{and} \quad z_{2}=\frac{-1 - \sqrt{3}\,i}{2}.$$ These points can be easily spotted in the following image:<p>
@@ -370,7 +370,7 @@ colorplot(
         </div>
         <div class="footer-sep"><hr></div>
         <div class="footer-item">
-            <p class="footer-label">This page:</p>
+            
             <ul class="footer-links">
                 <li><a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/cindyjs/livecoding/">View source</a></li>
                 <li><a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC-BY-SA 4.0 License
