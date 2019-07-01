@@ -249,9 +249,9 @@ $$z_{1}=\frac{-1 + \sqrt{3}\,i}{2} \quad \text{and} \quad z_{2}=\frac{-1 - \sqrt
 colorize(z) := (
   n = 10; //highlight 10 different phases
   z = log(z)/(2*pi);
-  zfract = n * z - floor(n * z); //n * z in C mod Z[i]
-  factor = (0.6 + 0.5 * re(sqrt(im(zfract) * re(zfract))));
-  hue(im(z)) * factor; //darken hue wrt factor
+  zfract = n*z - floor(n*z); //n*z in C mod Z[i]
+  factor = (0.6 + 0.5*re(sqrt(im(zfract)*re(zfract))));
+  hue(im(z))*factor; //darken hue wrt factor
 );
 colorplot( colorize(f(complex(#))) );
 </code></pre>
@@ -282,10 +282,10 @@ colorplot( colorize(f(complex(#))) );
 colorize(z) := (
 n = 4; //highlight different level curves
 zc = log(z)/(2*pi); //coloring pixels
-zl = 2 * i * z/(2 * pi); //level curves of components
-zfract = n * zl - floor(n * zl); //n*z in C mod Z[i]
-factor = (0.6 + 0.5 * re(sqrt(im(zfract) * re(zfract))));
-hue(im(zc)) * factor; //darken hue wrt factor
+zl = 2*i*z/(2*pi); //level curves of components
+zfract = n*zl - floor(n*zl); //n*z in C mod Z[i]
+factor = (0.6 + 0.5*re(sqrt(im(zfract)*re(zfract))));
+hue(im(zc))*factor; //darken hue wrt factor
 );
 colorplot( colorize(f(complex(#))) );
 </code></pre>
