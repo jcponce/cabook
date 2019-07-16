@@ -9,8 +9,9 @@
 
 let mandelbrot;
 
-let WIDTH = 800;
-let HEIGHT = 510;
+let WIDTH = 640;
+let HEIGHT = 490;
+let ctlsBack = 150;
 let sizePlot = false;
 let starting = false;
 let up = 1;
@@ -19,6 +20,7 @@ let left = 3;
 let right = 4;
 let zoomin = 5;
 let zoomout = 6;
+let reset = 7;
 let changeC = false;
 
 let buttonUP;
@@ -35,42 +37,52 @@ let sliderIter;
 
 function setup() {
     createCanvas(WIDTH, HEIGHT);
+    
+    //var canvas = createCanvas(WIDTH, HEIGHT);
+    
+    // Move the canvas so it’s inside our <div id="sketch-holder">.
+    //canvas.parent('sketch-holder');
+    
     mandelbrot = new Mandelbrot();
     pixelDensity(1);//I need this for small devices
     
     buttonUP = createButton('&uarr;');
-    buttonUP.position(50, 30);
+    buttonUP.position(60, 120);
     buttonUP.mousePressed(userUP);
     
     buttonDOWN = createButton('&darr;');
-    buttonDOWN.position(buttonUP.x, buttonUP.y+30);
+    buttonDOWN.position(buttonUP.x, buttonUP.y+35);
     buttonDOWN.mousePressed(userDOWN);
     
     buttonLEFT = createButton('&larr;');
-    buttonLEFT.position(buttonUP.x-40, (buttonUP.y+30));
+    buttonLEFT.position(buttonUP.x-40, (buttonUP.y+35));
     buttonLEFT.mousePressed(userLEFT);
     
     buttonRIGHT = createButton('&rarr;');
-    buttonRIGHT.position(buttonUP.x+35, (buttonUP.y+30));
+    buttonRIGHT.position(buttonUP.x+35, (buttonUP.y+35));
     buttonRIGHT.mousePressed(userRIGHT);
     
     buttonZOOMIN = createButton('&plus;');
-    buttonZOOMIN.position(buttonUP.x, buttonUP.y+70);
+    buttonZOOMIN.position(buttonUP.x, buttonUP.y+80);
     buttonZOOMIN.mousePressed(userZOOMIN);
     
     buttonZOOMOUT = createButton('&minus;');
-    buttonZOOMOUT.position(buttonUP.x, buttonUP.y+100);
+    buttonZOOMOUT.position(buttonUP.x, buttonUP.y+110);
     buttonZOOMOUT.mousePressed(userZOOMOUT);
     
-    sliderIter = createSlider(0, 250, 150, 1);
-    sliderIter.position(buttonUP.x-20, buttonUP.y+150)
+    buttonRESET = createButton('R');
+    buttonRESET.position(buttonUP.x, buttonUP.y+160);
+    buttonRESET.mousePressed(userRESET);
+    
+    //sliderIter = createSlider(0, 250, 150, 1);
+    //sliderIter.position(buttonUP.x-20, buttonUP.y+180)
     
     
 }
 
 function windowResized() {
    
-        resizeCanvas(510, 510);
+        resizeCanvas(510, 490);
     
 }
 
@@ -79,8 +91,8 @@ function draw() {
     
     //Initial message
     if (starting == false) {
-        fill(200);
-        stroke(200);
+        fill(190);
+        stroke(190);
         rect(0,0, width, height);
         fill(0);
         stroke(0);
@@ -104,7 +116,8 @@ function draw() {
     right = 4;
     zoomin = 5;
     zoomout = 6;
-    console.log(sliderIter.value());
+    reset = 7;
+    //console.log(sliderIter.value());
     
 }
 
@@ -148,19 +161,19 @@ class Mandelbrot {
     update(){
         
         var moveSpeed = 0.1 * this.zoom;
-        if (up === -1)
+        if (up === -1 || keyIsDown(KC_UP))
             this.pos.y -= moveSpeed;
-        if (down === -2)
+        if (down === -2 || keyIsDown(KC_DOWN))
             this.pos.y += moveSpeed;
-        if (left === -3)
+        if (left === -3 || keyIsDown(KC_LEFT))
             this.pos.x -= moveSpeed;
-        if (right === -4)
+        if (right === -4 || keyIsDown(KC_RIGHT))
             this.pos.x += moveSpeed;
-        if (zoomout === -6)
-            this.zoomAt(mouseX, mouseY, 0.95, false);
-        if (zoomin === -5)
-            this.zoomAt(mouseX, mouseY, 0.95, true);
-        if (keyIsDown(KC_RESET))
+        if (zoomout === -6 || keyIsDown(KC_UNZOOM))
+            this.zoomAt(395, 245, 0.95, false);
+        if (zoomin === -5 || keyIsDown(KC_ZOOM))
+            this.zoomAt(395, 245, 0.95, true);
+        if (reset === -7 ||keyIsDown(KC_RESET))
         {
             this.size.x = this.origSize.x;
             this.size.y = this.origSize.y;
@@ -174,7 +187,7 @@ class Mandelbrot {
     zoomAt(x, y, ammount, isZoomIn){
         
         ammount = isZoomIn ? ammount : 1 / ammount;
-        x = map(x, 0, width, this.pos.x - this.size.x / 2, this.pos.x + this.size.x / 2);
+        x = map(x, ctlsBack, width, this.pos.x - this.size.x / 2, this.pos.x + this.size.x / 2);
         y = map(y, height, 0,  this.pos.y - this.size.y / 2, this.pos.y + this.size.y / 2);
         this.pos.x = x + (this.pos.x - x) * ammount;
         this.pos.y = y + (this.pos.y - y) * ammount;
@@ -188,14 +201,14 @@ class Mandelbrot {
         
         loadPixels();
         
-        var cX = this.pos.x + map(mouseX, 290, width, -this.size.x / 2, this.size.x / 2);//this is for Mandelbrot
+        var cX = this.pos.x + map(mouseX, ctlsBack, width, -this.size.x / 2, this.size.x / 2);//this is for Mandelbrot
         var cY = this.pos.y + map(mouseY, height, 0, -this.size.y / 2, this.size.y / 2);//this is for Mandelbrot
         
-        for (var x = 290; x < width; x++) {
+        for (var x = ctlsBack; x < width; x++) {
             for (var y = 0; y < height; y++) {
                 var sqZ = new p5.Vector(0, 0);
                 var z = new p5.Vector(
-                                      this.pos.x + map(x, 290, width, -this.size.x / 2, this.size.x / 2),
+                                      this.pos.x + map(x, ctlsBack, width, -this.size.x / 2, this.size.x / 2),
                                       this.pos.y + map(y, height, 0, -this.size.y / 2, this.size.y / 2)
                                       );
                 var c = new p5.Vector(z.x, z.y);
@@ -219,9 +232,9 @@ class Mandelbrot {
             
             stroke(220);
             strokeWeight(2);
-            line(width/2, 0, width/2, height);
-            line(0, height/2, width, height/2);
-            ellipse(width/2, height/2, 8, 8);
+            line((width+ctlsBack)/2, 0, (width+ctlsBack)/2, height);
+            line(ctlsBack, height/2, (width+ctlsBack), height/2);
+            ellipse((width+ctlsBack)/2, height/2, 8, 8);
             
             fill(255);
             stroke(0);
@@ -230,7 +243,7 @@ class Mandelbrot {
             text("x: " + str( round( this.pos.x * 100 )/100 )
                  + "\ny: " + str( round( this.pos.y * 100 )/100 )
                  + "\nzoom: " + str( round(  (1 / this.zoom) * 100 )/100 )
-                 , 295, 15
+                 , 165, 15
                  );
         }
         //draw constant label
@@ -238,7 +251,7 @@ class Mandelbrot {
         stroke(0);
         strokeWeight(1.5);
         textSize(16);
-        text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", 295, height-15);
+        text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", 165, height-15);
         
         var xc = mouseX;
         var yc = mouseY;
@@ -311,6 +324,10 @@ function userZOOMIN() {
 
 function userZOOMOUT() {
     zoomout = -6;
+}
+
+function userRESET() {
+    reset = -7;
 }
 
 
