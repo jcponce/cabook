@@ -9,9 +9,9 @@
 
 let mandelbrot;
 
-let WIDTH = 640;
+let WIDTH = 670;
 let HEIGHT = 490;
-let ctlsBack = 150;
+let ctlsBack = 180;
 let sizePlot = false;
 let starting = false;
 let up = 1;
@@ -46,37 +46,7 @@ function setup() {
     mandelbrot = new Mandelbrot();
     pixelDensity(1);//I need this for small devices
     
-    buttonUP = createButton('&uarr;');
-    buttonUP.position(60, 120);
-    buttonUP.mousePressed(userUP);
-    
-    buttonDOWN = createButton('&darr;');
-    buttonDOWN.position(buttonUP.x, buttonUP.y+35);
-    buttonDOWN.mousePressed(userDOWN);
-    
-    buttonLEFT = createButton('&larr;');
-    buttonLEFT.position(buttonUP.x-40, (buttonUP.y+35));
-    buttonLEFT.mousePressed(userLEFT);
-    
-    buttonRIGHT = createButton('&rarr;');
-    buttonRIGHT.position(buttonUP.x+35, (buttonUP.y+35));
-    buttonRIGHT.mousePressed(userRIGHT);
-    
-    buttonZOOMIN = createButton('&plus;');
-    buttonZOOMIN.position(buttonUP.x, buttonUP.y+80);
-    buttonZOOMIN.mousePressed(userZOOMIN);
-    
-    buttonZOOMOUT = createButton('&minus;');
-    buttonZOOMOUT.position(buttonUP.x, buttonUP.y+110);
-    buttonZOOMOUT.mousePressed(userZOOMOUT);
-    
-    buttonRESET = createButton('R');
-    buttonRESET.position(buttonUP.x, buttonUP.y+160);
-    buttonRESET.mousePressed(userRESET);
-    
-    //sliderIter = createSlider(0, 250, 150, 1);
-    //sliderIter.position(buttonUP.x-20, buttonUP.y+180)
-    
+    controlsUI();
     
 }
 
@@ -152,7 +122,7 @@ class Mandelbrot {
     this.size = new p5.Vector(this.origSize.x, this.origSize.y);
     this.origPos = new p5.Vector(-0.7, 0);//Origin position
     this.pos = new p5.Vector(this.origPos.x, this.origPos.y);
-    this.maxIter = 200;
+    this.maxIter = 180;
     this.origZoom = 1;
     this.zoom = this.origZoom;
     this.printDebug = false;
@@ -181,6 +151,7 @@ class Mandelbrot {
             this.pos.y = this.origPos.y;
             this.zoom = this.origZoom;
         }
+        this.maxIter = sliderIter.value();
         
     }
     
@@ -243,7 +214,8 @@ class Mandelbrot {
             text("x: " + str( round( this.pos.x * 100 )/100 )
                  + "\ny: " + str( round( this.pos.y * 100 )/100 )
                  + "\nzoom: " + str( round(  (1 / this.zoom) * 100 )/100 )
-                 , 165, 15
+                 + "\niterations: " + str( round(  (this.maxIter) * 100 )/100 )
+                 , ctlsBack + 10, 15
                  );
         }
         //draw constant label
@@ -251,11 +223,11 @@ class Mandelbrot {
         stroke(0);
         strokeWeight(1.5);
         textSize(16);
-        text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", 165, height-15);
+        text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", ctlsBack + 10, height-15);
         
         var xc = mouseX;
         var yc = mouseY;
-        if(xc<=290){
+        if(xc<=ctlsBack){
             fill(200);}
         else{
             fill(255);}
@@ -300,6 +272,47 @@ function setPixelHSV(x, y, h, s, v) {
         case 5: r = v, g = p, b = q; break;
     }
     setPixelRGB(x, y, Math.round(r * 1), Math.round(g * 255), Math.round(b * 255));
+}
+
+function controlsUI(){
+    buttonUP = createButton('&uarr;');
+    buttonUP.position(80, 100);
+    buttonUP.style('font-size','20');
+    buttonUP.mousePressed(userUP);
+    
+    buttonDOWN = createButton('&darr;');
+    buttonDOWN.position(buttonUP.x, buttonUP.y+45);
+    buttonDOWN.style('font-size','20');
+    buttonDOWN.mousePressed(userDOWN);
+    
+    buttonLEFT = createButton('&larr;');
+    buttonLEFT.position(buttonUP.x-50, (buttonUP.y+45));
+    buttonLEFT.style('font-size','20');
+    buttonLEFT.mousePressed(userLEFT);
+    
+    buttonRIGHT = createButton('&rarr;');
+    buttonRIGHT.position(buttonUP.x+45, (buttonUP.y+45));
+    buttonRIGHT.style('font-size','20');
+    buttonRIGHT.mousePressed(userRIGHT);
+    
+    buttonZOOMIN = createButton('&plus;');
+    buttonZOOMIN.position(buttonUP.x, buttonUP.y+100);
+    buttonZOOMIN.style('font-size','20');
+    buttonZOOMIN.mousePressed(userZOOMIN);
+    
+    buttonZOOMOUT = createButton('&minus;');
+    buttonZOOMOUT.position(buttonUP.x, buttonUP.y+140);
+    buttonZOOMOUT.style('font-size','20');
+    buttonZOOMOUT.mousePressed(userZOOMOUT);
+    
+    buttonRESET = createButton('R');
+    buttonRESET.position(buttonUP.x, buttonUP.y+190);
+    buttonRESET.style('font-size','20');
+    buttonRESET.mousePressed(userRESET);
+    
+    sliderIter = createSlider(0, 250, 180, 1);
+    sliderIter.style('width', '120px')
+    sliderIter.position(buttonUP.x-50, buttonUP.y+260)
 }
 
 function userUP() {
