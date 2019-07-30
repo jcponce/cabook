@@ -34,9 +34,22 @@ let buttonZOOMOUT;
 let sliderIter;
 
 
+var cnv;
+
+function centerCanvas() {
+    var x = (windowWidth - width) / 2;
+    var y = (windowHeight - height) / 2;
+    cnv.position(x, y);
+}
 
 function setup() {
-    createCanvas(WIDTH, HEIGHT);
+    //createCanvas(WIDTH, HEIGHT);
+    //var cnv = createCanvas(WIDTH, HEIGHT);
+    //var x = (windowWidth - width) / 2;
+    //var y = (windowHeight - height) / 2;
+    //cnv.position(x, y);
+    cnv = createCanvas(WIDTH, HEIGHT);
+    centerCanvas();
     
     //var canvas = createCanvas(WIDTH, HEIGHT);
     
@@ -51,8 +64,8 @@ function setup() {
 }
 
 function windowResized() {
-   
-        resizeCanvas(510, 490);
+   centerCanvas();
+       // resizeCanvas(510, 490);
     
 }
 
