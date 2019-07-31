@@ -7,6 +7,8 @@
  */
 
 let particles = [];
+//let randomS;
+//let simplex;
 let nums;
 let particleDensity = 4000;
 let noiseScale = 800;
@@ -26,6 +28,8 @@ function setup(){
     for(let i = 0; i < nums; i++){
         particles[i] = new Particle();
     }
+    
+    //simplex = new SimplexNoise();
 }
 
 function draw(){
@@ -120,6 +124,7 @@ class Particle {
             this.respawn();
         while(iterations > 0){
             let angle = noise(this.pos.x/noiseScale, this.pos.y/noiseScale)*TWO_PI*noiseScale*this.flip;
+            //simplex.noise2D(this.pos.x/noiseScale, this.pos.y/noiseScale)*TWO_PI*noiseScale*this.flip;
             this.vel.x = cos(angle);
             this.vel.y = sin(angle);
             this.vel.mult(simulationSpeed);
