@@ -1,7 +1,9 @@
 # Complex Analysis
-A visual and interactive introduction to Complex Analysis
+A visual and interactive introduction to [Complex Analysis](https://www.dynamicmath.xyz/cabook/).
 
 ISBN 978-0-6485736-0-9
+
+![alt tag](https://github.com/jcponce/cabook/blob/gh-pages/images/preview.png)
 
 ---
 ## INTRO
@@ -26,9 +28,7 @@ Some of the topics covered here are basic arithmetic of complex numbers, complex
 What distinguishes this book from other texts in the first instance is the
 use of interactive applets that allow you to explore properties of complex numbers geometrically and analyze complex functions by using different techniques to visualize them. For the design of applets I used the following open-source softwares: [GeoGebra](https://geogebra.org/), [p5.js](https://p5js.org/) and [Cindy.js](https://cindyjs.org/).
 
-Hi! Here you can find the source code for the online book [Complex Analysis](https://www.dynamicmath.xyz/cabook/). 
 
-![alt tag](https://github.com/jcponce/cabook/blob/gh-pages/images/preview.png)
 
 ---
 
