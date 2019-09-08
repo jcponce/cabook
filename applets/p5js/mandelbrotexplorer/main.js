@@ -49,7 +49,7 @@ function setup() {
     //var y = (windowHeight - height) / 2;
     //cnv.position(x, y);
     cnv = createCanvas(WIDTH, HEIGHT);
-    centerCanvas();
+    //centerCanvas();
     
     //var canvas = createCanvas(WIDTH, HEIGHT);
     
@@ -63,11 +63,11 @@ function setup() {
     
 }
 
-function windowResized() {
-   centerCanvas();
+//function windowResized() {
+ //  centerCanvas();
        // resizeCanvas(510, 490);
     
-}
+//}
 
 function draw() {
     background(200);
@@ -112,11 +112,11 @@ function keyReleased() {
 
 
 
-function mouseWheel() {
-    if(starting == true){
-    mandelbrot.zoomAt(mouseX, mouseY, 0.85, event.delta < 0);
-    }
-}
+//function mouseWheel() {
+//    if(starting == true){
+//    mandelbrot.zoomAt(mouseX, mouseY, 0.85, event.delta < 0);
+//    }
+//}
 
 
 // KeyCodes available at: http://keycode.info/
@@ -236,7 +236,9 @@ class Mandelbrot {
         stroke(0);
         strokeWeight(1.5);
         textSize(16);
+        if ( mouseX > ctlsBack ){
         text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", ctlsBack + 10, height-15);
+        }
         
         var xc = mouseX;
         var yc = mouseY;
