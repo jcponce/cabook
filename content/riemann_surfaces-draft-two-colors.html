@@ -761,7 +761,7 @@
               u * Math.sin(v),
               M(u * Math.cos(v), u * Math.sin(v))
             ],
-            [0.0001, 2], [-pi, -0.01],
+            [0.0001, 2], [-pi + pi/1000, -pi/1000],
             {
               color: '#80aaff',
               opacity: 0.9
@@ -771,7 +771,28 @@
               u * Math.sin(v),
               N(u * Math.cos(v), u * Math.sin(v))
             ],
-            [0.0001, 2], [-pi,  -0.01 ],
+            [0.0001, 2], [-pi + pi/1000, -pi/1000],
+            {
+              color: '#ff99cc',
+              opacity: 0.9
+            }
+          );
+          
+      var s1 = parametric((u, v) => [u * Math.cos(v),
+              u * Math.sin(v),
+              M(u * Math.cos(v), u * Math.sin(v))
+            ],
+                          [0.0001, 2], [pi/1000, pi - pi/1000],
+            {
+              color: '#80aaff',
+              opacity: 0.9
+            }
+          );
+       var t1 = parametric((u, v) => [u * Math.cos(v),
+              u * Math.sin(v),
+              N(u * Math.cos(v), u * Math.sin(v))
+            ],
+                           [0.0001, 2], [pi/1000,  pi - pi/1000 ],
             {
               color: '#ff99cc',
               opacity: 0.9
@@ -781,6 +802,8 @@
           
       data.push(s);
       data.push(t);
+      data.push(s1);
+      data.push(t1);
 
       var config = {
         type: 'threejs',
