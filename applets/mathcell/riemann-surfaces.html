@@ -43,6 +43,7 @@ parent.update = function(id) {
   var s = parametric((u, v) => [u * Math.cos(v),
           u * Math.sin(v),
           Re1(u * Math.cos(v), u * Math.sin(v))
+          //Im1(u * Math.cos(v), u * Math.sin(v))
         ],
         [0, 2], [-pi, pi],
         {
@@ -53,6 +54,7 @@ parent.update = function(id) {
    var t = parametric((u, v) => [u * Math.cos(v),
           u * Math.sin(v),
           Re2(u * Math.cos(v), u * Math.sin(v))
+          //Im2(u * Math.cos(v), u * Math.sin(v))
         ],
         [0, 2], [-pi, pi],
         {
