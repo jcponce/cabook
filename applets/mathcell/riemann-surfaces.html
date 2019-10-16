@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>Riemann surfaces</title>
+<link rel="stylesheet" type="text/css" href="https://paulmasson.github.io/mathcell/docs/style.css">
+<style></style>
+</head>
+
+<body>
+
+<script src="mathcell.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mathjax/MathJax@2.7.5/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<h1>Riemann surfaces with MathCell</h1>
+
+<p>Real component of \(f(z)=z^{1/2} \)</p>
+
+<div class="mathcell" style="width: 550px; height: 550px">
+<script>
+
+var parent = document.currentScript.parentNode;
+
+var id = generateId();
+parent.id = id;
+
+MathCell(id, []);
+
+parent.update = function(id) {
+    
+  var pi = Math.PI;
+
+  //Real component
+  var Re1 = (x, y) => Math.pow(x * x + y * y, 1 / 4) * Math.cos(1 / 2 * Math.atan2(y, x));
+
+  var Re2 = (x, y) => Math.pow(x * x + y * y, 1 / 4) * Math.cos(1 / 2 * (Math.atan2(y, x) + 2 * pi));
+  
+  //Imaginary component
+  //var Im1 = (x, y) => Math.pow(x * x + y * y, 1 / 4) * Math.sin(1 / 2 * Math.atan2(y, x));
+
+  //var Im2 = (x, y) => Math.pow(x * x + y * y, 1 / 4) * Math.sin(1 / 2 * (Math.atan2(y, x) + 2 * pi));
+
+  var data = [];
+
+  var s = parametric((u, v) => [u * Math.cos(v),
+          u * Math.sin(v),
+          Re1(u * Math.cos(v), u * Math.sin(v))
+        ],
+        [0, 2], [-pi, pi],
+        {
+          color: '#80aaff',
+          opacity: 0.9
+        }
+      );
+   var t = parametric((u, v) => [u * Math.cos(v),
+          u * Math.sin(v),
+          Re2(u * Math.cos(v), u * Math.sin(v))
+        ],
+        [0, 2], [-pi, pi],
+        {
+          color: '#cc99ff',
+          opacity: 0.9
+        }
+      );
+      
+  data.push(s);
+  data.push(t);
+
+  var config = {
+    type: 'threejs',
+    frame: true,
+    viewpoint: [1,-1,0.5]
+  };
+
+  evaluate(id, data, config);
+
+}
+
+parent.update(id);
+
+</script>
+</div>
+
+
+<p>Complete code for this example:</p>
+
+<pre id="codeDisplay"></pre>
+
+<script> getCompleteCode(); </script>
+
+<p>Imaginary component of \(f(z)=z^{1/2} \)</p>
+
+<div class="mathcell" style="width: 550px; height: 550px">
+<script>
+
+    var parent = document.currentScript.parentNode;
+
+    var id = generateId();
+    parent.id = id;
+
+    MathCell(id, []);
+
+    parent.update = function(id) {
+
+      var pi = Math.PI;
+
+      var Im1 = (x, y) => Math.pow(x * x + y * y, 1 / 4) * Math.sin(1 / 2 * Math.atan2(y, x));
+
+      var Im2 = (x, y) => Math.pow(x * x + y * y, 1 / 4) * Math.sin(1 / 2 * (Math.atan2(y, x) + 2 * pi));
+
+      var data = [];
+
+      var s = parametric((u, v) => [u * Math.cos(v),
+              u * Math.sin(v),
+              Im1(u * Math.cos(v), u * Math.sin(v))
+            ],
+            [0, 2], [-pi, pi - pi / 100000],
+            {
+              color: '#ff1a1a'
+            }
+          );
+       var t = parametric((u, v) => [u * Math.cos(v),
+              u * Math.sin(v),
+              Im2(u * Math.cos(v), u * Math.sin(v))
+            ],
+            [0, 2], [-pi, pi - pi / 100000],
+            {
+              color: '#339933',
+              opacity: 0.9
+            }
+          );
+          
+      data.push(s);
+      data.push(t);
+
+      var config = {
+        type: 'threejs',
+        frame: true,
+        viewpoint: [1,-1,0.5]
+      };
+
+      evaluate(id, data, config);
+
+    }
+
+    parent.update(id);
+
+</script>
+
+</div><!--Ends mathcell-->
+
+<p>Visit <a href="http://mathcell.org/">MathCell.org</a> to learn more about this project.</p>
+
+</body>
+</html>
