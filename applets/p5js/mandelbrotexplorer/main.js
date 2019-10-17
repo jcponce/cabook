@@ -5,12 +5,12 @@
  * Original code by Kato https://www.openprocessing.org/user/114431
  */
 
-// Last update 02-Jul-2019
+// Last update 02-Oct-2019
 
 let mandelbrot;
 
-let WIDTH = 670;
-let HEIGHT = 490;
+let WIDTH = 770;
+let HEIGHT = 590;
 let ctlsBack = 180;
 let sizePlot = false;
 let starting = false;
@@ -21,6 +21,7 @@ let right = 4;
 let zoomin = 5;
 let zoomout = 6;
 let reset = 7;
+let infor = 8;
 let changeC = false;
 
 let buttonUP;
@@ -30,6 +31,9 @@ let buttonRIGHT;
 
 let buttonZOOMIN;
 let buttonZOOMOUT;
+
+let buttonRESET;
+let buttonINFO;
 
 let sliderIter;
 
@@ -43,18 +47,8 @@ function centerCanvas() {
 }
 
 function setup() {
-    //createCanvas(WIDTH, HEIGHT);
-    //var cnv = createCanvas(WIDTH, HEIGHT);
-    //var x = (windowWidth - width) / 2;
-    //var y = (windowHeight - height) / 2;
-    //cnv.position(x, y);
     cnv = createCanvas(WIDTH, HEIGHT);
-    //centerCanvas();
-    
-    //var canvas = createCanvas(WIDTH, HEIGHT);
-    
-    // Move the canvas so it’s inside our <div id="sketch-holder">.
-    //canvas.parent('sketch-holder');
+    cursor(HAND);
     
     mandelbrot = new Mandelbrot();
     pixelDensity(1);//I need this for small devices
@@ -84,12 +78,16 @@ function draw() {
         text("Click to start!", width / 2, height / 2);
     }
     if(starting == true){
-    //cursor(HAND);
+    //
     textAlign(LEFT);
     mandelbrot.update();
     mandelbrot.plot();
-        
-        
+    fill(0);
+    stroke(0);
+    strokeWeight(0.2);
+    textSize(22);
+    text("Control keys", 35, 70);
+    text("Iterations", 35, 450);
     }
 
     
@@ -100,7 +98,8 @@ function draw() {
     zoomin = 5;
     zoomout = 6;
     reset = 7;
-    //console.log(sliderIter.value());
+    infor = 8;
+    console.log(infor);
     
 }
 
@@ -156,6 +155,8 @@ class Mandelbrot {
             this.zoomAt(395, 245, 0.95, false);
         if (zoomin === -5 || keyIsDown(KC_ZOOM))
             this.zoomAt(395, 245, 0.95, true);
+        if (infor === -8)
+            this.printDebug = !this.printDebug;
         if (reset === -7 ||keyIsDown(KC_RESET))
         {
             this.size.x = this.origSize.x;
@@ -222,7 +223,7 @@ class Mandelbrot {
             
             fill(255);
             stroke(0);
-            strokeWeight(4);
+            strokeWeight(2);
             textSize(18);
             text("x: " + str( round( this.pos.x * 100 )/100 )
                  + "\ny: " + str( round( this.pos.y * 100 )/100 )
@@ -234,8 +235,8 @@ class Mandelbrot {
         //draw constant label
         fill(255);
         stroke(0);
-        strokeWeight(1.5);
-        textSize(16);
+        strokeWeight(2);
+        textSize(20);
         if ( mouseX > ctlsBack ){
         text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", ctlsBack + 10, height-15);
         }
@@ -286,12 +287,12 @@ function setPixelHSV(x, y, h, s, v) {
         case 4: r = t, g = p, b = v; break;
         case 5: r = v, g = p, b = q; break;
     }
-    setPixelRGB(x, y, Math.round(r * 1), Math.round(g * 255), Math.round(b * 255));
+    setPixelRGB(x, y, Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
 }
 
 function controlsUI(){
     buttonUP = createButton('&uarr;');
-    buttonUP.position(80, 100);
+    buttonUP.position(70, 100);
     buttonUP.style('font-size','20');
     buttonUP.mousePressed(userUP);
     
@@ -324,10 +325,15 @@ function controlsUI(){
     buttonRESET.position(buttonUP.x, buttonUP.y+190);
     buttonRESET.style('font-size','20');
     buttonRESET.mousePressed(userRESET);
+                                           
+    buttonINFO = createButton('I');
+    buttonINFO.position(buttonUP.x, buttonUP.y+240);
+    buttonINFO.style('font-size','20');
+    buttonINFO.mousePressed(userINFO);
     
-    sliderIter = createSlider(0, 250, 180, 1);
-    sliderIter.style('width', '120px')
-    sliderIter.position(buttonUP.x-50, buttonUP.y+260)
+    sliderIter = createSlider(0, 400, 100, 1);
+    sliderIter.style('width', '130px')
+    sliderIter.position(buttonUP.x-50, buttonUP.y+370)
 }
 
 function userUP() {
@@ -356,6 +362,10 @@ function userZOOMOUT() {
 
 function userRESET() {
     reset = -7;
+}
+                                           
+function userINFO() {
+    infor = -8;
 }
 
 
