@@ -86,7 +86,7 @@ function draw() {
     stroke(0);
     strokeWeight(0.2);
     textSize(22);
-    text("Control keys", 35, 70);
+    text("Control keys", 30, 70);
     text("Iterations", 35, 450);
     }
 
@@ -293,6 +293,9 @@ function setPixelHSV(x, y, h, s, v) {
 function controlsUI(){
     buttonUP = createButton('&uarr;');
     buttonUP.position(70, 100);
+    buttonUP.addClass('button');
+    /*
+    
     buttonUP.style('font-size','20');
     buttonUP.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonUP.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -302,10 +305,13 @@ function controlsUI(){
     buttonUP.style('font-family', 'Arial');
     buttonUP.style('font-weight', 'bold');
     buttonUP.style('padding', '6 px 10 px');
+     */
     buttonUP.mousePressed(userUP);
     
     buttonDOWN = createButton('&darr;');
     buttonDOWN.position(buttonUP.x, buttonUP.y+45);
+    buttonDOWN.addClass('button');
+    /*
     buttonDOWN.style('font-size','20');
     buttonDOWN.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonDOWN.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -315,10 +321,13 @@ function controlsUI(){
     buttonDOWN.style('font-family', 'Arial');
     buttonDOWN.style('font-weight', 'bold');
     buttonDOWN.style('padding', '6 px 10 px');
+     */
     buttonDOWN.mousePressed(userDOWN);
     
     buttonLEFT = createButton('&larr;');
     buttonLEFT.position(buttonUP.x-50, (buttonUP.y+45));
+    buttonLEFT.addClass('button');
+    /*
     buttonLEFT.style('font-size','20');
     buttonLEFT.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonLEFT.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -328,10 +337,13 @@ function controlsUI(){
     buttonLEFT.style('font-family', 'Arial');
     buttonLEFT.style('font-weight', 'bold');
     buttonLEFT.style('padding', '6 px 10 px');
+     */
     buttonLEFT.mousePressed(userLEFT);
     
     buttonRIGHT = createButton('&rarr;');
     buttonRIGHT.position(buttonUP.x+45, (buttonUP.y+45));
+    buttonRIGHT.addClass('button');
+    /*
     buttonRIGHT.style('font-size','20');
     buttonRIGHT.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonRIGHT.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -341,10 +353,13 @@ function controlsUI(){
     buttonRIGHT.style('font-family', 'Arial');
     buttonRIGHT.style('font-weight', 'bold');
     buttonRIGHT.style('padding', '6 px 10 px');
+     */
     buttonRIGHT.mousePressed(userRIGHT);
     
     buttonZOOMIN = createButton('&plus;');
     buttonZOOMIN.position(buttonUP.x, buttonUP.y+100);
+    buttonZOOMIN.addClass('button');
+    /*
     buttonZOOMIN.style('font-size','20');
     buttonZOOMIN.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonZOOMIN.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -354,10 +369,13 @@ function controlsUI(){
     buttonZOOMIN.style('font-family', 'Arial');
     buttonZOOMIN.style('font-weight', 'bold');
     buttonZOOMIN.style('padding', '6 px 10 px');
+     */
     buttonZOOMIN.mousePressed(userZOOMIN);
     
     buttonZOOMOUT = createButton('&minus;');
     buttonZOOMOUT.position(buttonUP.x, buttonUP.y+140);
+    buttonZOOMOUT.addClass('button');
+    /*
     buttonZOOMOUT.style('font-size','20');
     buttonZOOMOUT.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonZOOMOUT.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -367,10 +385,13 @@ function controlsUI(){
     buttonZOOMOUT.style('font-family', 'Arial');
     buttonZOOMOUT.style('font-weight', 'bold');
     buttonZOOMOUT.style('padding', '6 px 10 px');
+     */
     buttonZOOMOUT.mousePressed(userZOOMOUT);
     
     buttonRESET = createButton('R');
     buttonRESET.position(buttonUP.x, buttonUP.y+190);
+    buttonRESET.addClass('button');
+    /*
     buttonRESET.style('font-size','20');
     buttonRESET.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonRESET.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -380,10 +401,13 @@ function controlsUI(){
     buttonRESET.style('font-family', 'Arial');
     buttonRESET.style('font-weight', 'bold');
     buttonRESET.style('padding', '6 px 10 px');
+     */
     buttonRESET.mousePressed(userRESET);
                                            
     buttonINFO = createButton('I');
     buttonINFO.position(buttonUP.x, buttonUP.y+240);
+    buttonINFO.addClass('button');
+    /*
     buttonINFO.style('font-size','20');
     buttonINFO.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
     buttonINFO.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
@@ -393,6 +417,7 @@ function controlsUI(){
     buttonINFO.style('font-family', 'Arial');
     buttonINFO.style('font-weight', 'bold');
     buttonINFO.style('padding', '6 px 10 px');
+     */
     buttonINFO.mousePressed(userINFO);
     
     sliderIter = createSlider(0, 400, 100, 1);
