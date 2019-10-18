@@ -235,81 +235,7 @@ colorplot(
 
 <th>
     
-    <script id="csinit" type="text/x-cindyscript">
-    drawcmd() := (
-      colorplot([0.2,0.3,0.4]);
-    );
-    resetclock();
-    </script>
-    <script id="csdraw" type="text/x-cindyscript">
-    drawcmd();
-    </script>
-
-    <div id="appletcontainer" style="font-size: 14px">
-        
-      <div id="applet">
-        
-        <div id="code"></div>
-        
-        <div id="CSCanvas"></div>
-        
-
-        <button id="fs">Enter fullscreen</button>
-        
-      </div>
-      
-    </div>
-    <script type="text/javascript">
-    window.onload = function() {
-      var cdy = CindyJS({
-        ports: [{
-          id: "CSCanvas",
-          transform: [{visibleRect:[-2,2,2,-2]}],
-          background: "rgb(100,100,100)"
-        }],
-        scripts: "cs*",
-        autoplay: true,
-        use: ["CindyGL"],
-        //animation: {autoplay: true},
-        language: "en"
-      });
-
-      var btn = document.getElementById("fs");
-      var div = document.getElementById("applet");
-      btn.onclick = function() {
-        (div.requestFullscreen ||
-         div.webkitRequestFullscreen ||
-         div.mozRequestFullScreen ||
-         div.msRequestFullscreen ||
-         function(){}).call(div);
-      };
-
-
-      var myCodeMirror = CodeMirror(document.getElementById("code"), {
-        value: 'N = 30; // maximal number of iterations \ncolorplot(\n  c = complex(#)-0.75; //center -0.75+0*i \n  z = 0; \n  n = 0; \n  repeat(N, k,\n    if(|z| <= 2,  // if we are inside circle, \n      z=z*z+c; // then iterate and \n      n = k;   // increase n \n  ); \n ); \n grey(n/N); // the last line is the return-value! \n);',
-        autoCloseBrackets: true,
-        matchBrackets: true,
-        //lineNumbers: true,
-        lineWrapping: true,
-        theme: "zenburn"
-      });
-
-      myCodeMirror.on("change", function(cm, change) {
-        console.log("something changed! (" + change.origin + ")");
-        cdy.evokeCS(`drawcmd() := (
-          ${cm.getValue()}
-          )`);
-      });
-
-      var codes = document.getElementsByClassName("lang-cindyscript");
-      for(i in codes) {
-        codes[i].parentElement.onclick = function(e) {
-          console.log(this.innerText);
-          myCodeMirror.setValue(this.innerText.trim())
-        }
-      }
-    }
-    </script>
+    
     
 </th>
 
@@ -318,7 +244,82 @@ colorplot(
 <br>
 
 
+<script id="csinit" type="text/x-cindyscript">
+drawcmd() := (
+  colorplot([0.2,0.3,0.4]);
+);
+resetclock();
+</script>
+<script id="csdraw" type="text/x-cindyscript">
+drawcmd();
+</script>
 
+<div id="appletcontainer" style="font-size: 14px">
+   
+   
+  <div  id="applet">
+      
+  <div  id="code"></div>
+    
+    <div  id="CSCanvas"></div>
+    
+
+    <button id="fs">Enter fullscreen</button>
+    
+  </div>
+  
+</div>
+<script type="text/javascript">
+window.onload = function() {
+  var cdy = CindyJS({
+    ports: [{
+      id: "CSCanvas",
+      transform: [{visibleRect:[-2,2,2,-2]}],
+      background: "rgb(100,100,100)"
+    }],
+    scripts: "cs*",
+    autoplay: true,
+    use: ["CindyGL"],
+    //animation: {autoplay: true},
+    language: "en"
+  });
+
+  var btn = document.getElementById("fs");
+  var div = document.getElementById("applet");
+  btn.onclick = function() {
+    (div.requestFullscreen ||
+     div.webkitRequestFullscreen ||
+     div.mozRequestFullScreen ||
+     div.msRequestFullscreen ||
+     function(){}).call(div);
+  };
+
+
+  var myCodeMirror = CodeMirror(document.getElementById("code"), {
+    value: 'N = 0; // maximal number of iterations \ncolorplot(\n  c = complex(#)-0.75; //center -0.75+0*i \n  z = 0; \n  n = 0; \n  repeat(N, k,\n    if(|z| <= 2,  // if we are inside circle, \n      z=z*z+c; // then iterate and \n      n = k;   // increase n \n  ); \n ); \n grey(1-n/N); // the last line is the return-value! \n);',
+    autoCloseBrackets: true,
+    matchBrackets: true,
+    //lineNumbers: true,
+    lineWrapping: true,
+    theme: "zenburn"
+  });
+
+  myCodeMirror.on("change", function(cm, change) {
+    console.log("something changed! (" + change.origin + ")");
+    cdy.evokeCS(`drawcmd() := (
+      ${cm.getValue()}
+      )`);
+  });
+
+  var codes = document.getElementsByClassName("lang-cindyscript");
+  for(i in codes) {
+    codes[i].parentElement.onclick = function(e) {
+      console.log(this.innerText);
+      myCodeMirror.setValue(this.innerText.trim())
+    }
+  }
+}
+</script>
 
 
 <!--

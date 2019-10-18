@@ -73,9 +73,13 @@ function draw() {
         rect(0,0, width, height);
         fill(0);
         stroke(0);
-        textAlign(CENTER);
+        textAlign(LEFT);
         textSize(32);
-        text("Click to start!", width / 2, height / 2);
+        text("Use the controls on the left side,", width / 2-180, height / 2 - 120);
+        text("or the corresponding keyboard keys.", width / 2-180, height / 2 - 70);
+        textAlign(CENTER);
+        text("Click here to start!", width / 2+50, height / 2 );
+        //Use the controls on the left side, or the corresonding keys, to explore.
     }
     if(starting == true){
     //
@@ -151,10 +155,10 @@ class Mandelbrot {
             this.pos.x -= moveSpeed;
         if (right === -4 || keyIsDown(KC_RIGHT))
             this.pos.x += moveSpeed;
-        if (zoomout === -6 || keyIsDown(KC_UNZOOM))
-            this.zoomAt(395, 245, 0.95, false);
-        if (zoomin === -5 || keyIsDown(KC_ZOOM))
-            this.zoomAt(395, 245, 0.95, true);
+        if ( keyIsDown(KC_UNZOOM))
+            this.zoomAt(mouseX, mouseY, 0.95, false);
+        if ( keyIsDown(KC_ZOOM))
+            this.zoomAt(mouseX, mouseY, 0.95, true);
         if (infor === -8)
             this.printDebug = !this.printDebug;
         if (reset === -7 ||keyIsDown(KC_RESET))
@@ -294,130 +298,41 @@ function controlsUI(){
     buttonUP = createButton('&uarr;');
     buttonUP.position(70, 100);
     buttonUP.addClass('button');
-    /*
-    
-    buttonUP.style('font-size','20');
-    buttonUP.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonUP.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonUP.style('background-color', '#ffffff');
-    buttonUP.style('border-radius', '6px');
-    buttonUP.style('border', '1px solid #dcdcdc');
-    buttonUP.style('font-family', 'Arial');
-    buttonUP.style('font-weight', 'bold');
-    buttonUP.style('padding', '6 px 10 px');
-     */
     buttonUP.mousePressed(userUP);
     
     buttonDOWN = createButton('&darr;');
     buttonDOWN.position(buttonUP.x, buttonUP.y+45);
     buttonDOWN.addClass('button');
-    /*
-    buttonDOWN.style('font-size','20');
-    buttonDOWN.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonDOWN.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonDOWN.style('background-color', '#ffffff');
-    buttonDOWN.style('border-radius', '6px');
-    buttonDOWN.style('border', '1px solid #dcdcdc');
-    buttonDOWN.style('font-family', 'Arial');
-    buttonDOWN.style('font-weight', 'bold');
-    buttonDOWN.style('padding', '6 px 10 px');
-     */
     buttonDOWN.mousePressed(userDOWN);
     
     buttonLEFT = createButton('&larr;');
     buttonLEFT.position(buttonUP.x-50, (buttonUP.y+45));
     buttonLEFT.addClass('button');
-    /*
-    buttonLEFT.style('font-size','20');
-    buttonLEFT.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonLEFT.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonLEFT.style('background-color', '#ffffff');
-    buttonLEFT.style('border-radius', '6px');
-    buttonLEFT.style('border', '1px solid #dcdcdc');
-    buttonLEFT.style('font-family', 'Arial');
-    buttonLEFT.style('font-weight', 'bold');
-    buttonLEFT.style('padding', '6 px 10 px');
-     */
     buttonLEFT.mousePressed(userLEFT);
     
     buttonRIGHT = createButton('&rarr;');
     buttonRIGHT.position(buttonUP.x+45, (buttonUP.y+45));
     buttonRIGHT.addClass('button');
-    /*
-    buttonRIGHT.style('font-size','20');
-    buttonRIGHT.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonRIGHT.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonRIGHT.style('background-color', '#ffffff');
-    buttonRIGHT.style('border-radius', '6px');
-    buttonRIGHT.style('border', '1px solid #dcdcdc');
-    buttonRIGHT.style('font-family', 'Arial');
-    buttonRIGHT.style('font-weight', 'bold');
-    buttonRIGHT.style('padding', '6 px 10 px');
-     */
     buttonRIGHT.mousePressed(userRIGHT);
     
     buttonZOOMIN = createButton('&plus;');
     buttonZOOMIN.position(buttonUP.x, buttonUP.y+100);
     buttonZOOMIN.addClass('button');
-    /*
-    buttonZOOMIN.style('font-size','20');
-    buttonZOOMIN.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonZOOMIN.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonZOOMIN.style('background-color', '#ffffff');
-    buttonZOOMIN.style('border-radius', '6px');
-    buttonZOOMIN.style('border', '1px solid #dcdcdc');
-    buttonZOOMIN.style('font-family', 'Arial');
-    buttonZOOMIN.style('font-weight', 'bold');
-    buttonZOOMIN.style('padding', '6 px 10 px');
-     */
     buttonZOOMIN.mousePressed(userZOOMIN);
     
     buttonZOOMOUT = createButton('&minus;');
     buttonZOOMOUT.position(buttonUP.x, buttonUP.y+140);
     buttonZOOMOUT.addClass('button');
-    /*
-    buttonZOOMOUT.style('font-size','20');
-    buttonZOOMOUT.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonZOOMOUT.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonZOOMOUT.style('background-color', '#ffffff');
-    buttonZOOMOUT.style('border-radius', '6px');
-    buttonZOOMOUT.style('border', '1px solid #dcdcdc');
-    buttonZOOMOUT.style('font-family', 'Arial');
-    buttonZOOMOUT.style('font-weight', 'bold');
-    buttonZOOMOUT.style('padding', '6 px 10 px');
-     */
     buttonZOOMOUT.mousePressed(userZOOMOUT);
     
     buttonRESET = createButton('R');
     buttonRESET.position(buttonUP.x, buttonUP.y+190);
     buttonRESET.addClass('button');
-    /*
-    buttonRESET.style('font-size','20');
-    buttonRESET.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonRESET.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonRESET.style('background-color', '#ffffff');
-    buttonRESET.style('border-radius', '6px');
-    buttonRESET.style('border', '1px solid #dcdcdc');
-    buttonRESET.style('font-family', 'Arial');
-    buttonRESET.style('font-weight', 'bold');
-    buttonRESET.style('padding', '6 px 10 px');
-     */
     buttonRESET.mousePressed(userRESET);
                                            
     buttonINFO = createButton('I');
     buttonINFO.position(buttonUP.x, buttonUP.y+240);
     buttonINFO.addClass('button');
-    /*
-    buttonINFO.style('font-size','20');
-    buttonINFO.style('box-shadow', 'inset 0px 1px 0px 0px #ffffff');
-    buttonINFO.style('background', 'linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%)');
-    buttonINFO.style('background-color', '#ffffff');
-    buttonINFO.style('border-radius', '6px');
-    buttonINFO.style('border', '1px solid #dcdcdc');
-    buttonINFO.style('font-family', 'Arial');
-    buttonINFO.style('font-weight', 'bold');
-    buttonINFO.style('padding', '6 px 10 px');
-     */
     buttonINFO.mousePressed(userINFO);
     
     sliderIter = createSlider(0, 400, 100, 1);
@@ -442,15 +357,18 @@ function userRIGHT() {
 }
 
 function userZOOMIN() {
-    zoomin = -5;
+    //zoomin = -5;
+    mandelbrot.zoomAt(475, 297,1.55, false);
 }
 
 function userZOOMOUT() {
-    zoomout = -6;
+    //zoomout = -6;
+    mandelbrot.zoomAt(475, 297, 1.55, true);
 }
 
 function userRESET() {
     reset = -7;
+    
 }
                                            
 function userINFO() {
