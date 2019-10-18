@@ -1,0 +1,48 @@
+#code {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  z-index: 100;
+}
+
+#fs {
+  position: relative;
+  right: -5px;
+  bottom: 25px;
+  z-index: 100;
+}
+
+#appletcontainer{
+  position: relative;
+  top: 0px;
+  right: 0px;
+  height: 400px;
+  width: 400px;
+  min-width:400px;
+}
+
+#applet {
+  width: 100%;
+  height: 100%;
+}
+
+#CSCanvas {
+  width: 100%;
+  height: 100%;
+  margin: 0px !important;
+}
+
+.CodeMirror {
+  background: rgba(0,0,0,0.8) !important;
+  height: auto;
+}
+
+pre:hover code {
+  font-weight: 400;
+  background-color: white;
+}
+
+main {
+  margin-right: 540px;
+}
