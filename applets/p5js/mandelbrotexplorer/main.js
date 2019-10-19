@@ -207,20 +207,15 @@ class Mandelbrot {
       let actualPos;
       let mouseC;
       let orbit = [];
-      //ArrayList < PVector > orbit = new ArrayList < PVector > ();
+
       let xt, yt;
 
       actualPos = new p5.Vector(mouseX, mouseY);
+      
       orbit.push(actualPos);
         
       xt = map(actualPos.x, ctlsBack, width, this.pos.x - this.size.x / 2, this.pos.x + this.size.x / 2);
       yt = map(actualPos.y, height, 0, this.pos.y - this.size.y / 2, this.pos.y + this.size.y / 2);
-      
-      //xt = this.pos.x + map(mouseX, ctlsBack, width, -this.size.x / 2, this.size.x / 2);
-      //yt = this.pos.y + map(mouseY, height, 0, -this.size.y / 2, this.size.y / 2);
-        
-      //xt = this.pos.x + map(mouseX, ctlsBack, width, -this.size.x / 2, this.size.x / 2);//this is for Mandelbrot
-      //yt = this.pos.y + map(mouseY, height, 0, -this.size.y / 2, this.size.y / 2);//this is for Mandelbrot
         
       virtualPos = new p5.Vector(0, 0);
       mouseC = new p5.Vector(xt, yt);
