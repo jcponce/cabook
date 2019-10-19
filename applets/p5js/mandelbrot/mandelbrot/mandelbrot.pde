@@ -12,7 +12,7 @@ void setup() {
   mandelbrotResolution = 100;
   drawMandelbrot();
   drawO = false;
-  drawJ = false;
+  drawJ = true;
   frameRate(60);
 }
 
