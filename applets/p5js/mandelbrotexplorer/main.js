@@ -33,7 +33,9 @@ let buttonZOOMIN;
 let buttonZOOMOUT;
 
 let buttonRESET;
+let buttonORBIT;
 let buttonINFO;
+
 
 let sliderIter;
 
@@ -85,13 +87,16 @@ function draw() {
     //
     textAlign(LEFT);
     mandelbrot.update();
+     
     mandelbrot.plot();
+           //mandelbrot.drawOrbit();
+        
     fill(0);
     stroke(0);
     strokeWeight(0.2);
     textSize(22);
     text("Control keys", 30, 70);
-    text("Iterations", 35, 450);
+    text("Iterations", 35, 500);
     }
 
     
@@ -110,6 +115,8 @@ function draw() {
 function keyReleased() {
     if (keyCode === 73)//I key
         mandelbrot.printDebug = !mandelbrot.printDebug;
+    if (keyCode === 79)//I key
+    mandelbrot.orbit = !mandelbrot.orbit;
    
 }
 
@@ -141,7 +148,9 @@ class Mandelbrot {
     this.maxIter = 180;
     this.origZoom = 1;
     this.zoom = this.origZoom;
+    this.orbit = false;
     this.printDebug = false;
+    
     }
     
     update(){
@@ -161,6 +170,8 @@ class Mandelbrot {
             this.zoomAt(mouseX, mouseY, 0.95, true);
         if (infor === -8)
             this.printDebug = !this.printDebug;
+        if (infor === -9)
+            this.orbit = !this.orbit;
         if (reset === -7 ||keyIsDown(KC_RESET))
         {
             this.size.x = this.origSize.x;
@@ -184,6 +195,60 @@ class Mandelbrot {
         this.size.x = this.origSize.x * this.zoom;
         this.size.y = this.origSize.y * this.zoom;
         
+    }
+    
+    mandelbrotCalculation(z, c) {
+      let o = new p5.Vector(z.x * z.x - z.y * z.y + c.x, 2 * z.x * z.y + c.y);
+      return o;
+    }
+    
+    drawOrbit() {
+      let virtualPos;
+      let actualPos;
+      let mouseC;
+      let orbit = [];
+      //ArrayList < PVector > orbit = new ArrayList < PVector > ();
+      let xt, yt;
+
+      actualPos = new p5.Vector(mouseX, mouseY);
+      orbit.push(actualPos);
+        
+      xt = map(actualPos.x, ctlsBack, width, this.pos.x - this.size.x / 2, this.pos.x + this.size.x / 2);
+      yt = map(actualPos.y, height, 0, this.pos.y - this.size.y / 2, this.pos.y + this.size.y / 2);
+      
+      //xt = this.pos.x + map(mouseX, ctlsBack, width, -this.size.x / 2, this.size.x / 2);
+      //yt = this.pos.y + map(mouseY, height, 0, -this.size.y / 2, this.size.y / 2);
+        
+      //xt = this.pos.x + map(mouseX, ctlsBack, width, -this.size.x / 2, this.size.x / 2);//this is for Mandelbrot
+      //yt = this.pos.y + map(mouseY, height, 0, -this.size.y / 2, this.size.y / 2);//this is for Mandelbrot
+        
+      virtualPos = new p5.Vector(0, 0);
+      mouseC = new p5.Vector(xt, yt);
+
+      let count = 0;
+      while (count < this.maxIter && dist(virtualPos.x, virtualPos.y, 0, 0) < 10) {
+        let next = this.mandelbrotCalculation(virtualPos, mouseC);
+        xt = map(next.x, this.pos.x - this.size.x / 2, this.pos.x + this.size.x / 2, ctlsBack, width);
+        yt = map(next.y, this.pos.y - this.size.y / 2, this.pos.y + this.size.y / 2, height, 0);
+        actualPos = new p5.Vector(xt, yt);
+        orbit.push(actualPos);
+        virtualPos = next;
+        count++;
+      }
+
+      beginShape();
+      noFill();
+      if (count == this.maxIter) {
+        stroke(255);
+      } else {
+        stroke(102, 255, 255);
+      }
+      strokeWeight(0.5 / 300 * width);
+      for (let P of orbit) {
+        vertex(P.x, P.y);
+      }
+      endShape();
+
     }
     
     plot(){
@@ -216,6 +281,11 @@ class Mandelbrot {
             }
         }
         updatePixels();
+        
+        if(this.orbit && mouseX>ctlsBack){
+          this.drawOrbit();
+        }
+        
         if (this.printDebug) {
             //Frame reference
             
@@ -326,18 +396,23 @@ function controlsUI(){
     buttonZOOMOUT.mousePressed(userZOOMOUT);
     
     buttonRESET = createButton('R');
-    buttonRESET.position(buttonUP.x, buttonUP.y+190);
+    buttonRESET.position(buttonUP.x, buttonUP.y+200);
     buttonRESET.addClass('button');
     buttonRESET.mousePressed(userRESET);
+    
+    buttonORBIT = createButton('O');
+    buttonORBIT.position(buttonUP.x, buttonUP.y+250);
+    buttonORBIT.addClass('button');
+    buttonORBIT.mousePressed(userORBIT);
                                            
     buttonINFO = createButton('I');
-    buttonINFO.position(buttonUP.x, buttonUP.y+240);
+    buttonINFO.position(buttonUP.x +3, buttonUP.y+300);
     buttonINFO.addClass('button');
     buttonINFO.mousePressed(userINFO);
-    
+
     sliderIter = createSlider(0, 400, 100, 1);
-    sliderIter.style('width', '130px')
-    sliderIter.position(buttonUP.x-50, buttonUP.y+370)
+    sliderIter.style('width', '140px')
+    sliderIter.position(buttonUP.x-50, buttonUP.y+420)
 }
 
 function userUP() {
@@ -373,6 +448,10 @@ function userRESET() {
                                            
 function userINFO() {
     infor = -8;
+}
+                                           
+function userORBIT() {
+    infor = -9;
 }
 
 
