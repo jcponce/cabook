@@ -86,10 +86,9 @@ function draw() {
     if(starting == true){
     //
     textAlign(LEFT);
+        
     mandelbrot.update();
-     
     mandelbrot.plot();
-           //mandelbrot.drawOrbit();
         
     fill(0);
     stroke(0);
@@ -115,7 +114,7 @@ function draw() {
 function keyReleased() {
     if (keyCode === 73)//I key
         mandelbrot.printDebug = !mandelbrot.printDebug;
-    if (keyCode === 79)//I key
+    if (keyCode === 79)//O key
     mandelbrot.orbit = !mandelbrot.orbit;
    
 }
@@ -307,7 +306,7 @@ class Mandelbrot {
         strokeWeight(2);
         textSize(20);
         if ( mouseX > ctlsBack ){
-        text("Mouse: (" + str(round(cX*100)/100.0) + "," + str(round(cY*100)/100.0) + ")", ctlsBack + 10, height-15);
+        text("Mouse: (" + str(round(cX*1000)/1000.0) + "," + str(round(cY*1000)/1000.0) + ")", ctlsBack + 10, height-15);
         }
         
         var xc = mouseX;
