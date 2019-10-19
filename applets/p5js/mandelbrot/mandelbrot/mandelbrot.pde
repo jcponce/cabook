@@ -11,8 +11,8 @@ void setup() {
   windowWidth = 1.5;
   mandelbrotResolution = 100;
   drawMandelbrot();
-  drawO = true;
-  drawJ = true;
+  drawO = false;
+  drawJ = false;
   frameRate(60);
 }
 
