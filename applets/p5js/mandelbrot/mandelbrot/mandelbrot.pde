@@ -15,15 +15,39 @@ void setup() {
   drawJ = true;
   frameRate(60);
 }
+boolean starting = false;
+
+void mouseClicked() {
+  starting = true;
+}
 
 void draw() {
-  image(mandelbrotImage, 0, 0);
 
-  if (drawO) {
-    drawOrbit();
+  //Initial message
+  if (starting == false) {
+    fill(190);
+    stroke(190);
+    rect(0, 0, width, height);
+    fill(0);
+    stroke(0);
+    textAlign(LEFT);
+    textSize(32);
+    //text("Use the controls on the left side,", width / 2-180, height / 2 - 120);
+    //text("or the corresponding keyboard keys.", width / 2-180, height / 2 - 70);
+    textAlign(CENTER);
+    text("Click here to start!", width / 2, height / 2);
+    //Use the controls on the left side, or the corresonding keys, to explore.
   }
-  if (false) {
-    drawJulia();
+
+  if (starting == true) {
+    image(mandelbrotImage, 0, 0);
+
+    if (drawO) {
+      drawOrbit();
+    }
+    if (false) {
+      drawJulia();
+    }
   }
 }
 
@@ -107,8 +131,12 @@ void drawOrbit() {
 
 float KC_UNZOOM = 189; // Zoom back -
 float KC_ZOOM = 187; // Zoom in +
+
+int set = 0;
+
 void mousePressed() {
   float xp, yp;
+  set++;
 
   xp = map(mouseX, 0, width, windowCenter.x - windowWidth, windowCenter.x + windowWidth);
   yp = map(mouseY, height, 0, windowCenter.y - windowWidth, windowCenter.y + windowWidth);
