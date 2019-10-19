@@ -9,21 +9,22 @@ void setup() {
   colorMode(HSB, 255);
   windowCenter = new PVector(-0.5, 0);
   windowWidth = 1.5;
-  mandelbrotResolution = 200;
+  mandelbrotResolution = 100;
   drawMandelbrot();
   drawO = true;
   drawJ = true;
   frameRate(60);
 }
-boolean starting = false;
 
-void mouseClicked() {
-  starting = true;
-}
+//boolean starting = false;
+
+//void mouseClicked() {
+//  starting = true;
+//}
 
 void draw() {
 
-  //Initial message
+  /*Initial message
   if (starting == false) {
     fill(190);
     stroke(190);
@@ -37,9 +38,9 @@ void draw() {
     textAlign(CENTER);
     text("Click here to start!", width / 2, height / 2);
     //Use the controls on the left side, or the corresonding keys, to explore.
-  }
+  }*/
 
-  if (starting == true) {
+  //if (starting == true) {
     image(mandelbrotImage, 0, 0);
 
     if (drawO) {
@@ -48,7 +49,7 @@ void draw() {
     if (false) {
       drawJulia();
     }
-  }
+  //}
 }
 
 void drawJulia() {
@@ -129,14 +130,9 @@ void drawOrbit() {
 
 }
 
-float KC_UNZOOM = 189; // Zoom back -
-float KC_ZOOM = 187; // Zoom in +
-
-int set = 0;
 
 void mousePressed() {
   float xp, yp;
-  set++;
 
   xp = map(mouseX, 0, width, windowCenter.x - windowWidth, windowCenter.x + windowWidth);
   yp = map(mouseY, height, 0, windowCenter.y - windowWidth, windowCenter.y + windowWidth);
@@ -156,8 +152,6 @@ void mousePressed() {
 
 
 void keyPressed() {
-
-
 
   if (key == ' ') {
     //reset window
