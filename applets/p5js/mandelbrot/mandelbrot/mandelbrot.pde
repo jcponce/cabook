@@ -146,7 +146,7 @@ void mousePressed() {
     windowWidth *= 1.5;
   }
 
-  println("new center: (" + str(windowCenter.x) + ", " + str(windowCenter.y) + " i) and new window width of " + str(windowWidth));
+  println("new center: (" + str( round(windowCenter.x * 100)/100 ) + ", " + str(windowCenter.y) + " i) and new window width of " + str(windowWidth));
   drawMandelbrot();
 }
 
