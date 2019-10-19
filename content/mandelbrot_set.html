@@ -214,12 +214,12 @@
     It is clear that in this case further iterations will just repeat the values $−1+i$ and $−i$. All of these complex numbers lie within distance 3 of the origin. So they stay in a bounded subset of the plane; they do not run out to infinity. So the number $z_0=i$ is <em>in</em> the Mandelbrot set.
     </p>
     
-    <p>It is great fun to calculate elements of the Mandelbrot set and to plot them. The resulting set is endlessly complicated. And for this purpose we can use the power of the computer. In the applet below a point $z_0$ is defined on the complex plane. 400 terms of the sequence $z_n$ are calculated and plotted. Of course, the computer can not handle infinity, so we need to choose a big number instead. For our purposes 100000 will be enough. Thus we will use the following condition:</p>
+    <p>It is great fun to calculate elements of the Mandelbrot set and to plot them. The resulting set is endlessly complicated. And for this purpose we can use the power of the computer. In the applet below a point $z_0$ is defined on the complex plane. Then 400 terms of the sequence $z_n$ are calculated and plotted. Of course, the computer can not handle infinity, so we need to choose a big number instead. For our purposes $10^5$ will be enough. Thus we can set the following condition:</p>
     
     <div class="w3-padding">
         <p>If the last term on the sequence $z_n$ is outside a disk of radius 100000, then $z_0$ is not in the Mandelbrot Set and its color will be <em>WHITE</em>. If it is inside that disk, then $z_0$ is <em>in</em> the Mandelbrot Set and its color will be <em>BLACK</em>.</p></div>
     
-    <p>Explore the iteration orbits in the applet. Observe its behaviour while dragging the point. Activate the <strong>Trace</strong> box to sketch the Mandelbrot set or drag the slider.</p>
+    <p>Now explore the iteration orbits in the applet. Observe its behaviour while dragging the point. Activate the <strong>Trace</strong> box to sketch the Mandelbrot set or drag the slider.</p>
     
     <div class="w3-center w3-hide-small">
         <p><iframe scrolling="no" title="Mandelbrot iteration orbits" src="https://www.geogebra.org/material/iframe/id/hvuaudu6/width/800/height/594/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="800px" height="594px" style="border:0px;" allowfullscreen> </iframe></p>
@@ -236,10 +236,15 @@
     
     <h2>Colorful Mandelbrot Set</h2>
     
-    <p>In the previous applet the Mandelbrot set is sketched using only one single point. It is possible to plot this set considering a particular region of pixels on the screen. The simplest algorithm for generating a representation of the Mandelbrot set is known as the <a href="https://www.mi.sanu.ac.rs/vismath/javier/b2.htm">escape time algorithm</a>. A repeating calculation is performed for each $x$, $y$ point in the plot area and based on the behavior of that calculation, a color is chosen for that pixel.</p>
+    <p>In the previous applet the Mandelbrot set is sketched using only one single point. However, it is possible to plot this set considering a particular region of pixels on the screen. The simplest algorithm for generating a representation of the Mandelbrot set is known as the <a href="https://www.mi.sanu.ac.rs/vismath/javier/b2.htm">escape time algorithm</a>. A repeating calculation is performed for each $x$, $y$ point in the plot area and based on the behavior of that calculation, a color is chosen for that pixel.</p>
     
     
-    <p>In the following applet you can explore the Mandelbrot set in more detail. Zoom in or out in different regions. Change the number of number of iterations and observe what happens to the plot. In this case, the <strong>hsv</strong> color scheme is used and depends on the number of iterations.</p>
+    <p>In the following applet you can explore the Mandelbrot set with more detail. Zoom in or out in different regions. Change the number of number of iterations and observe what happens to the plot. In this case, a <strong>hsv</strong> color scheme is used and depends on the distance from point $z_0$ (in exterior or interior) to nearest point on the boundary of the Mandelbrot set. In other words, provided that the maximal number of iterations is sufficiently high, we can obtain a picture of the Mandelbrot set with the following properties:
+    <uol>
+        <li>Every pixel that contains a point of the Mandelbrot set is colored black.</li>
+        <li>Every pixel that is colored black is close to the Mandelbrot set.</li>
+    </ol>
+    </p>
     
     <!--
     <p>The simplest algorithm for generating a representation of the Mandelbrot set is known as the <em>escape time</em> algorithm. A repeating calculation is performed for each $x$, $y$ point in the plot area and based on the behavior of that calculation, a color is chosen for that pixel.</p>
@@ -278,12 +283,11 @@
     </code></pre>
     -->
     
-    
-    
-    
     <div class="w3-center w3-hide-small">
         <iframe src="../applets/p5js/mandelbrotexplorer/index.html"  width="770px" height="590px" style="border:none;" style="overflow:hidden;" scrolling="no"></iframe>
         <p class="w3-text-grey w3-medium"><strong>+:</strong> Zoom In &nbsp; &nbsp; &nbsp; &nbsp; <strong>-:</strong> Zoom Out &nbsp; &nbsp; &nbsp; &nbsp; <strong>R</strong>=Reset view &nbsp; &nbsp; &nbsp; &nbsp; <strong>I</strong>=Information &amp; Frame</p>
+        
+        <p><strong>Note:</strong> This applet was made with <a href="https://p5js.org">p5.js</a> and the source code can be found in <a href="../../applets/p5js/mandelbrotexplorer">GitHub</a>. You can also access an online version here: <a >Mandelbrot Set</a> </p>
     </div>
     
     <div class="w3-hide-large w3-hide-medium">
@@ -294,10 +298,9 @@
     
     <h3>Further reading</h3>
     
-    <p>There are various geometric questions that we can ask about the Mandelbrot set. For instance, is it connected, that is, is it just of one piece? This turns out to be true, and was proved by <a href="http://pi.math.cornell.edu/~hubbard/OrsayFrench.pdf" target="_blank">Douady and Hubbard</a> in the 80's.</p>
+    <p>Although the Mandelbrot set is defined by a very simple rule, it possesses interesting and complex properties that can be seen graphically if we pay close attention to the computer-genereted pictures. A geometric question we can ask is, for instance, is it connected, that is, is it just of one piece? This turns out to be true, and was proved by <a href="http://pi.math.cornell.edu/~hubbard/OrsayFrench.pdf" target="_blank">Douady and Hubbard</a> in the 80's.</p>
 
-    <p>If you want to learn more details about this amazing set I recommend you to consult Mandelbrot's work:
-    
+    <p>If you want to learn more details about this amazing set I recommend you to consult B. B. Mandelbrot's works:
     <ul>
     <li>
         <a href="https://www.amazon.com/Fractal-Geometry-Nature-Benoit-Mandelbrot/dp/0716711869" target="_blank">The Fractal Geometry of Nature.</a> New York: W. H. Freeman, 1983.
@@ -308,7 +311,7 @@
     </ul>
     </p>
     
-    <p>Finally, one of the most widely read basic introductions to the Mandelbrot set and other fractals is by H.O.Peitgen and P.H.Richter, <a href="https://www.springer.com/gp/book/9783540158516" target="_blank">The Beauty of Fractals</a>, 1986. It contains many spectacular pictures.</p>
+    <p>Finally, one of the most widely read basic introductions to the Mandelbrot set and other fractals is by H. O. Peitgen and P. H. Richter, <a href="https://www.springer.com/gp/book/9783540158516" target="_blank">The Beauty of Fractals</a>, 1986. It contains many spectacular pictures.</p>
     
 
 	<!-- link to the next page -->
