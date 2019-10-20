@@ -11,7 +11,8 @@
 function createGUI(){
     // create gui (dat.gui)
     let gui = new dat.GUI({
-                          width: 200
+                          width: 220,
+                          autoPlace: false
                           });
     gui.close();
     gui.add(clts, 'iter', 0, 300).step(1).name("Iter:");
@@ -20,6 +21,9 @@ function createGUI(){
     gui.add(clts, 'User').name("Set c:");
     gui.add(clts, 'Cx').min(-4).max(4).step(0.01).name("Re(c):");
     gui.add(clts, 'Cy').min(-4).max(4).step(0.01).name("Im(c):");
+    
+    var customContainer = document.getElementById('my-gui-container');
+    customContainer.appendChild(gui.domElement);
     
     //let folder = gui.addFolder('More options');
     

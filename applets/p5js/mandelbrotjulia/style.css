@@ -87,3 +87,9 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
+#my-gui-container {
+    position: absolute;
+    left: 200px;   /* position inside relatively positioned parent */
+    top: 0px;
+    z-index: 0;   /* adjust as needed */
+}
