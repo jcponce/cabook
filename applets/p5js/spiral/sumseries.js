@@ -21,6 +21,7 @@ function form(k) {
   //return k/(11)+k*k/(21)+k*k*k/(31);
   //return k/(3)+k*k/(11)+k*k*k/(79);
   return log(k+1)+(k+1)*(k+1)/100;
+  //return sqrt(random(0.1, 50) * k)
 }
 
 const arrSum = arr => arr.reduce((a,b) => a + b, 0)

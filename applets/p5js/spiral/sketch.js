@@ -28,9 +28,9 @@ function draw() {
   
   cursor(HAND);
   let xc = constrain(mouseX, 0, width);
-  n = map(xc, 0, width, 0, maxNum);
+  //n = map(xc, 0, width, 0, maxNum);
   
-  w = 80;
+  w = 100;
   h = (w * height) / width;
   
   // Start at negative half the width and height
@@ -56,13 +56,13 @@ function draw() {
   }
   pop();
   
-  //n+=2;
-  //if(n>maxNum){
-  // n=1;
-  // r = random();
-  // g = random();
-  // b = random();
-  //}
+  n+=2;
+  if(n>maxNum){
+   n=1;
+   r = random();
+   g = random();
+   b = random();
+  }
   
 }
 
