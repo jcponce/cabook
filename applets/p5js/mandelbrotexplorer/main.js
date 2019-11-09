@@ -291,20 +291,20 @@ class Mandelbrot {
             
             fill(255);
             stroke(0);
-            strokeWeight(2);
-            textSize(20);
+            strokeWeight(3);
+            textSize(24);
             text("x: " + str( round( this.pos.x * 100 )/100 )
                  + "\ny: " + str( round( this.pos.y * 100 )/100 )
                  + "\nzoom: " + str( round(  (1 / this.zoom) * 100 )/100 )
                  + "\niterations: " + str( round(  (this.maxIter) * 100 )/100 )
-                 , ctlsBack + 10, 15
+                 , ctlsBack + 10, 18
                  );
         }
         //draw constant label
         fill(255);
         stroke(0);
-        strokeWeight(2);
-        textSize(20);
+        strokeWeight(3);
+        textSize(24);
         if ( mouseX > ctlsBack ){
         text("Mouse: (" + str(round(cX*1000)/1000.0) + "," + str(round(cY*1000)/1000.0) + ")", ctlsBack + 10, height-15);
         }
