@@ -26,6 +26,17 @@
 	<meta property="og:url" content="">-->
 	<meta name="twitter:card" content="An online interactive introduction to the study of complex analysis.">
 	<meta property="og:site_name" content="Complex Analysis">
+        
+    <style>
+        .scrolling-iframe {
+          margin-top: 35px;
+          display: inline-block;
+          
+        }
+    .no-scroll {
+      pointer-events: none;
+    }
+    </style>
     
 	
 	<!-- FONTS AND CSS -->
@@ -251,7 +262,7 @@
    
    <div class="w3-center w3-hide-small">
        <p class="w3-text-grey w3-hide-large">Pssst! If you are using a tablet, try this applet in your desktop for better interaction.</p>
-        <iframe  name="Mandelbrot" src="../applets/p5js/mandelbrotexplorer/index.html"  width="770px" height="590px" style="border:none;" style="overflow:hidden;" scrolling="no"></iframe>
+        <iframe  style="display: none;" onload="this.style.display='block';" scrolling="no" frameborder="0" marginheight="0px"  name="Mandelbrot" src="../applets/p5js/mandelbrotexplorer/index.html"  width="770px" height="590px" style="border:none;"  ></iframe>
         <p class="w3-text-grey w3-medium"><strong>+:</strong> Zoom In &nbsp; &nbsp; &nbsp; <strong>-:</strong> Zoom Out &nbsp; &nbsp; &nbsp; <strong>R</strong>=Reset view &nbsp; &nbsp; &nbsp; <strong>O</strong>=Orbit &nbsp; &nbsp; &nbsp; <strong>I</strong>=Information &amp; Frame</p>
 
    
@@ -355,20 +366,6 @@
 <script src="../js/smartquotes.min.js"></script>
 
 </body>
-<script>
-    $(function() {
-      
-      var toolbox = $('#toolbox'),
-      height = toolbox.height(),
-      scrollHeight = toolbox.get(0).scrollHeight;
-      
-      toolbox.bind('mousewheel', function(e, d) {
-                   if((this.scrollTop === (scrollHeight - height) && d < 0) || (this.scrollTop === 0 && d > 0)) {
-                   e.preventDefault();
-                   }
-                   });
-      
-      });
-    </script>
+
 
 </html>
