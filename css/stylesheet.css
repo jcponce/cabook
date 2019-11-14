@@ -85,6 +85,8 @@ figcaption {
 ul, ol {
 	font-size: 			1em;
 	line-height:		1.4em;
+    padding-left:       1em;
+    padding-right:      1em;
 }
 ul {
 	margin:				-1.3em 0 1.3em 0;
@@ -98,7 +100,7 @@ ul li:before {
 	content: 			'+';
 }
 h3 + ul {
-	margin-top: 		0em;
+	margin-top: 		0.2em;
 }
 
 ol {
@@ -106,7 +108,7 @@ ol {
 	margin-left: 		1em;
 }
 ol li {
-	padding-left:		0.3em;
+	padding-left:		1.3em;
 	margin-bottom:		0.3em;
 }
 
