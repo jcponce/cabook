@@ -286,6 +286,8 @@ color(z) := ( //what color should be given to a complex number z?
 colorplot(
   regional(z, ac, bc, cc, dc);
   
+  //Plotted in the square [-5,5]X[-5,5]
+  
   z = complex(#)*5;
   ac = complex(A)*5;
   bc = complex(B)*5;
@@ -299,6 +301,11 @@ colorplot(
 );
 
 draw((1,-1),(1,1), color->(0,0,0), size->2);
+                                    
+//draw((-1,0),(1,0),color->gray(.5),size->3);
+//draw((0,1),(0,-1),color->gray(.5),size->3);
+
+                                    
 </script>
 
 <script type="text/javascript">
@@ -516,8 +523,8 @@ b=z-B,
 c=z-C,
 d=z-D.}
 \]
-Here $z$ is the location in the image. Finally, the variable $\text{e}$ is a real scalar that can be adjusted
-between $-1$ and $+1$.</p>
+Here $z$ is the location in the image. The variable $\text{'e'}$ is a real scalar that can be adjusted
+between $-1$ and $+1$. Finally, the functions are plotted on the region \([-5,5]\times [-5,5]\).</p>
 
 
 <div >
