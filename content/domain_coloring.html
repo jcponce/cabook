@@ -288,11 +288,11 @@ colorplot(
   
   //Plotted in the square [-5,5]X[-5,5]
   
-  z = complex(#)*5;
-  ac = complex(A)*5;
-  bc = complex(B)*5;
-  cc = complex(C)*5;
-  dc = complex(D)*5;
+  z = complex(#)*4;
+  ac = complex(A)*4;
+  bc = complex(B)*4;
+  cc = complex(C)*4;
+  dc = complex(D)*4;
   
   fval = f(z, z-ac, z-bc, z-cc, z-dc, xx, ac, bc, cc, dc);
   
@@ -511,11 +511,11 @@ $$z_{1}=\frac{-1 + \sqrt{3}\,i}{2} \quad \text{and} \quad z_{2}=\frac{-1 - \sqrt
     
     <hr>
 
-<h2>Explore complex functions</h2>
+<h2 id="plotter">Explore complex functions</h2>
     
-<p>Use the following applet to explore enhanced phase portraits of complex functions.
+<p>Use the applet below to explore enhanced phase portraits of complex functions.
 Variables accessible in the freely editable formula are
-\[\text{z, A, B, C, D, a, b, c, d, e}\]
+\[\text{z, A, B, C, D, a, b, c, d}\]
 where $\text{a, b, c}$  and $\text{d}$ depend on the position of the colored complex points $\text{A, B, C}$ and $\text{D}$, respectively. The dependence is
 \[\text{
 a=z-A,
@@ -523,8 +523,8 @@ b=z-B,
 c=z-C,
 d=z-D.}
 \]
-Here $z$ is the location in the image. The variable $\text{'e'}$ is a real scalar that can be adjusted
-between $-1$ and $+1$. Finally, the functions are plotted on the region \([-5,5]\times [-5,5]\).</p>
+Here $z$ is the location in the image. The parameter $\text{'e'}$ is a real scalar that can be adjusted
+between $-1$ and $1$. Finally, the functions are plotted on the region \([-4,4]\times [-4,4]\).</p>
 
 
 <div >
@@ -556,15 +556,15 @@ between $-1$ and $+1$. Finally, the functions are plotted on the region \([-5,5]
   <option>z^(1+i)</option>
   <option value="z^A" data-cdy="A.xy=(0.168, -0.15);">z^A - Move point A</option>
   <option value="(sin(a)/sin(b))^(1+i)" data-cdy="A.xy=(-0.38, -0.45);B.xy=(0.5, 0.3)">(sin(a)/sin(b))^(1+i) - Move A &amp; B</option>
-  <option value="z/2*exp(cos(seconds())*pi*i*exp(-abs(z/2)^2))" data-cdy="linear=true;">Distortion</option>
-  <option value="(e*z)^(1+14*cos(0.2*seconds())*i)*cos(((e*z)-1)/((e*z)^13+(e*z)+1))" data-cdy="E.x=1.73;grid1=false;grid2=false;">13 Essential singularities</option>
+  <option value="z/2*exp(cos(seconds())*pi*i*exp(-abs(z/2)^2))" data-cdy="linear=true;grid1=true;grid2=true;">Distortion</option>
+  <option value="(e*z)^(1+14*cos(0.2*seconds())*i)*cos(((e*z)-1)/((e*z)^13+(e*z)+1))" data-cdy="E.x=1.78;grid1=false;grid2=false;">13 Essential singularities</option>
   <option value="(exp(z)-exp(-z))/2">sinh(z)</option>
   <option value="z = 0; repeat(50, z = z*z +a/4; z = z/abs(z)*min(abs(z),10));" data-cdy="A.xy=(1/2, 0);">Mandelbrot set</option>
-  <option value="z=z/4; repeat(11, z = z*z + A/5);" data-cdy="A.xy=(0.3, 0.01);">Julia set</option>
-  <option value="z = a/3;(1-z^(20*e))/(1-z)">Convergence of Geometric series</option>
-  <option value="repeat(5, z = z - (z^3-A)/(3*z^2));">Newton - Move point A</option>
+  <option value="z=z*0.4; repeat(11, z = z*z + A/5);" data-cdy="A.xy=(0.5, -0.1);">Julia set</option>
+  <option value="z = a/2;(1-z^(20*e))/(1-z)" data-cdy="A.xy=(0, 0);">Convergence of Geometric series</option>
+  <option value="repeat(5, z = z - (z^3-A)/(3*z^2));" data-cdy="A.xy=(0.5, -0.1);">Newton - Move point A</option>
   <option value="z=a; repeat(11, z = z - (z^3-b*c*d)/(3*z^2));" data-cdy="A.xy=(-0.38, -0.45);B.xy=(0.5, 0.3)">Newton-like   - Move points A,B,C &amp; D</option>
-  <option value="U=|A|;C=10*im(A);T=(e+1)/2;a=1;r=0.23*sqrt(13*2);center=-0.15+0.23*i;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=(z-center)/r;if(|z|<|a|,0,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)))/10;" data-cdy="A.xy=(-0.568, 0.05);E.x=2.1;linear=true;">Joukowsky Airfoil - Move point A &amp; e</option>
+  <option value="U=|A|;C=10*im(A);T=(e+1)/2;a=1;r=0.23*sqrt(13*2);center=-0.15+0.23*i;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=(z-center)/r;if(|z|<|a|,0,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)))/10;" data-cdy="A.xy=(-0.568, -0.001);E.x=-1;linear=true;R.x=1.99;">Joukowsky Airfoil - Move point A &amp; e</option>
   <!--<option value="U=re(B);C=10*im(C);T=(e+1)/2;center=D;a=|A-D|;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=z-center;if(|z|<|a|,-1,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)+i*pi))/10" data-cdy="D.xy=(-0.0493, 0.0712); A.xy=(0.218, 0.0868); E.x=100; S.x=1.2595; linear=true;">Joukowsky airfoil</option>-->
 </select>
 
