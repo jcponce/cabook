@@ -99,12 +99,12 @@ class MandelbrotSet {
         if (this.printDebug) {
             //Frame reference maybe for later
             
-            /*stroke(220);
+            stroke(220);
             strokeWeight(2);
-            line((width+ctlsBack)/2, 0, (width+ctlsBack)/2, height);
-            line(ctlsBack, height/2, (width+ctlsBack), height/2);
-            ellipse((width+ctlsBack)/2, height/2, 8, 8);
-             */
+            line((width)/4, 0, (width)/4, height);
+            line(0, height/2, (width), height/2);
+            ellipse((width)/4, height/2, 8, 8);
+             
             
             fill(255);
             stroke(0);
