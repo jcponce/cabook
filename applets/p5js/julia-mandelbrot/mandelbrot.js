@@ -109,13 +109,13 @@ class MandelbrotSet {
             fill(255);
             stroke(0);
             strokeWeight(3);
-            textSize(18);
+            textSize(22);
             
             text("x: " + str( round( this.pos.x * dgts )/dgts )
                  + "\ny: " + str( round( this.pos.y * dgts )/dgts )
                  + "\nzoom: " + str( round(  (1 / this.zoom) * dgts )/dgts )
                  + "\niterations: " + str( round(  (this.maxIter) * dgts )/dgts )
-                 ,  10, 15
+                 ,  10, 19
                  );
         }
         
@@ -123,7 +123,7 @@ class MandelbrotSet {
         fill(255);
         stroke(0);
         strokeWeight(3);
-        textSize(18);
+        textSize(22);
         text("c = (" + str(round(this.cX *dgts)/dgts) + "," + str(round(this.cY*dgts)/dgts) + ")",  10, height-15);
         
     }

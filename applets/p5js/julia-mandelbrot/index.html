@@ -4,7 +4,7 @@
 <meta name="description" content="Mandelbrot-Julia Sets explorer">
 <meta name="author" content="Juan Carlos Ponce Campuzano">
 <meta name="language" content="en"/>
-<title>Mandelbrot-Julia Sets Relationship explorer</title>
+<title>Julia &amp; Mandelbrot Sets Relationship</title>
 <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
 <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
 <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
@@ -49,6 +49,15 @@
         location.reload();
     }
 </script>
+
+<script type="text/javascript">
+    function closeCurrentTab(){
+        var conf=confirm("Are you sure, you want to close this tab?");
+        if(conf==true){
+            close();
+        }
+    }
+</script>
 <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
 <link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity16.png" sizes="16x16">
@@ -63,9 +72,10 @@
   position: sticky;
   top: 0;
 }
- body {
+ html, body {
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 canvas {
@@ -84,17 +94,17 @@ canvas {
 <!-- This line removes any default padding and style. You might only need one of these values set. -->
 
 </head>
-<body style="background-color:#333333;">
+<body style="background-color:#f2f2f2">
 
 
 <!-- Navbar Stars-->
-<div class="w3-container w3-black w3-xlarge sticky">
+<div class="w3-container w3-black w3-xlarge w3-text-black sticky">
 <div class="w3-display-topmiddle">
-    <a href="https://jcponce.github.io/#sketches" class="w3-button w3-hover-light-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-arrow-circle-left"></i></a>
+    <a onclick="closeCurrentTab()" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-times"></i></a>
 &nbsp;
-<a onclick="myFunction()" class="w3-button w3-hover-light-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-redo"></i></a>
+<a onclick="myFunction()" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-redo"></i></a>
 &nbsp;
-<a href="https://github.com/jcponce/complex/tree/gh-pages/mandelbrotjulia" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge"> <i class="fas fa-code"></i></a>
+<a href="https://github.com/jcponce/cabook/tree/gh-pages/applets/p5js/julia-mandelbrot" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge"> <i class="fas fa-code"></i></a>
 &nbsp;
 <a class="myBtn_multi w3-button w3-hover-grey w3-opacity w3-round-xxlarge w3-hide-small" id="myBtn"> <i class="fas fa-question"></i></a>
 
@@ -121,7 +131,7 @@ canvas {
             <br>
             
         </div>
-        <p>Welcome! With this application you can explore the relationship between the Mandelbrot and Julia Sets. Move the mouse around to see different Julia sets.</p>
+        <p>Welcome! With this application you can explore the relationship between the Julia and Mandelbrot  Sets. Move the mouse around to see different Julia sets.</p>
         <p>Open the controls (upper right corner) to change the number of iterations or to set the value of <strong>c</strong>.</p>
         
         <p  style="text-align:center" class="w3-xlarge" ><strong>Control keys</strong></p>

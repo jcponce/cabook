@@ -17,11 +17,11 @@ function createGUI(){
     gui.add(clts, 'iter', 0, 300).step(1).name("Iterations:");
     gui.add(clts, 'Save').name("Save (jpg)");
     
-    let folder = gui.addFolder('More options');
     
-    folder.add(clts, 'User').name("Set c:");
-    folder.add(clts, 'Cx').min(-4).max(4).step(0.01).name("Re(c):");
-    folder.add(clts, 'Cy').min(-4).max(4).step(0.01).name("Im(c):");
+    
+    gui.add(clts, 'User').name("Set c:");
+    gui.add(clts, 'Cx').min(-4).max(4).step(0.01).name("Re(c):");
+    gui.add(clts, 'Cy').min(-4).max(4).step(0.01).name("Im(c):");
 }
 
 function pointGuide(){
