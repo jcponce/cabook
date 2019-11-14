@@ -46,6 +46,15 @@
         location.reload();
     }
 </script>
+
+<script type="text/javascript">
+    function closeCurrentTab(){
+        var conf=confirm("Are you sure, you want to close this tab?");
+        if(conf==true){
+            close();
+        }
+    }
+</script>
 <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
 <link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="https://jcponce.github.io/assets/img/png/icon/infinity16.png" sizes="16x16">
@@ -89,7 +98,7 @@ canvas {
 <!-- Navbar Stars-->
 <div class="w3-container w3-black w3-xlarge w3-text-black sticky">
 <div class="w3-display-topmiddle">
-    <a href="https://jcponce.github.io/cabook/content/mandelbrot_set.html" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-arrow-circle-left"></i></a>
+    <a onclick="closeCurrentTab()" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-times"></i></a>
 &nbsp;
 <a onclick="myFunction()" class="w3-button w3-hover-grey w3-opacity w3-round-xxlarge">  <i class="fas fa-redo"></i></a>
 &nbsp;
