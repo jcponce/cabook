@@ -63,9 +63,9 @@ function keyReleased() {
         mandelbrot.printDebug = !mandelbrot.printDebug;
 }
 
-function mouseWheel() {
-    mandelbrot.zoomAt(mouseX, mouseY, 0.85, event.delta < 0);
-}
+//function mouseWheel() {
+ //   mandelbrot.zoomAt(mouseX, mouseY, 0.85, event.delta < 0);
+//}
 
 function doubleClicked(){
     
