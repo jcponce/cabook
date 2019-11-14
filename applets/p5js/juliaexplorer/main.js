@@ -117,7 +117,7 @@ function draw() {
 }
 
 function keyReleased() {
-    if (keyCode === 80)//P key
+    if (keyCode === 73)//I key
         julia.printDebug = !julia.printDebug;
     
     if(keyCode === 13){//Enter key
@@ -125,11 +125,11 @@ function keyReleased() {
     }
 }
 
-function mouseWheel() {
-    if(starting == true){
-        julia.zoomAt(mouseX, mouseY, 0.85, event.delta < 0);
-    }
-}
+//function mouseWheel() {
+//    if(starting == true){
+//        julia.zoomAt(mouseX, mouseY, 0.85, event.delta < 0);
+//    }
+//}
 
 // KeyCodes available at: http://keycode.info/
 const KC_UP = 38;        // Move up W
