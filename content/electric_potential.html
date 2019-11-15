@@ -163,6 +163,8 @@
 </p>
 </div>
 
+<h2>Simulation</h2>
+
 <script id="csinit" type="text/x-cindyscript">
       use("CindyGL");
       
@@ -336,7 +338,7 @@
 
 <!-- End Cindy.js -->
 
-<div class="w3-center">
+<div class="w3-centered w3-hide-small">
 <div  id="CSCanvas" style="display: block;margin-left: auto;margin-right: auto;"></div>
    <script type="text/javascript">
        
@@ -357,78 +359,8 @@
    </script>
    </div>
 
-<!--<div class="w3-padding">
-    <p><strong>Exercise:</strong>  Find the real part component of the complex potential defined in . The imaginary component is already given, try to find it in order to confirm expression .</p>
-</div>-->
-<!--
-
-<div class="w3-padding">
-<details>
-    <summary class:"w3-hover-text-white" style="background-color:#f2f2f2; width:95%" ><b style="font-size:18px" >Solition</b> </summary>
-
-<p>
-</p>
-
-</details>
-</div>
--->
-
 <br>
 
-<!--
-<div >
-  
-  <div class="w3-hide-small w3-hide-medium">
-  
-  <div id="CSCanvas" style="border:2px solid black"></div><
-  
-<div style="display: flex; justify-content: space-between; width: 800px;">
-  <div><input id="ch1" onclick="check1()" checked type="checkbox" ><span id="t1">Phase</span></div>
-  <div><input id="ch2" onclick="check2()" checked type="checkbox" ><span id="t2">Modulus</span></div>
-  <div><input id="ch3" onclick="check3()" type="checkbox" >Re/Im components</div>
-  <div><input id="ch4" onclick="check4()" type="checkbox" >Chessboard</div>
-  <div><input id="ch5" onclick="check5()" type="checkbox" >Webcam</div>
-  <div><a href="../applets/cindyjs/domcoloring/" target="_blank" title="Open Tab"><i class="fas fa-expand"></i></a></div>
-</div>
-
-
-    <br>
-    
-<div>
-<span style="font-size:18px">f(z) = </span><input type="text" id="inp" value="z"  onkeypress="typ(event, this)" size="50" style="font-size:18px">
-  </div>
-
-<br>
-
-<p>You can also select one function of the following list:</p>
-<select id="sel" onchange="sel(event, this)"  style="width:19em;">
-  <option>z</option>
-  <option>(z-1)/(z^2+z+1)</option>
-  <option value="(1-a)*(1+a)" data-cdy="A.xy=(-0.168, 0.15);">(1-a)*(1+a) - Move point A</option>
-  <option value="(z-A)/(z-B)" data-cdy="A.xy=(-0.168, 0.05);B.xy=(0.5, 0.3)">(z-A)/(z-B) - Move points A &amp; B</option>
-  <option>z^(1+i)</option>
-  <option value="z^A" data-cdy="A.xy=(0.168, -0.15);">z^A - Move point A</option>
-  <option value="(sin(a)/sin(b))^(1+i)" data-cdy="A.xy=(-0.38, -0.45);B.xy=(0.5, 0.3)">(sin(a)/sin(b))^(1+i) - Move A &amp; B</option>
-  <option value="z/2*exp(cos(seconds())*pi*i*exp(-abs(z/2)^2))" data-cdy="linear=true;grid1=true;grid2=true;">Distortion</option>
-  <option value="(e*z)^(1+14*cos(0.2*seconds())*i)*cos(((e*z)-1)/((e*z)^13+(e*z)+1))" data-cdy="E.x=1.78;grid1=false;grid2=false;">13 Essential singularities</option>
-  <option value="(exp(z)-exp(-z))/2">sinh(z)</option>
-  <option value="z = 0; repeat(50, z = z*z +a/4; z = z/abs(z)*min(abs(z),10));" data-cdy="A.xy=(1/2, 0);">Mandelbrot set</option>
-  <option value="z=z*0.4; repeat(11, z = z*z + A/5);" data-cdy="A.xy=(0.5, -0.1);">Julia set</option>
-  <option value="z = a/2;(1-z^(20*e))/(1-z)" data-cdy="A.xy=(0, 0);">Convergence of Geometric series</option>
-  <option value="repeat(5, z = z - (z^3-A)/(3*z^2));" data-cdy="A.xy=(0.5, -0.1);">Newton - Move point A</option>
-  <option value="z=a; repeat(11, z = z - (z^3-b*c*d)/(3*z^2));" data-cdy="A.xy=(-0.38, -0.45);B.xy=(0.5, 0.3)">Newton-like   - Move points A,B,C &amp; D</option>
-  <option value="U=|A|;C=10*im(A);T=(e+1)/2;a=1;r=0.23*sqrt(13*2);center=-0.15+0.23*i;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=(z-center)/r;if(|z|<|a|,0,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)))/10;" data-cdy="A.xy=(-0.568, -0.001);E.x=-1;linear=true;R.x=1.99;" >Joukowsky Airfoil - Move point A &amp; e</option>
- <option value="U=re(B);C=10*im(C);T=(e+1)/2;center=D;a=|A-D|;z1=(z-sqrt(z^2-4))/2;z2=(z+sqrt(z^2-4))/2;z=(1-T)*z+T*if(|z1-center|>|z2-center|,z1,z2);z=z-center;if(|z|<|a|,-1,(U*z+(U*a^2)/z-(i*C)/(2*pi)*log(z)+i*pi))/10" data-cdy="D.xy=(-0.0493, 0.0712); A.xy=(0.218, 0.0868); E.x=100; S.x=1.2595; linear=true;">Joukowsky airfoil</option>
-</select>
-
-
-</div>
-
-
-<br>
-
-
-</div><!--end left-->
     
     <div class="w3-hide-large  w3-khaki w3-round w3-padding w3-panel">
         <p><i class="fas fa-sad-tear"></i> Sorry, the applet is  not supported for small screens. Rotate your device to landscape. Or resize your window so it's more wide than tall.</p>
@@ -436,51 +368,19 @@
 
 <hr>
 
-<h2>Simulation</h2>
+
 
 <p>
 
 </p>
 
 
-<div >
-    <!--<iframe name="Electric-field" width="100%" height="550px" style="border:none;"  src="https://editor.p5js.org/jcponce/embed/LLrFO3dqo"></iframe>
-    -->
-    <br/>
-    <div class="w3-container w3-center">
-        <button onclick="var ifr=document.getElementsByName('Electric-field')[0]; ifr.src=ifr.src;" class="w3-btn w3-ripple w3-light-grey">Reset</button>
-
-        <!--<a href="../applets/p5js/joukowsky/index.html" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank">Open other tab</a>
-        
-        <a href="../applets/p5js/joukowsky/joukowsky.zip" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank"> Download <i class="fa fa-download w3-hover-text-blue" aria-hidden="true"></i> </a>-->
-    </div>
-</div>
-    
-    <!--<div class="w3-hide-large w3-khaki w3-round w3-padding w3-panel">
-        <p><i class="fas fa-sad-tear"></i> Sorry, the applet is  not supported for small screens. Rotate your device to landscape. Or resize your window so it's more wide than tall.</p>
-    </div>-->
     <br><br>
-    
-    <div >
-       <!-- <iframe name="Electric-field" width="100%" height="550px" style="border:none;"  src="https://jcponce.github.io/cabook/applets/p5js/electric_field_isaac/"></iframe>-->
-       
-      <!-- <div id="sketch-holder">-->
-         <!-- Our sketch will go here! -->
-        <!-- </div>-->
-        
-        <br/>
-        <div class="w3-container w3-center">
-            <button onclick="var ifr=document.getElementsByName('Electric-field')[0]; ifr.src=ifr.src;" class="w3-btn w3-ripple w3-light-grey">Reset</button>
 
-            <!--<a href="../applets/p5js/joukowsky/index.html" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank">Open other tab</a>
-            
-            <a href="../applets/p5js/joukowsky/joukowsky.zip" class="w3-btn w3-ripple w3-grey w3-hover-text-white" target="_blank"> Download <i class="fa fa-download w3-hover-text-blue" aria-hidden="true"></i> </a>-->
-        </div>
-    </div>
     
     <br><br><br><hr>
     
-    <p style="font-size: 16px"><strong>Note:</strong> This applet was originally made by <a href="https://github.com/isaacvr/coding/tree/gh-pages/electric_field">Isaac Vega</a> with <a href="https://p5js.org/">p5.js</a>. The source code can be found on <a href="#">GitHub</a>.</p>
+    <p style="font-size: 16px"><strong>Note:</strong> This applet was originally made by Montaga with CindyJS. The source code can be found on <a href="#">GitHub</a>.</p>
 
 	<!-- link to the next page -->
 	<a href="thanks.html"><p class="nextPage">NEXT: Acknowledgements</p></a>
