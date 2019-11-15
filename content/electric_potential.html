@@ -39,6 +39,12 @@
 	<!-- via: https://github.com/google/code-prettify -->
 	<script src="../js/run_prettify.js"></script>
 
+  <script type="text/javascript" src="../applets/p5js/electric_field_isaac/libraries/p5.min.js"></script>
+  <script type="text/javascript" src="../applets/p5js/electric_field_isaac/libraries/p5.dom.min.js"></script>
+  <script type="text/javascript" src="../applets/p5js/electric_field_isaac/libraries/complex.min.js"></script>
+  <script type="text/javascript" src="../applets/p5js/electric_field_isaac/libraries/matrix.js"></script>
+  <script type="text/javascript" src="../applets/p5js/electric_field_isaac/libraries/utils.js"></script>
+  <script type="text/javascript" src="../applets/p5js/electric_field_isaac/electric_field.js"></script>
 	
 
 	<!-- JQUERY FANCY ADDITIONS -->
@@ -206,7 +212,11 @@
     <br><br>
     
     <div >
-        <iframe name="Electric-field" width="100%" height="550px" style="border:none;"  src="https://jcponce.github.io/cabook/applets/p5js/electric_field_isaac/"></iframe>
+       <!-- <iframe name="Electric-field" width="100%" height="550px" style="border:none;"  src="https://jcponce.github.io/cabook/applets/p5js/electric_field_isaac/"></iframe>-->
+       
+       <div id="sketch-holder">
+         <!-- Our sketch will go here! -->
+       </div>
         
         <br/>
         <div class="w3-container w3-center">

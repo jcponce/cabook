@@ -95,7 +95,12 @@ function touchEnded(){
 function setup() {
   WIDTH = 0.999 * windowWidth;
   HEIGHT = 0.999 * windowHeight;
-  createCanvas(WIDTH, HEIGHT);
+  var canvas = createCanvas(800, 500);
+  
+   // Move the canvas so it’s inside our <div id="sketch-holder">.
+   canvas.parent('sketch-holder');
+    
+    //createCanvas(WIDTH, HEIGHT);
 
   textAlign(CENTER, CENTER);
   textSize(RAD * 0.6);
