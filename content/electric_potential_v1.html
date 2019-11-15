@@ -147,62 +147,42 @@
     <script type="text/javascript" src="../applets/cindyjs/assets/v0.7.11/Cindy.js"></script>
     <script type="text/javascript" src="../applets/cindyjs/assets/v0.7.11/CindyGL.js"></script>
     <script type="text/javascript" src="../applets/cindyjs/assets/symbolic.js"></script>
-	
-</head>
-
-<body>
-<div id="wrapper">
-        
-        <header><p><span id="prev"><a href="applications_conformal.html">&larr;</a></span><span id="title"><a href="table_of_contents.html">Complex Analysis</a></span><span id="next"><a href="thanks.html">&rarr;</a></span><div class="clear"></div></p></header>
-        
-
-<h1>Electric potential</h1>
-<hr>
-<div class="w3-responsive">
-    <p>In physics we learn that if an electric potential $\phi$ is determined by static electric charges, $\phi$ must satisfy Laplace's equation (that is, be harmonic). The conjugate function $\Phi$ of $\phi$ is interpreted as follows: Lines aling which $\Phi$ is constant are lines aling which forces act on thest charges and are called <em>flux lines</em>. Tangent vectors to such lines are $\text{grad }\phi = \mathbf E$, called the <em>electric field</em>, see Figure. Thus <em>the flux lines and the equipotential lines (lines of constant $\phi$) intersect orthogonally.</em>
-</p>
-</div>
-
-<script id="csinit" type="text/x-cindyscript">
+    
+     <script id="csinit" type="text/x-cindyscript">
       use("CindyGL");
       
-      width = 550;
-      height = 550;
+
+				
+				
       
       L = [0, 0]; //bottom left corner
-      R = [height, 0]; //bottom right corner
+      R = [512, 0]; //bottom right corner
       
-      createimage("Cfract", width, height);
-      createimage("N", width, height);
-      createimage("Nb", width, height);
-      createimage("Show", width, height);
+      createimage("Cfract", 512, 512);
+      createimage("N", 512, 512);
+      createimage("Nb", 512, 512);
+      createimage("Show", 512, 512);
       
-      colorplot(L, R, "Cfract", (random(), random(), 0));
-      colorplot(L, R, "N", round(random()));
-                        
-			//Component
-            //ff(x,p):= (
-            //  tt=(x-p)/abs(x-p)^3;
-            //  (tt.y,-tt.x);
-            //);
-            
+						colorplot(L, R, "Cfract", (random(), random(), 0));
+						colorplot(L, R, "N", round(random()));
+						
+            ff(x,p):= (
+              tt=(x-p)/abs(x-p)^3;
+              (tt.y,-tt.x);
+            );
             gg(x,p):= (
               tt=(x-p)/abs(x-p)^3;
               (tt.x,tt.y);
             );
-            
-            
-          //Function to define smoothness on change of color
+          
             pg(xx,pp):= (
               tt=1/abs(xx-pp)^1;
               tt;
             );
 
-            /*This function is useless ???
-			v(x) := (
+						v(x) := (
               x1=A.x;
               x2=B.x;
-              
               f1=ff(x,(x1,1));
               f2=ff(x,(x1,.75));
               f3=ff(x,(x1,.5));
@@ -221,15 +201,11 @@
               g7=ff(x,(x2,-.5));
               g8=ff(x,(x2,-.75));
               g9=ff(x,(x2,-1));
-               
-				res=f1+f2+f3+f4+f5+f6+f7+f8+f9+(-g1-g2-g3-g4-g5-g6-g7-g8-g9);
+							res=f1+f2+f3+f4+f5+f6+f7+f8+f9+(-g1-g2-g3-g4-g5-g6-g7-g8-g9);
               res=if(|res|>2,res/|res|*2,res);
 							res
 
 						);
-             */
-                     
-            //Function that defines the size of the arrows in the vector field
             v(x) := (
 
               x1=A.x;
@@ -241,12 +217,11 @@
               g1=gg(x,(x2,y2));
               
               res=f1-g1;
-              res=if(|res|>2,res/|res|*2.5,res);
+              res=if(|res|>2,res/|res|*2,res);
               res
             );
 
-        //Function that defines the brightness
-                     
+
             h(x) := (
 
               x1=A.x;
@@ -256,12 +231,12 @@
               f1=pg(x,(x1,y1));
               g1=pg(x,(x2,y2));
               
-              (f1-g1)*.9;
+              (f1-g1)*.4;
 
             );
 
             
-            //vector field ends
+            //vector field
 						
 						h = 1;
 						getNewC(pc) := (
@@ -273,10 +248,9 @@
 
         
         
-    <script id="csdraw" type="text/x-cindyscript">
+				<script id="csdraw" type="text/x-cindyscript">
 					      
-      pixel2coord(x) := x/width*4+(-2,-2);
-      
+      pixel2coord(x) := x/512*4+(-2,-2);
       color(x) := (
 							z = v(pixel2coord(x));
 							gray(.5);
@@ -284,38 +258,34 @@
 
       colorplot(L, R, "N",
         newC = getNewC(#);
-        newval =	if(
-                       newC.x > 0 & newC.y > 0 & newC.x < width & newC.y < height,
-                       imagergb(L, R, "N", (floor(newC.x)+.5, floor(newC.y)+.5) ), //NEAREST interpolation.
-                       round(random())*color(newC)
+        newval =	if(newC.x > 0 & newC.y > 0 & newC.x<512 & newC.y < 512,
+          imagergb(L, R, "N", (floor(newC.x)+.5, floor(newC.y)+.5)), //NEAREST interpolation.
+          round(random())*color(newC)
         );
         //newval = if(abs(mouse().xy - pixel2coord(#)) < 0.1, (0,0,0), newval);
         newval = if(abs(A.xy - pixel2coord(#)) < 0.05, round(random())*color(#), newval);
         newval = if(abs(B.xy - pixel2coord(#)) < 0.05, round(random())*color(#), newval);
-                
         if(random()>.01, newval, round(random())*color(#))
         
       );
       
-      //Flux animated
+      
       alpha = 0.02;
       colorplot(L, R, "Nb",
         Na = imagergb(L, R, "N", #);
         alpha*Na + (1-alpha)*imagergb(L, R, "Nb", #)
       );
       
-      //Updates the canvas to show animation
       colorplot(L, R, "Cfract",
         newC = getNewC(#);
         (newC.x-floor(newC.x), newC.y-floor(newC.y), 0)
       );
       
-      //Shows everything
       colorplot(L, R, "Show",
         sh = imagergb(L, R, "Nb", #);
         val=h(pixel2coord(#));
         if(|val|>1,val=val/|val|);
-           sh = |sh|*(val+.5, 0.5, -val+.5);//Here you change the colors
+        sh = |sh|*(val+.5,-val+.5,0);
       );
 
       drawimage([-2, -2], [2, -2], "Show");
@@ -332,25 +302,333 @@
 
     </script>
     
+   <!-- <script id="csinit" type="text/x-cindyscript">
+f(z, a, b, c, d, e, A, B, C, D) := log(z-A)- log(z-B)+log(z-C)- log(z-D);
+
+grid1=true;
+grid2=true;
+linear=true;
+bw=false;
+webcam=false;
+camvideo=(;);
+iscam=false;
+
+t0 = seconds();
+</script>
+
+<script id="csdraw" type="text/x-cindyscript">
+//UI
+/*
+x=S.x;//speed that I don't need
+if(x<S1.x,x=S1.x);
+if(x>S2.x,x=S2.x);
+S.xy=(x,S1.y);
+speed=0;//(S.x-S1.x)/2;
+ */
+
+x=R.x;
+if(x<R1.x,x=R1.x);
+if(x>R2.x,x=R2.x);
+R.xy=(x,R1.y);
+
+x=T.x;
+if(x<T1.x,x=T1.x);
+if(x>T2.x,x=T2.x);
+T.xy=(x,T1.y);
+
+//drawimage(S2+(0.04,-.06),S2+(0.13,0)+(0.04,-.06),"Rot");
+drawimage(T2+(0.04,-.03),T2+(0.13,0)+(0.04,-.03),"Sat");
+drawimage(R2+(0.04,-.04),R2+(0.13,0)+(0.04,-.04),"Grid");
+
+sat = |T,T1|/|T2,T1|;
+grid = round(|R,R1|/|R2,R1|*20);
+
+//translate((1.6,0));
+apply(-5..5,i,
+  draw((i*.1+1.6,-.02),(i*.1+1.6,.02),color->(0,0,0),size->if(i==0,2,.5));
+  if(i==0,draw((-.5+1.6,i*.1),(.5+1.6,i*.1),color->(0,0,0),size->2));
+);
+//translate((-1.6,0));
+x=E.x;
+if(x<1.1,x=1.1);
+if(x>2.1,x=2.1);
+E.xy=(x,0);
+xx=round((E.x-1.2)*10);
+xx=(E.x-1.6)*2;
+yy=0;
+
+
+if(A.x>1,A.size=6;drawtext(A+(.03,.03),"A"),A.size=8);
+if(B.x>1,B.size=6;drawtext(B+(.03,.03),"B"),B.size=8);
+if(C.x>1,C.size=6;drawtext(C+(.03,.03),"C"),C.size=8);
+if(D.x>1,D.size=6;drawtext(D+(.03,.03),"D"),D.size=8);
+
+//drawtext((1.1,.8),"Complex Numbers Variables:",size->18);
+//drawtext((1.1,.7),"a=z-A, b=z-B, c=z-C, d=z-D",size->18);
+
+drawtext((1.1,.17),"Real Scalar:",size->18);
+//drawtext((1.1,.1),"e",size->18);
+
+drawtext(E+(.03,.03),"e");
+drawtext((1,E.y)+(.05,-.1),"-1");
+drawtext((1,E.y)+(1.08,-.1),"+1");
+
+
+//PLOT
+
+
+hsvToRGB(h, s, v) := (
+  regional(j, p, q, t, f);
   
+  h = (h-floor(h))*6;
+  
+  j = floor(h);
+  f = h - j;
+  
+  p = 1 - s;
+  q = 1 - s*f;
+  t = 1 - s*(1-f);
+
+  if(j == 0, [1, t, p],
+  if(j == 1, [q, 1, p],
+  if(j == 2, [p, 1, t],
+  if(j == 3, [p, q, 1],
+  if(j == 4, [t, p, 1],
+  if(j == 5, [1, p, q]))))))*v
+);
+
+time = t0-seconds();
+
+if (webcam & isundefined(camvideo), camvideo=cameravideo());
+             
+if (webcam & imageready(camvideo),
+    
+    (
+  if (!iscam, iscam=true; err("webcam on"); forcerecompile(););
+    color(z) := ( //what color should be given to a complex number z?
+    z = if(linear, z/5, log(z));
+    z = z * (grid+1);
+    //
+    r = (imagesize(camvideo).y/imagesize(camvideo).x);
+    // w1 = 1;
+    // w2 = i*r; //image is w1 and w2 periodic
+    c = imagergb((0,0),(1,0),camvideo, (z)/(2*pi)-complex((1,r/2)), repeat->true);
+    //c = imagergb([-.2,0],[1.2,0],camvideo, mod(z/2/pi + .5+0.5*i, 1+1*i));
+    b = c*[1,1,1]/3;
+    sat*c + (1-sat)*[b,b,b]
+  );//ends first color
+), //ends first option for displaying
+    (
+  if (iscam, iscam=false; err("webcam off"); forcerecompile(););
+color(z) := ( //what color should be given to a complex number z?
+  //regional(n, grey1, grey2);
+  n = 2*grid*if(linear, .5, 1);
+  fz = re( (log(z-(A.x+A.y))- log(z-(B.x+i*B.y))+log(z-(C.x+C.y))- log(z-(D.x+D.y))) );
+  z = ( 2*i*z) / 2 / pi;// + i*time*speed;
+  
+  zfract = n*z - floor(n*z); //value of n*z in C mod Z[i]
+  //grey1 = if(grid1 & n>0, im(zfract), 1);
+  //grey2 = if(grid2 & n>0, re(zfract), 1);
+  //if(bw,
+  //  grey1 = if(grey1<0.5, 1, -1);
+  //  grey2 = if(grey2<0.5, 1, -1);
+  //);
+  factor = (.6+.4*re(sqrt(im(zfract)*re(zfract))));
+             
+             if(fz>0,
+                  (1,0,0)* factor,
+                  (0,0,1)* factor
+                  )
+  //( im(z) ) * factor;
+//hsvToRGB(
+          // im(z)*0.3,
+          // if(bw, 0, sat),
+          // .5+.5*if(bw, grey1*grey2, re(sqrt(grey1*grey2)))
+          // )
+//hsvToRGB(
+  //   if(!linear, im(z), (pi-arctan2(-im(z), -re(z)))/(2*pi)),
+  //   if(bw, 0, sat),
+  //   0.5 + 0.5 * if(bw, grey1*grey2, re(sqrt(grey1*grey2)))
+  //)
+);//ends second color
+)//ends second options for displaying
+    
+);// ends if webcam and image defined
+
+colorplot(
+  regional(z, ac, bc, cc, dc);
+  
+  //Plotted in the square [-5,5]X[-5,5]
+  
+  z = complex(#)*4;
+  ac = complex(A)*4;
+  bc = complex(B)*4;
+  cc = complex(C)*4;
+  dc = complex(D)*4;
+  
+  fval = f(z, z-ac, z-bc, z-cc, z-dc, xx, ac, bc, cc, dc);
+  
+  color(fval),
+  (-1,-1), (1,1)
+);
+
+draw((1,-1),(1,1), color->(0,0,0), size->2);
+                                    
+//draw((-1,0),(1,0),color->gray(.5),size->3);
+//draw((0,1),(0,-1),color->gray(.5),size->3);
+
+                                    
+</script>
+
+<script type="text/javascript">
+var cdy = CindyJS({
+  ports: [{
+    id: "CSCanvas",
+      width: 800,
+      height: 445,
+      transform: [ { visibleRect: [-1, -1, 2.2, 1] } ]
+  }],
+  scripts: "cs*",
+  geometry: [
+    {name:"A", type:"Free", pos:[-0.5,0],color:[0,0,1],pinned:false,size:4},
+    {name:"B", type:"Free", pos:[0.5,0],color:[1,0,0],pinned:false,size:4},
+    {name:"C", type:"Free", pos:[1.6,0.5],color:[0,0,1],pinned:false,size:4},
+    {name:"D", type:"Free", pos:[1.8,0.5],color:[1,0,0],pinned:false,size:4},
+    {name:"E", type:"Free", pos:[1.7,0],color:[1,1,1],pinned:false,size:6},
+    //{name:"S1", type:"Free", pos:[1.2,-.8],color:[0,0,0],pinned:true,size:2},
+    //{name:"S2", type:"Free", pos:[2.0,-.8],color:[0,0,0],pinned:true,size:2},
+    //{name:"S", type:"Free", pos:[1.201,-.8],color:[1,1,1],pinned:false,size:4},
+    //{name:"l", type:"Segment", args:["S1","S2"],color:[0,0,0],pinned:false,size:2},
+    {name:"R1", type:"Free", pos:[1.2,-.6],color:[0,0,0],pinned:true,size:2},
+    {name:"R2", type:"Free", pos:[2.0,-.6],color:[0,0,0],pinned:true,size:2},
+    {name:"R", type:"Free", pos:[1.8,-.6],color:[1,1,1],pinned:false,size:6},//Grid
+    {name:"m", type:"Segment", args:["R1","R2"],color:[0,0,0],pinned:false,size:2},
+    {name:"T1", type:"Free", pos:[1.2,-.4],color:[0,0,0],pinned:true,size:2},
+    {name:"T2", type:"Free", pos:[1.99,-.4],color:[0,0,0],pinned:true,size:2},
+    {name:"T", type:"Free", pos:[2.0,-.4],color:[1,1,1],pinned:false,size:6},//Color
+    {name:"o", type:"Segment", args:["T1","T2"],color:[0,0,0],pinned:false,size:2}
+  ],
+  animation: {autoplay: true},
+  //transform:[{translate:[0,0]},{scale:10}],
+  images:{
+          //Rot:"../domcoloring/uiImages/Rot.png",
+          Sat:"../applets/cindyjs/domcoloring/uiImages/SSat.png",
+          Grid:"../applets/cindyjs/domcoloring/uiImages/Grid.png"},
+  use: ["CindyGL"]
+});
+
+var typ=function(e, b){
+  var chCode=e.which ? e.which:e.keyCode;
+  if(chCode==13){
+    console.log("*************");
+    console.log(b.value);
+    cdy.evokeCS('f(z, a, b, c, d, e, A, B, C, D) := (' + b.value + '); forcerecompile();');
+  }
+}
+
+//var sel=function(e, b){
+//  document.getElementById("inp").value = b.value;
+//  cdy.evokeCS('f(z, a, b, c, d, e, A, B, C, D) := (' + b.value + '); forcerecompile();');
+//}
+var sel=function(e, b){
+    document.getElementById("inp").value = b.value;
+    cdy.evokeCS('f(z, a, b, c, d, e, A, B, C, D) := (' + b.value + ');');
+    var script = b.options[b.selectedIndex].getAttribute("data-cdy");
+    console.log(b);
+    console.log(script);
+    if(script) {
+        cdy.evokeCS(script);
+    }
+    script = false;
+}
+
+var check1=function(){
+       if(document.getElementById("ch1").checked){
+          cdy.evokeCS('grid1=true;');
+       } else {
+           cdy.evokeCS('grid1=false;');
+
+       }
+}
+
+var check2=function(){
+       if(document.getElementById("ch2").checked){
+          cdy.evokeCS('grid2=true;');
+       } else {
+           cdy.evokeCS('grid2=false;');
+
+       }
+}
+
+var check3=function(){
+    if(document.getElementById("ch3").checked){
+        cdy.evokeCS('linear=true;');
+        document.getElementById("t1").innerHTML = "Real";
+        document.getElementById("t2").innerHTML = "Imaginary";
+    } else {
+        cdy.evokeCS('linear=false;');
+        document.getElementById("t1").innerHTML = "Phase";
+        document.getElementById("t2").innerHTML = "Modulus";
+    }
+}
+
+    var check4=function(){
+       if(document.getElementById("ch4").checked){
+          cdy.evokeCS('bw=true;');
+       } else {
+           cdy.evokeCS('bw=false;');
+
+       }
+}
+
+    var check5=function(){
+       if(document.getElementById("ch5").checked){
+          cdy.evokeCS('webcam=true;');
+          document.getElementById("ch1").disabled =
+          document.getElementById("ch2").disabled =
+          document.getElementById("ch4").disabled = true;
+       } else {
+           cdy.evokeCS('webcam=false;');
+          document.getElementById("ch1").disabled =
+          document.getElementById("ch2").disabled =
+          document.getElementById("ch4").disabled = false;
+
+       }
+}
+</script>
 
 <!-- End Cindy.js -->
+	
+</head>
 
-<div class="w3-center">
-<div  id="CSCanvas" style="display: block;margin-left: auto;margin-right: auto;"></div>
+<body>
+<div id="wrapper">
+        
+        <header><p><span id="prev"><a href="applications_conformal.html">&larr;</a></span><span id="title"><a href="table_of_contents.html">Complex Analysis</a></span><span id="next"><a href="thanks.html">&rarr;</a></span><div class="clear"></div></p></header>
+        
+
+<h1>Electric potential</h1>
+<hr>
+<div class="w3-responsive">
+    <p>In physics we learn that if an electric potential $\phi$ is determined by static electric charges, $\phi$ must satisfy Laplace's equation (that is, be harmonic). The conjugate function $\Phi$ of $\phi$ is interpreted as follows: Lines aling which $\Phi$ is constant are lines aling which forces act on thest charges and are called <em>flux lines</em>. Tangent vectors to such lines are $\text{grad }\phi = \mathbf E$, called the <em>electric field</em>, see Figure. Thus <em>the flux lines and the equipotential lines (lines of constant $\phi$) intersect orthogonally.</em>
+</p>
+</div>
+
+<div>
+<div  id="CSCanvas" style="position:relative; top:10px;"></div>
    <script type="text/javascript">
        
        cdy = CindyJS({canvasname:"CSCanvas",
                    scripts: "cs*",
                    geometry:[
-                             {name:"A", kind:"P", type:"Free", color:[1,0,0], pos:[.5  ,0],size:10},
-                             {name:"B", kind:"P", type:"Free", color:[153/255, 153/255, 255/255], pos:[-.5 ,0],size:10}
+                             {name:"A", kind:"P", type:"Free", pos:[.5  ,0],size:10},
+                             {name:"B", kind:"P", type:"Free", pos:[-.5 ,0],size:10}
                    ],
                    animation: {autoplay: true},
                    ports: [{
                      id: "CSCanvas",
-                     width: 550,
-                     height: 550,
+                     width: 512,
+                     height: 512,
                      transform: [ { visibleRect: [-2, -2, 2, 2] } ]
                    }]
                  });
