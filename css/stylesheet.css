@@ -137,7 +137,7 @@ a:hover .fa, .license a:hover {
 /* CODE */
 pre, code, .prettyprint {
 	font-family: 		Consolas, Menlo, Courier, monospace;
-	line-height: 		1.1em;
+	line-height: 		1.3em;
 
 	/* wrap code */
 	white-space: 		pre-wrap;       	/* css-3 */
