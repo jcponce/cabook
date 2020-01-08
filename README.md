@@ -3,7 +3,7 @@ A visual and interactive introduction to [Complex Analysis](https://complex-anal
 
 Note: This repository is been moved to a new domain. Apologies for the inconvenience.
 
-[https://complex-analysis.com](https://complex-analysis.com).
+[https://complex-analysis.com](https://complex-analysis.com)
 
 ISBN 978-0-6485736-0-9
 
