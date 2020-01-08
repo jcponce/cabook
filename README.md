@@ -1,5 +1,9 @@
 # Complex Analysis
-A visual and interactive introduction to [Complex Analysis](https://www.dynamicmath.xyz/cabook/).
+A visual and interactive introduction to [Complex Analysis](https://complex-analysis.com).
+
+Note: This repository is been moved to a new domain. Apologies for the inconvenience.
+
+[https://complex-analysis.com](https://complex-analysis.com).
 
 ISBN 978-0-6485736-0-9
 
@@ -13,7 +17,7 @@ mathematically elegant, complex analysis provides powerful tools for solving
 problems that are either very difficult or virtually impossible to solve in any
 other way.
 
-In this book you will find examples, problems and applets that allow you to explore  complex analysis by using the visual interactive power of the computer (or tablet).</p>
+In this book you will find examples, problems and applets that allow you to explore  complex analysis by using the visual interactive power of the computer (or tablet).
 
 Ready to get started? Skip ahead to the [Table of Contents](https:jcponce.github.cabook/content/table_of_contents.html)
 
