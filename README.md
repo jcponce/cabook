@@ -19,7 +19,7 @@ other way.
 
 In this book you will find examples, problems and applets that allow you to explore  complex analysis by using the visual interactive power of the computer (or tablet).
 
-Ready to get started? Skip ahead to the [Table of Contents](https:jcponce.github.cabook/content/table_of_contents.html)
+Ready to get started? Skip ahead to the [Table of Contents](https://complex-analysis.com/content/table_of_contents.html)
 
 ---
 
