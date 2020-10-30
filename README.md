@@ -1,4 +1,4 @@
-# Note: This repository was moved to a new domain. [complex-analysis.com](https://complex-analysis.com). Apologies for the inconvenience.
+# Note: This project was moved to [complex-analysis.com](https://complex-analysis.com). Apologies for the inconvenience.
 
 # Complex Analysis
 A visual and interactive introduction to [Complex Analysis](https://complex-analysis.com).
